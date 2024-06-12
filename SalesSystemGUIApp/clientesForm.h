@@ -643,8 +643,41 @@ namespace SalesSystemGUIApp {
 				   }
 
 		private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
+			List<Customer^>^ customerList = Service::QueryAllCustomers();
+			int SiIdHueco = 0;//Variable para saber si hay un hueco en la lista de clientes(Id)
+			int IdHueco = 0;//Variable para saber el hueco en la lista de clientes(Id)
+			int j = 0;
+			for (int i = 0; i <customerList->Count; i++) {
 
-			int id = Convert::ToInt32(txtId->Text);
+				if (customerList[i]->Username == txtUserName->Text) {
+					MessageBox::Show("El nombre de usuario ya existe, por favor ingrese otro nombre de usuario", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					return;
+
+				}
+				else {
+
+					if (customerList[i]->Id == (i + 1)) {
+						SiIdHueco = 0;
+					}
+					else {
+						if (j == 0) {
+							IdHueco = i + 1;
+							SiIdHueco = 1;
+						}
+						j = j + 1;
+					}
+				}
+				
+			}
+			int id;
+
+			if (SiIdHueco == 0) {
+				id = customerList->Count + 1;
+			}
+			else {
+				id = IdHueco;
+			}
+
 			String^ userName = txtUserName->Text;
 			String^ password = txtPassword->Text;
 			String^ name = txtName->Text;
@@ -652,6 +685,9 @@ namespace SalesSystemGUIApp {
 			String^ dni = txtDNI->Text;
 			String^ gender = txtGender->Text;
 			String^ birthDate = txtBirthDate->Text;
+			String^ Status1 = "M";
+
+			
 
 			// Convertir la imagen del PictureBox a un array de bytes si hay una imagen cargada
 			array<Byte>^ photo = nullptr;
@@ -670,6 +706,7 @@ namespace SalesSystemGUIApp {
 			customer->DNI = dni;
 			customer->Genero = gender;
 			customer->BirthDate = birthDate;
+			customer->Status = Status1;
 			customer->Photo = photo;
 
 
@@ -709,6 +746,7 @@ namespace SalesSystemGUIApp {
 		}
 	
 		private: System::Void btnUpdate_Click(System::Object^ sender, System::EventArgs^ e) {
+
 			int id = Convert::ToInt32(txtId->Text);
 			String^ userName = txtUserName->Text;
 			String^ password = txtPassword->Text;
