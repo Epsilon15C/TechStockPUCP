@@ -1,0 +1,160 @@
+#pragma once
+
+using namespace System;
+using namespace SalesSystemModel;
+using namespace System::Collections::Generic;
+using namespace System::Data::SqlClient;
+
+namespace SalesSystemPersistance {
+	public ref class Persistance
+	{
+	private:
+
+		static SqlConnection^ GetConnection();
+
+		//Customer
+		static List< Customer^>^ customersListDB = gcnew List< Customer^>();
+
+		//Provider DB
+		static List< Provider^>^ providerListDB = gcnew List< Provider^>();
+
+		// Product DB
+		static List< Product^>^ productListDB = gcnew List< Product^>();
+
+		//Resistor DB
+		static List< Resistor^>^ resistorListDB = gcnew List< Resistor^>();
+
+		//JumperWire DB
+		static List< JumperWire^>^ jumperWireListDB = gcnew List< JumperWire^>();
+
+		//Switch DB
+		static List< Switch^>^ switchListDB = gcnew List< Switch^>();
+
+		//Diode DB
+
+		static List< Diode^>^ diodeListDB = gcnew List< Diode^>();
+
+		//Capacitor DB
+
+		static List< Capacitor^>^ capacitorListDB = gcnew List< Capacitor^>();
+
+		//Inductor DB
+
+		static List< Inductor^>^ inductorListDB = gcnew List< Inductor^>();
+
+		//VoltageSource DB
+
+		static List< VoltageSource^>^ voltageSourceListDB = gcnew List< VoltageSource^>();
+
+		//BreadBoard DB
+
+		static List< Breadboard^>^ breadboardListDB = gcnew List< Breadboard^>();
+
+		//File Persistance
+		//static void PersistTextFile(String^ fileName, Object^ persistObject);
+		//static Object^ LoadTextFile(String^ fileName);
+		static void PersistBinaryFile(String^ fileName, Object^ persistObject);
+		static Object^ LoadBinaryFile(String^ fileName);
+
+
+		
+
+	public: 
+		//Customer
+		static String^ BIN_CUSTOMER_FILE_NAME = "customer.bin";
+		static int AddCustomer(Customer^ customer);
+		static List<Customer^>^ QueryAllCustomers();
+		static int UpdateCustomer(Customer^ customer);
+		static int DeleteCustomer(int customerId);
+		static Customer^ QueryCustomerById(int customerId);
+
+		//Provider
+
+		static String^ BIN_PROVIDER_FILE_NAME = "provider.bin";
+		static int AddProvider(Provider^ provider);
+		static List<Provider^>^ QueryAllProviders();
+		static int UpdateProvider(Provider^ provider);
+		static int DeleteProvider(int providerId);
+		static Provider^ QueryProviderById(int providerId);
+
+		// Productos
+		static List<Product^>^ QueryAllProducts();
+
+		//Resistor
+
+		static String^ BIN_RESISTOR_FILE_NAME = "resistor.bin";
+		static int AddResistor(Resistor^ resistor);
+		static List<Resistor^>^ QueryAllResistors();
+		static int UpdateResistor(Resistor^ resistor);
+		static int DeleteResistor(int resistorId);
+		static Resistor^ QueryResistorById(int resistorId);
+
+		//JumperWire
+
+		static String^ BIN_JUMPERWIRE_FILE_NAME = "jumperWire.bin";
+		static int AddJumperWire(JumperWire^ jumperWire);
+		static List<JumperWire^>^ QueryAllJumperWires();
+		static int UpdateJumperWire(JumperWire^ jumperWire);
+		static int DeleteJumperWire(int jumperWireId);
+		static JumperWire^ QueryJumperWireById(int jumperWireId);
+
+		//Switch
+
+		static String^ BIN_SWITCH_FILE_NAME = "switch.bin";
+		static int AddSwitch(Switch^ sw);
+		static List<Switch^>^ QueryAllSwitches();
+		static int UpdateSwitch(Switch^ sw);
+		static int DeleteSwitch(int swId);
+		static Switch^ QuerySwitchById(int swId);
+
+		//Diode
+
+		static String^ BIN_DIODE_FILE_NAME = "diode.bin";
+		static int AddDiode(Diode^ diode);
+		static List<Diode^>^ QueryAllDiodes();
+		static int UpdateDiode(Diode^ diode);
+		static int DeleteDiode(int diodeId);
+		static Diode^ QueryDiodeById(int diodeId);
+
+		//Capacitor
+
+		static String^ BIN_CAPACITOR_FILE_NAME = "capacitor.bin";
+		static int AddCapacitor(Capacitor^ capacitor);
+		static List<Capacitor^>^ QueryAllCapacitors();
+		static int UpdateCapacitor(Capacitor^ capacitor);
+		static int DeleteCapacitor(int capacitorId);
+		static Capacitor^ QueryCapacitorById(int capacitorId);
+
+		//Inductor
+
+		static String^ BIN_INDUCTOR_FILE_NAME = "inductor.bin";
+		static int AddInductor(Inductor^ inductor);
+		static List<Inductor^>^ QueryAllInductors();
+		static int UpdateInductor(Inductor^ inductor);
+		static int DeleteInductor(int inductorId);
+		static Inductor^ QueryInductorById(int inductorId);
+
+		//VoltageSource
+
+		static String^ BIN_VOLTAGESOURCE_FILE_NAME = "voltageSource.bin";
+		static int AddVoltageSource(VoltageSource^ voltageSource);
+		static List<VoltageSource^>^ QueryAllVoltageSources();
+		static int UpdateVoltageSource(VoltageSource^ voltageSource);
+		static int DeleteVoltageSource(int voltageSourceId);
+		static VoltageSource^ QueryVoltageSourceById(int voltageSourceId);
+
+		//BreadBoard
+
+		static String^ BIN_BREADBOARD_FILE_NAME = "breadboard.bin";
+		static int AddBreadboard(Breadboard^ breadboard);
+		static List<Breadboard^>^ QueryAllBreadboards();
+		static int UpdateBreadboard(Breadboard^ breadboard);
+		static int DeleteBreadboard(int breadboardId);
+		static Breadboard^ QueryBreadboardById(int breadboardId);
+
+
+
+
+	};
+
+}
