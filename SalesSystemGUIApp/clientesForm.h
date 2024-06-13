@@ -109,9 +109,26 @@ namespace SalesSystemGUIApp {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ClientPassword;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ClientName;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ClientLastName;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ StatusClient;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ClientDNI;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ClientGender;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ClientBirthDate;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -160,6 +177,7 @@ namespace SalesSystemGUIApp {
 				this->ClientPassword = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				this->ClientName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				this->ClientLastName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->StatusClient = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				this->ClientDNI = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				this->ClientGender = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				this->ClientBirthDate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -185,9 +203,10 @@ namespace SalesSystemGUIApp {
 				this->lblId->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->lblId->ForeColor = System::Drawing::Color::White;
-				this->lblId->Location = System::Drawing::Point(20, 68);
+				this->lblId->Location = System::Drawing::Point(15, 55);
+				this->lblId->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->lblId->Name = L"lblId";
-				this->lblId->Size = System::Drawing::Size(30, 24);
+				this->lblId->Size = System::Drawing::Size(23, 18);
 				this->lblId->TabIndex = 0;
 				this->lblId->Text = L"Id:";
 				// 
@@ -197,9 +216,10 @@ namespace SalesSystemGUIApp {
 				this->lblName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->lblName->ForeColor = System::Drawing::Color::White;
-				this->lblName->Location = System::Drawing::Point(20, 107);
+				this->lblName->Location = System::Drawing::Point(15, 87);
+				this->lblName->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->lblName->Name = L"lblName";
-				this->lblName->Size = System::Drawing::Size(84, 24);
+				this->lblName->Size = System::Drawing::Size(66, 18);
 				this->lblName->TabIndex = 1;
 				this->lblName->Text = L"Nombre:";
 				// 
@@ -209,9 +229,10 @@ namespace SalesSystemGUIApp {
 				this->lblDNI->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->lblDNI->ForeColor = System::Drawing::Color::White;
-				this->lblDNI->Location = System::Drawing::Point(20, 144);
+				this->lblDNI->Location = System::Drawing::Point(15, 117);
+				this->lblDNI->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->lblDNI->Name = L"lblDNI";
-				this->lblDNI->Size = System::Drawing::Size(46, 24);
+				this->lblDNI->Size = System::Drawing::Size(37, 18);
 				this->lblDNI->TabIndex = 2;
 				this->lblDNI->Text = L"DNI:";
 				// 
@@ -221,9 +242,10 @@ namespace SalesSystemGUIApp {
 				this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->label6->ForeColor = System::Drawing::Color::White;
-				this->label6->Location = System::Drawing::Point(377, 68);
+				this->label6->Location = System::Drawing::Point(283, 55);
+				this->label6->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->label6->Name = L"label6";
-				this->label6->Size = System::Drawing::Size(178, 24);
+				this->label6->Size = System::Drawing::Size(139, 18);
 				this->label6->TabIndex = 5;
 				this->label6->Text = L"Nombre de usuario:";
 				// 
@@ -233,9 +255,10 @@ namespace SalesSystemGUIApp {
 				this->lblLastName->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->lblLastName->ForeColor = System::Drawing::Color::White;
-				this->lblLastName->Location = System::Drawing::Point(377, 150);
+				this->lblLastName->Location = System::Drawing::Point(283, 122);
+				this->lblLastName->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->lblLastName->Name = L"lblLastName";
-				this->lblLastName->Size = System::Drawing::Size(93, 24);
+				this->lblLastName->Size = System::Drawing::Size(71, 18);
 				this->lblLastName->TabIndex = 6;
 				this->lblLastName->Text = L"Apellidos:";
 				// 
@@ -245,9 +268,10 @@ namespace SalesSystemGUIApp {
 				this->lblGender->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->lblGender->ForeColor = System::Drawing::Color::White;
-				this->lblGender->Location = System::Drawing::Point(20, 196);
+				this->lblGender->Location = System::Drawing::Point(15, 159);
+				this->lblGender->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->lblGender->Name = L"lblGender";
-				this->lblGender->Size = System::Drawing::Size(79, 24);
+				this->lblGender->Size = System::Drawing::Size(62, 18);
 				this->lblGender->TabIndex = 7;
 				this->lblGender->Text = L"Género:";
 				// 
@@ -257,75 +281,76 @@ namespace SalesSystemGUIApp {
 				this->lblBirthDate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->lblBirthDate->ForeColor = System::Drawing::Color::White;
-				this->lblBirthDate->Location = System::Drawing::Point(372, 195);
+				this->lblBirthDate->Location = System::Drawing::Point(279, 158);
+				this->lblBirthDate->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->lblBirthDate->Name = L"lblBirthDate";
-				this->lblBirthDate->Size = System::Drawing::Size(193, 24);
+				this->lblBirthDate->Size = System::Drawing::Size(149, 18);
 				this->lblBirthDate->TabIndex = 8;
 				this->lblBirthDate->Text = L"Fecha de nacimiento:";
 				// 
 				// txtId
 				// 
-				this->txtId->Location = System::Drawing::Point(165, 69);
-				this->txtId->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->txtId->Location = System::Drawing::Point(124, 56);
+				this->txtId->Margin = System::Windows::Forms::Padding(2);
 				this->txtId->Name = L"txtId";
-				this->txtId->Size = System::Drawing::Size(133, 22);
+				this->txtId->Size = System::Drawing::Size(101, 20);
 				this->txtId->TabIndex = 9;
 				// 
 				// txtName
 				// 
-				this->txtName->Location = System::Drawing::Point(165, 112);
-				this->txtName->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->txtName->Location = System::Drawing::Point(124, 91);
+				this->txtName->Margin = System::Windows::Forms::Padding(2);
 				this->txtName->Name = L"txtName";
-				this->txtName->Size = System::Drawing::Size(133, 22);
+				this->txtName->Size = System::Drawing::Size(101, 20);
 				this->txtName->TabIndex = 10;
 				// 
 				// txtDNI
 				// 
-				this->txtDNI->Location = System::Drawing::Point(165, 153);
-				this->txtDNI->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->txtDNI->Location = System::Drawing::Point(124, 124);
+				this->txtDNI->Margin = System::Windows::Forms::Padding(2);
 				this->txtDNI->Name = L"txtDNI";
-				this->txtDNI->Size = System::Drawing::Size(133, 22);
+				this->txtDNI->Size = System::Drawing::Size(101, 20);
 				this->txtDNI->TabIndex = 11;
 				// 
 				// txtUserName
 				// 
-				this->txtUserName->Location = System::Drawing::Point(580, 71);
-				this->txtUserName->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->txtUserName->Location = System::Drawing::Point(435, 58);
+				this->txtUserName->Margin = System::Windows::Forms::Padding(2);
 				this->txtUserName->Name = L"txtUserName";
-				this->txtUserName->Size = System::Drawing::Size(199, 22);
+				this->txtUserName->Size = System::Drawing::Size(150, 20);
 				this->txtUserName->TabIndex = 12;
 				// 
 				// txtGender
 				// 
-				this->txtGender->Location = System::Drawing::Point(165, 196);
-				this->txtGender->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->txtGender->Location = System::Drawing::Point(124, 159);
+				this->txtGender->Margin = System::Windows::Forms::Padding(2);
 				this->txtGender->Name = L"txtGender";
-				this->txtGender->Size = System::Drawing::Size(133, 22);
+				this->txtGender->Size = System::Drawing::Size(101, 20);
 				this->txtGender->TabIndex = 13;
 				// 
 				// txtBirthDate
 				// 
-				this->txtBirthDate->Location = System::Drawing::Point(580, 193);
-				this->txtBirthDate->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->txtBirthDate->Location = System::Drawing::Point(435, 157);
+				this->txtBirthDate->Margin = System::Windows::Forms::Padding(2);
 				this->txtBirthDate->Name = L"txtBirthDate";
-				this->txtBirthDate->Size = System::Drawing::Size(199, 22);
+				this->txtBirthDate->Size = System::Drawing::Size(150, 20);
 				this->txtBirthDate->TabIndex = 14;
 				// 
 				// txtLastName
 				// 
-				this->txtLastName->Location = System::Drawing::Point(580, 153);
-				this->txtLastName->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->txtLastName->Location = System::Drawing::Point(435, 124);
+				this->txtLastName->Margin = System::Windows::Forms::Padding(2);
 				this->txtLastName->Name = L"txtLastName";
-				this->txtLastName->Size = System::Drawing::Size(199, 22);
+				this->txtLastName->Size = System::Drawing::Size(150, 20);
 				this->txtLastName->TabIndex = 15;
 				// 
 				// pbPhoto
 				// 
 				this->pbPhoto->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-				this->pbPhoto->Location = System::Drawing::Point(800, 62);
-				this->pbPhoto->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->pbPhoto->Location = System::Drawing::Point(600, 50);
+				this->pbPhoto->Margin = System::Windows::Forms::Padding(2);
 				this->pbPhoto->Name = L"pbPhoto";
-				this->pbPhoto->Size = System::Drawing::Size(183, 143);
+				this->pbPhoto->Size = System::Drawing::Size(138, 117);
 				this->pbPhoto->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 				this->pbPhoto->TabIndex = 16;
 				this->pbPhoto->TabStop = false;
@@ -336,19 +361,21 @@ namespace SalesSystemGUIApp {
 				this->dgvClients->AllowUserToAddRows = false;
 				this->dgvClients->BackgroundColor = System::Drawing::SystemColors::ActiveCaptionText;
 				this->dgvClients->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-				this->dgvClients->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
+				this->dgvClients->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(9) {
 					this->ClientId,
-						this->ClientUserName, this->ClientPassword, this->ClientName, this->ClientLastName, this->ClientDNI, this->ClientGender, this->ClientBirthDate
+						this->ClientUserName, this->ClientPassword, this->ClientName, this->ClientLastName, this->StatusClient, this->ClientDNI, this->ClientGender,
+						this->ClientBirthDate
 				});
 				this->dgvClients->GridColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(198)), static_cast<System::Int32>(static_cast<System::Byte>(191)),
 					static_cast<System::Int32>(static_cast<System::Byte>(181)));
-				this->dgvClients->Location = System::Drawing::Point(23, 313);
-				this->dgvClients->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->dgvClients->Location = System::Drawing::Point(17, 254);
+				this->dgvClients->Margin = System::Windows::Forms::Padding(2);
 				this->dgvClients->Name = L"dgvClients";
+				this->dgvClients->ReadOnly = true;
 				this->dgvClients->RowHeadersVisible = false;
 				this->dgvClients->RowHeadersWidth = 51;
 				this->dgvClients->RowTemplate->Height = 24;
-				this->dgvClients->Size = System::Drawing::Size(916, 234);
+				this->dgvClients->Size = System::Drawing::Size(687, 190);
 				this->dgvClients->TabIndex = 18;
 				this->dgvClients->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &clientesForm::dgvClients_CellClick_1);
 				// 
@@ -357,6 +384,7 @@ namespace SalesSystemGUIApp {
 				this->ClientId->HeaderText = L"Id";
 				this->ClientId->MinimumWidth = 6;
 				this->ClientId->Name = L"ClientId";
+				this->ClientId->ReadOnly = true;
 				this->ClientId->Width = 125;
 				// 
 				// ClientUserName
@@ -364,6 +392,7 @@ namespace SalesSystemGUIApp {
 				this->ClientUserName->HeaderText = L"Nombre de usuario";
 				this->ClientUserName->MinimumWidth = 6;
 				this->ClientUserName->Name = L"ClientUserName";
+				this->ClientUserName->ReadOnly = true;
 				this->ClientUserName->Width = 125;
 				// 
 				// ClientPassword
@@ -371,6 +400,7 @@ namespace SalesSystemGUIApp {
 				this->ClientPassword->HeaderText = L"Contraseña";
 				this->ClientPassword->MinimumWidth = 6;
 				this->ClientPassword->Name = L"ClientPassword";
+				this->ClientPassword->ReadOnly = true;
 				this->ClientPassword->Width = 125;
 				// 
 				// ClientName
@@ -378,6 +408,7 @@ namespace SalesSystemGUIApp {
 				this->ClientName->HeaderText = L"Nombre";
 				this->ClientName->MinimumWidth = 6;
 				this->ClientName->Name = L"ClientName";
+				this->ClientName->ReadOnly = true;
 				this->ClientName->Width = 125;
 				// 
 				// ClientLastName
@@ -385,13 +416,21 @@ namespace SalesSystemGUIApp {
 				this->ClientLastName->HeaderText = L"Apellidos";
 				this->ClientLastName->MinimumWidth = 6;
 				this->ClientLastName->Name = L"ClientLastName";
+				this->ClientLastName->ReadOnly = true;
 				this->ClientLastName->Width = 125;
+				// 
+				// StatusClient
+				// 
+				this->StatusClient->HeaderText = L"Status";
+				this->StatusClient->Name = L"StatusClient";
+				this->StatusClient->ReadOnly = true;
 				// 
 				// ClientDNI
 				// 
 				this->ClientDNI->HeaderText = L"DNI";
 				this->ClientDNI->MinimumWidth = 6;
 				this->ClientDNI->Name = L"ClientDNI";
+				this->ClientDNI->ReadOnly = true;
 				this->ClientDNI->Width = 125;
 				// 
 				// ClientGender
@@ -399,6 +438,7 @@ namespace SalesSystemGUIApp {
 				this->ClientGender->HeaderText = L"Género";
 				this->ClientGender->MinimumWidth = 6;
 				this->ClientGender->Name = L"ClientGender";
+				this->ClientGender->ReadOnly = true;
 				this->ClientGender->Width = 125;
 				// 
 				// ClientBirthDate
@@ -406,6 +446,7 @@ namespace SalesSystemGUIApp {
 				this->ClientBirthDate->HeaderText = L"Fecha de nacimiento";
 				this->ClientBirthDate->MinimumWidth = 6;
 				this->ClientBirthDate->Name = L"ClientBirthDate";
+				this->ClientBirthDate->ReadOnly = true;
 				this->ClientBirthDate->Width = 125;
 				// 
 				// btnAdd
@@ -418,10 +459,10 @@ namespace SalesSystemGUIApp {
 				this->btnAdd->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->btnAdd->ForeColor = System::Drawing::Color::Black;
-				this->btnAdd->Location = System::Drawing::Point(49, 254);
-				this->btnAdd->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->btnAdd->Location = System::Drawing::Point(37, 206);
+				this->btnAdd->Margin = System::Windows::Forms::Padding(2);
 				this->btnAdd->Name = L"btnAdd";
-				this->btnAdd->Size = System::Drawing::Size(216, 43);
+				this->btnAdd->Size = System::Drawing::Size(162, 35);
 				this->btnAdd->TabIndex = 19;
 				this->btnAdd->Text = L"Agregar";
 				this->btnAdd->UseVisualStyleBackColor = false;
@@ -437,10 +478,10 @@ namespace SalesSystemGUIApp {
 				this->btnDelete->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->btnDelete->ForeColor = System::Drawing::Color::Black;
-				this->btnDelete->Location = System::Drawing::Point(561, 254);
-				this->btnDelete->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->btnDelete->Location = System::Drawing::Point(421, 206);
+				this->btnDelete->Margin = System::Windows::Forms::Padding(2);
 				this->btnDelete->Name = L"btnDelete";
-				this->btnDelete->Size = System::Drawing::Size(219, 43);
+				this->btnDelete->Size = System::Drawing::Size(164, 35);
 				this->btnDelete->TabIndex = 20;
 				this->btnDelete->Text = L"Eliminar";
 				this->btnDelete->UseVisualStyleBackColor = false;
@@ -456,10 +497,10 @@ namespace SalesSystemGUIApp {
 				this->btnUpdate->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->btnUpdate->ForeColor = System::Drawing::Color::Black;
-				this->btnUpdate->Location = System::Drawing::Point(327, 254);
-				this->btnUpdate->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->btnUpdate->Location = System::Drawing::Point(245, 206);
+				this->btnUpdate->Margin = System::Windows::Forms::Padding(2);
 				this->btnUpdate->Name = L"btnUpdate";
-				this->btnUpdate->Size = System::Drawing::Size(189, 43);
+				this->btnUpdate->Size = System::Drawing::Size(142, 35);
 				this->btnUpdate->TabIndex = 22;
 				this->btnUpdate->Text = L"Modificar";
 				this->btnUpdate->UseVisualStyleBackColor = false;
@@ -475,8 +516,8 @@ namespace SalesSystemGUIApp {
 				this->menuStrip1->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::HorizontalStackWithOverflow;
 				this->menuStrip1->Location = System::Drawing::Point(0, 0);
 				this->menuStrip1->Name = L"menuStrip1";
-				this->menuStrip1->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-				this->menuStrip1->Size = System::Drawing::Size(1016, 33);
+				this->menuStrip1->Padding = System::Windows::Forms::Padding(4, 2, 0, 2);
+				this->menuStrip1->Size = System::Drawing::Size(762, 28);
 				this->menuStrip1->TabIndex = 40;
 				this->menuStrip1->Text = L"menuStrip1";
 				// 
@@ -490,7 +531,7 @@ namespace SalesSystemGUIApp {
 					static_cast<System::Byte>(0)));
 				this->archivoToolStripMenuItem->ForeColor = System::Drawing::Color::Black;
 				this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-				this->archivoToolStripMenuItem->Size = System::Drawing::Size(86, 29);
+				this->archivoToolStripMenuItem->Size = System::Drawing::Size(71, 24);
 				this->archivoToolStripMenuItem->Text = L"Archivo";
 				// 
 				// toolStripMenuItem1
@@ -498,7 +539,7 @@ namespace SalesSystemGUIApp {
 				this->toolStripMenuItem1->BackColor = System::Drawing::Color::MidnightBlue;
 				this->toolStripMenuItem1->ForeColor = System::Drawing::Color::White;
 				this->toolStripMenuItem1->Name = L"toolStripMenuItem1";
-				this->toolStripMenuItem1->Size = System::Drawing::Size(173, 30);
+				this->toolStripMenuItem1->Size = System::Drawing::Size(142, 24);
 				this->toolStripMenuItem1->Text = L"Nuevo";
 				this->toolStripMenuItem1->Click += gcnew System::EventHandler(this, &clientesForm::toolStripMenuItem1_Click);
 				// 
@@ -508,7 +549,7 @@ namespace SalesSystemGUIApp {
 				this->editarToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 				this->editarToolStripMenuItem->ImageTransparentColor = System::Drawing::Color::MidnightBlue;
 				this->editarToolStripMenuItem->Name = L"editarToolStripMenuItem";
-				this->editarToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+				this->editarToolStripMenuItem->Size = System::Drawing::Size(142, 24);
 				this->editarToolStripMenuItem->Text = L"Modificar";
 				this->editarToolStripMenuItem->Click += gcnew System::EventHandler(this, &clientesForm::editarToolStripMenuItem_Click);
 				// 
@@ -518,7 +559,7 @@ namespace SalesSystemGUIApp {
 				this->salirToolStripMenuItem->BackColor = System::Drawing::Color::MidnightBlue;
 				this->salirToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 				this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-				this->salirToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+				this->salirToolStripMenuItem->Size = System::Drawing::Size(142, 24);
 				this->salirToolStripMenuItem->Text = L"Salir";
 				this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &clientesForm::salirToolStripMenuItem_Click);
 				// 
@@ -528,10 +569,10 @@ namespace SalesSystemGUIApp {
 				this->btnCleanControls->FlatAppearance->BorderSize = 0;
 				this->btnCleanControls->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 				this->btnCleanControls->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold));
-				this->btnCleanControls->Location = System::Drawing::Point(819, 254);
-				this->btnCleanControls->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->btnCleanControls->Location = System::Drawing::Point(614, 206);
+				this->btnCleanControls->Margin = System::Windows::Forms::Padding(2);
 				this->btnCleanControls->Name = L"btnCleanControls";
-				this->btnCleanControls->Size = System::Drawing::Size(165, 43);
+				this->btnCleanControls->Size = System::Drawing::Size(124, 35);
 				this->btnCleanControls->TabIndex = 25;
 				this->btnCleanControls->Text = L"Limpiar todo";
 				this->btnCleanControls->UseVisualStyleBackColor = false;
@@ -543,26 +584,27 @@ namespace SalesSystemGUIApp {
 				this->lblPassword->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				this->lblPassword->ForeColor = System::Drawing::Color::White;
-				this->lblPassword->Location = System::Drawing::Point(377, 107);
+				this->lblPassword->Location = System::Drawing::Point(283, 87);
+				this->lblPassword->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 				this->lblPassword->Name = L"lblPassword";
-				this->lblPassword->Size = System::Drawing::Size(116, 24);
+				this->lblPassword->Size = System::Drawing::Size(93, 18);
 				this->lblPassword->TabIndex = 41;
 				this->lblPassword->Text = L"Contraseña: ";
 				// 
 				// txtPassword
 				// 
-				this->txtPassword->Location = System::Drawing::Point(580, 110);
-				this->txtPassword->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->txtPassword->Location = System::Drawing::Point(435, 89);
+				this->txtPassword->Margin = System::Windows::Forms::Padding(2);
 				this->txtPassword->Name = L"txtPassword";
-				this->txtPassword->Size = System::Drawing::Size(199, 22);
+				this->txtPassword->Size = System::Drawing::Size(150, 20);
 				this->txtPassword->TabIndex = 42;
 				// 
 				// clientesForm
 				// 
-				this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+				this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 				this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 				this->BackColor = System::Drawing::Color::Black;
-				this->ClientSize = System::Drawing::Size(1016, 558);
+				this->ClientSize = System::Drawing::Size(762, 453);
 				this->Controls->Add(this->txtPassword);
 				this->Controls->Add(this->lblPassword);
 				this->Controls->Add(this->btnCleanControls);
@@ -589,7 +631,7 @@ namespace SalesSystemGUIApp {
 				this->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 				this->MainMenuStrip = this->menuStrip1;
-				this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+				this->Margin = System::Windows::Forms::Padding(2);
 				this->Name = L"clientesForm";
 				this->Text = L"Mantenimiento de Clientes";
 				this->TransparencyKey = System::Drawing::Color::Black;
@@ -637,7 +679,7 @@ namespace SalesSystemGUIApp {
 					   dgvClients->Rows->Clear();
 					   for (int i = 0; i < customerList->Count; i++) {
 						   dgvClients->Rows->Add(gcnew array<String^> {"" + customerList[i]->Id, customerList[i]->Username,customerList[i]->Password, customerList[i]->Name,
-							   customerList[i]->LastName, customerList[i]->DNI, customerList[i]->Genero, customerList[i]->BirthDate});
+							   customerList[i]->LastName, customerList[i]->Status, customerList[i]->DNI, customerList[i]->Genero, customerList[i]->BirthDate});
 
 					   }
 				   }
