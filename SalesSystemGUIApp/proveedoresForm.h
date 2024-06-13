@@ -43,9 +43,9 @@ namespace SalesSystemGUIApp {
 	
 	private: System::Windows::Forms::Label^ lblTitle;
 	
-	private: System::Windows::Forms::Button^ btnAdd;
-	private: System::Windows::Forms::Button^ btnUpdate;
-	private: System::Windows::Forms::Button^ btnDelete;
+	public: System::Windows::Forms::Button^ btnAdd;
+	public: System::Windows::Forms::Button^ btnUpdate;
+	public: System::Windows::Forms::Button^ btnDelete;
 
 	private: System::Windows::Forms::Label^ lblId;
 	private: System::Windows::Forms::TextBox^ txtId;
@@ -178,13 +178,13 @@ namespace SalesSystemGUIApp {
 			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
 			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
 			this->dgvProvider->DefaultCellStyle = dataGridViewCellStyle3;
-			this->dgvProvider->Location = System::Drawing::Point(12, 297);
+			this->dgvProvider->Location = System::Drawing::Point(12, 310);
 			this->dgvProvider->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvProvider->Name = L"dgvProvider";
 			this->dgvProvider->RowHeadersVisible = false;
 			this->dgvProvider->RowHeadersWidth = 82;
 			this->dgvProvider->RowTemplate->Height = 33;
-			this->dgvProvider->Size = System::Drawing::Size(968, 178);
+			this->dgvProvider->Size = System::Drawing::Size(957, 226);
 			this->dgvProvider->TabIndex = 12;
 			this->dgvProvider->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &proveedoresForm::dgvProvider_CellClick);
 			// 
@@ -432,7 +432,7 @@ namespace SalesSystemGUIApp {
 			this->btnCleanControls->Name = L"btnCleanControls";
 			this->btnCleanControls->Size = System::Drawing::Size(178, 34);
 			this->btnCleanControls->TabIndex = 21;
-			this->btnCleanControls->Text = L"Limpia todo";
+			this->btnCleanControls->Text = L"Limpiar todo";
 			this->btnCleanControls->UseVisualStyleBackColor = false;
 			this->btnCleanControls->Click += gcnew System::EventHandler(this, &proveedoresForm::btnCleanControls_Click);
 			this->btnCleanControls->MouseEnter += gcnew System::EventHandler(this, &proveedoresForm::btnCleanControls_MouseEnter);
@@ -446,7 +446,7 @@ namespace SalesSystemGUIApp {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->archivoToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1031, 33);
+			this->menuStrip1->Size = System::Drawing::Size(983, 33);
 			this->menuStrip1->TabIndex = 22;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -495,7 +495,7 @@ namespace SalesSystemGUIApp {
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
-			this->ClientSize = System::Drawing::Size(1031, 486);
+			this->ClientSize = System::Drawing::Size(983, 547);
 			this->Controls->Add(this->btnCleanControls);
 			this->Controls->Add(this->btnDelete);
 			this->Controls->Add(this->btnUpdate);
@@ -547,13 +547,48 @@ namespace SalesSystemGUIApp {
 
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		int id = Convert::ToInt32(txtId->Text);
+		List<Provider^>^ providerList = Service::QueryAllProviders();
+
+		int SiIdHueco = 0;//Variable para saber si hay un hueco en la lista de clientes(Id)
+		int IdHueco = 0;//Variable para saber el hueco en la lista de clientes(Id)
+		int j = 0;
+		for (int i = 0; i < providerList->Count; i++) {
+
+
+			if (providerList[i]->Id == (i + 1)) {
+				SiIdHueco = 0;
+			}
+			else {
+				if (j == 0) {
+					IdHueco = i + 1;
+					SiIdHueco = 1;
+				}
+				j = j + 1;
+			}
+
+
+
+
+
+		}
+		int id;
+
+
+		// Asignacion del valor correspondiente al id
+		if (SiIdHueco == 0) {
+			id = providerList->Count + 1;
+		}
+		else {
+			id = IdHueco;
+		}
+
 		String^ name = txtName->Text;
 		String^ RUC = txtRUC->Text;
 		String^ website = txtWebsite->Text;
 		String^ account = txtAccount->Text;
 		String^ phoneNumber = txtPhoneNumber->Text;
 
+		// Crear un objeto de tipo Provider y asignar los valores correspondientes
 		Provider^ provider = gcnew Provider();
 		provider->Id = id;
 		provider->Name = name;
