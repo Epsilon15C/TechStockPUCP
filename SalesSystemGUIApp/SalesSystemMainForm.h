@@ -282,9 +282,9 @@ private: System::Void generrOrdenToolStripMenuItem_Click(System::Object^ sender,
 	GeneratOrderForm^ orderForm = gcnew GeneratOrderForm();
 	orderForm->MdiParent = this;
 	iDUsuarioActual = UserSession::UserId;
-	orderForm->txtClientOrder->Text = Service::QueryCustomerById(iDUsuarioActual)->Name;
+	orderForm->txtClientOrder->Text = Service::QueryCustomerById(iDUsuarioActual)->Name + " "
+		+ Service::QueryCustomerById(iDUsuarioActual)->LastName;
 	orderForm->Show();
-
 }
 
 private: System::Void preguntasFrecuentesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
