@@ -138,37 +138,40 @@ namespace SalesSystemGUIApp {
 			// 
 			// txtIdOrder
 			// 
-			this->txtIdOrder->Location = System::Drawing::Point(153, 39);
-			this->txtIdOrder->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->txtIdOrder->Location = System::Drawing::Point(115, 32);
+			this->txtIdOrder->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->txtIdOrder->Name = L"txtIdOrder";
-			this->txtIdOrder->Size = System::Drawing::Size(221, 22);
+			this->txtIdOrder->Size = System::Drawing::Size(167, 20);
 			this->txtIdOrder->TabIndex = 7;
 			// 
 			// lblIdRes
 			// 
 			this->lblIdRes->AutoSize = true;
 			this->lblIdRes->ForeColor = System::Drawing::Color::White;
-			this->lblIdRes->Location = System::Drawing::Point(60, 43);
+			this->lblIdRes->Location = System::Drawing::Point(45, 35);
+			this->lblIdRes->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->lblIdRes->Name = L"lblIdRes";
-			this->lblIdRes->Size = System::Drawing::Size(21, 16);
+			this->lblIdRes->Size = System::Drawing::Size(19, 13);
 			this->lblIdRes->TabIndex = 6;
 			this->lblIdRes->Text = L"Id:";
 			// 
 			// txtClientOrder
 			// 
-			this->txtClientOrder->Location = System::Drawing::Point(153, 82);
-			this->txtClientOrder->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->txtClientOrder->Location = System::Drawing::Point(115, 67);
+			this->txtClientOrder->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->txtClientOrder->Name = L"txtClientOrder";
-			this->txtClientOrder->Size = System::Drawing::Size(221, 22);
+			this->txtClientOrder->ReadOnly = true;
+			this->txtClientOrder->Size = System::Drawing::Size(167, 20);
 			this->txtClientOrder->TabIndex = 9;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->ForeColor = System::Drawing::Color::White;
-			this->label1->Location = System::Drawing::Point(60, 86);
+			this->label1->Location = System::Drawing::Point(45, 70);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(51, 16);
+			this->label1->Size = System::Drawing::Size(42, 13);
 			this->label1->TabIndex = 10;
 			this->label1->Text = L"Cliente:";
 			// 
@@ -180,13 +183,13 @@ namespace SalesSystemGUIApp {
 				this->IdOrder, this->NameOrder,
 					this->DescriptionOrder, this->PriceOrder, this->QuantityOrder, this->SubTotalPriceOrder
 			});
-			this->dgvOrder->Location = System::Drawing::Point(15, 182);
-			this->dgvOrder->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dgvOrder->Location = System::Drawing::Point(11, 148);
+			this->dgvOrder->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dgvOrder->Name = L"dgvOrder";
 			this->dgvOrder->RowHeadersVisible = false;
 			this->dgvOrder->RowHeadersWidth = 51;
 			this->dgvOrder->RowTemplate->Height = 24;
-			this->dgvOrder->Size = System::Drawing::Size(659, 110);
+			this->dgvOrder->Size = System::Drawing::Size(494, 89);
 			this->dgvOrder->TabIndex = 22;
 			// 
 			// IdOrder
@@ -236,10 +239,10 @@ namespace SalesSystemGUIApp {
 			this->btnAddOrder->BackColor = System::Drawing::Color::LawnGreen;
 			this->btnAddOrder->FlatAppearance->BorderSize = 0;
 			this->btnAddOrder->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnAddOrder->Location = System::Drawing::Point(427, 97);
-			this->btnAddOrder->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnAddOrder->Location = System::Drawing::Point(320, 79);
+			this->btnAddOrder->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnAddOrder->Name = L"btnAddOrder";
-			this->btnAddOrder->Size = System::Drawing::Size(223, 38);
+			this->btnAddOrder->Size = System::Drawing::Size(167, 31);
 			this->btnAddOrder->TabIndex = 23;
 			this->btnAddOrder->Text = L"Agregar producto";
 			this->btnAddOrder->UseVisualStyleBackColor = false;
@@ -249,18 +252,20 @@ namespace SalesSystemGUIApp {
 			// 
 			this->label2->AutoSize = true;
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(448, 332);
+			this->label2->Location = System::Drawing::Point(336, 270);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(65, 16);
+			this->label2->Size = System::Drawing::Size(55, 13);
 			this->label2->TabIndex = 25;
 			this->label2->Text = L"Total(S/.):";
 			// 
 			// txtTotal
 			// 
-			this->txtTotal->Location = System::Drawing::Point(548, 324);
-			this->txtTotal->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->txtTotal->Location = System::Drawing::Point(411, 263);
+			this->txtTotal->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->txtTotal->Name = L"txtTotal";
-			this->txtTotal->Size = System::Drawing::Size(100, 22);
+			this->txtTotal->ReadOnly = true;
+			this->txtTotal->Size = System::Drawing::Size(76, 20);
 			this->txtTotal->TabIndex = 24;
 			// 
 			// btnGenerateOrder
@@ -268,10 +273,10 @@ namespace SalesSystemGUIApp {
 			this->btnGenerateOrder->BackColor = System::Drawing::Color::LawnGreen;
 			this->btnGenerateOrder->FlatAppearance->BorderSize = 0;
 			this->btnGenerateOrder->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnGenerateOrder->Location = System::Drawing::Point(15, 320);
-			this->btnGenerateOrder->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnGenerateOrder->Location = System::Drawing::Point(11, 260);
+			this->btnGenerateOrder->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnGenerateOrder->Name = L"btnGenerateOrder";
-			this->btnGenerateOrder->Size = System::Drawing::Size(173, 31);
+			this->btnGenerateOrder->Size = System::Drawing::Size(130, 25);
 			this->btnGenerateOrder->TabIndex = 26;
 			this->btnGenerateOrder->Text = L"Realizar compra";
 			this->btnGenerateOrder->UseVisualStyleBackColor = false;
@@ -282,10 +287,10 @@ namespace SalesSystemGUIApp {
 			this->btnGenerate->BackColor = System::Drawing::Color::LawnGreen;
 			this->btnGenerate->FlatAppearance->BorderSize = 0;
 			this->btnGenerate->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnGenerate->Location = System::Drawing::Point(220, 320);
-			this->btnGenerate->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnGenerate->Location = System::Drawing::Point(165, 260);
+			this->btnGenerate->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnGenerate->Name = L"btnGenerate";
-			this->btnGenerate->Size = System::Drawing::Size(179, 31);
+			this->btnGenerate->Size = System::Drawing::Size(134, 25);
 			this->btnGenerate->TabIndex = 27;
 			this->btnGenerate->Text = L"Generar Comprobante";
 			this->btnGenerate->UseVisualStyleBackColor = false;
@@ -295,37 +300,37 @@ namespace SalesSystemGUIApp {
 			// 
 			this->label3->AutoSize = true;
 			this->label3->ForeColor = System::Drawing::Color::White;
-			this->label3->Location = System::Drawing::Point(60, 132);
+			this->label3->Location = System::Drawing::Point(45, 107);
+			this->label3->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(128, 16);
+			this->label3->Size = System::Drawing::Size(102, 13);
 			this->label3->TabIndex = 28;
 			this->label3->Text = L"Desea añadir RUC\?";
 			// 
 			// txtRUCOrder
 			// 
-			this->txtRUCOrder->Location = System::Drawing::Point(265, 128);
-			this->txtRUCOrder->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->txtRUCOrder->Location = System::Drawing::Point(199, 104);
+			this->txtRUCOrder->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->txtRUCOrder->Name = L"txtRUCOrder";
-			this->txtRUCOrder->Size = System::Drawing::Size(109, 22);
+			this->txtRUCOrder->Size = System::Drawing::Size(83, 20);
 			this->txtRUCOrder->TabIndex = 29;
 			// 
 			// checkBox
 			// 
 			this->checkBox->AutoSize = true;
-			this->checkBox->Location = System::Drawing::Point(220, 132);
-			this->checkBox->Margin = System::Windows::Forms::Padding(4);
+			this->checkBox->Location = System::Drawing::Point(165, 107);
 			this->checkBox->Name = L"checkBox";
-			this->checkBox->Size = System::Drawing::Size(18, 17);
+			this->checkBox->Size = System::Drawing::Size(15, 14);
 			this->checkBox->TabIndex = 30;
 			this->checkBox->UseVisualStyleBackColor = true;
 			this->checkBox->CheckedChanged += gcnew System::EventHandler(this, &GeneratOrderForm::checkBox_CheckedChanged);
 			// 
 			// GeneratOrderForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
-			this->ClientSize = System::Drawing::Size(701, 374);
+			this->ClientSize = System::Drawing::Size(526, 304);
 			this->Controls->Add(this->checkBox);
 			this->Controls->Add(this->txtRUCOrder);
 			this->Controls->Add(this->label3);
@@ -339,7 +344,6 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->txtClientOrder);
 			this->Controls->Add(this->txtIdOrder);
 			this->Controls->Add(this->lblIdRes);
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"GeneratOrderForm";
 			this->Text = L"Generar Orden";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrder))->EndInit();
