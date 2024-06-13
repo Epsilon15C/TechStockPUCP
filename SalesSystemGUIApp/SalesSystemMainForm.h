@@ -270,6 +270,11 @@ namespace SalesSystemGUIApp {
 		   proveedoresForm^ proveedorForm = gcnew proveedoresForm;
 		   proveedorForm->MdiParent = this;
 		   proveedorForm->Show();
+
+		   proveedorForm->btnAdd->Enabled = false;
+		   proveedorForm->btnUpdate->Enabled = false;
+		   proveedorForm->btnDelete->Enabled = false;
+
 	   }
 
 			   private: System::Void productosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
