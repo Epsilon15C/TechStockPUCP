@@ -723,5 +723,6 @@ private: System::Void btnCleanControls_MouseLeave(System::Object^ sender, System
 private: System::Void proveedoresForm_Load(System::Object^ sender, System::EventArgs^ e) {
 	ShowProviders();
 }
+
 };
 }

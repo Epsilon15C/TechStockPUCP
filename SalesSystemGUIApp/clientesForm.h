@@ -727,7 +727,7 @@ namespace SalesSystemGUIApp {
 			String^ dni = txtDNI->Text;
 			String^ gender = txtGender->Text;
 			String^ birthDate = txtBirthDate->Text;
-			String^ Status1 = "M";
+			String^ Status1 = "A";
 
 			
 

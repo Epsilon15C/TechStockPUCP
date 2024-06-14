@@ -613,6 +613,6 @@ private: System::Void checkBox_CheckedChanged(System::Object^ sender, System::Ev
 	}
 }
 
-
+	  
 };
 }
