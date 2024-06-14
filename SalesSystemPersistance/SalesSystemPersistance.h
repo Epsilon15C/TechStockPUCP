@@ -15,6 +15,9 @@ namespace SalesSystemPersistance {
 		//Customer
 		static List< Customer^>^ customersListDB = gcnew List< Customer^>();
 
+		//Order 
+		static List< Order^>^ orderListDB = gcnew List< Order^>();
+
 		//Provider DB
 		static List< Provider^>^ providerListDB = gcnew List< Provider^>();
 
@@ -76,6 +79,18 @@ namespace SalesSystemPersistance {
 		static int UpdateProvider(Provider^ provider);
 		static int DeleteProvider(int providerId);
 		static Provider^ QueryProviderById(int providerId);
+
+		//Order
+		static String^ BIN_ORDER_FILE_NAME = "order.bin";
+		static int AddOrder(Order^ order, int PersonId);
+		static List<Order^>^ QueryAllOrders();
+		//static int UpdateOrder(Order^ order);
+		//static int DeleteOrder(int orderId);
+		static Order^ QueryOrderById(int orderId);
+		
+
+
+
 
 		// Productos
 		static List<Product^>^ QueryAllProducts();

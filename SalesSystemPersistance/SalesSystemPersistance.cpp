@@ -457,6 +457,78 @@ Provider^ SalesSystemPersistance::Persistance::QueryProviderById(int providerId)
 
 }
 
+//Order	
+
+
+int SalesSystemPersistance::Persistance::AddOrder(Order^ order, int PersonId)
+{
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "INSERT INTO SALES_ORDER (ID, DATE, TOTAL_AMOUNT,PERSON_ID,STATUS) " +
+			"VALUES (@ID, @DATE, @TOTALAMOUNT,@PERSON_ID, @STATUS)";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", order->Id);
+		cmd->Parameters->AddWithValue("@DATE", order->Date);
+		cmd->Parameters->AddWithValue("@TOTAL_AMOUNT", order->TotalAmount);
+		cmd->Parameters->AddWithValue("@PERSON_ID", PersonId);
+		cmd->Parameters->AddWithValue("@STATUS", order->Status);
+		cmd->ExecuteNonQuery();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (conn != nullptr) conn->Close();
+	}
+	return 1;
+
+
+}
+
+List<Order^>^ SalesSystemPersistance::Persistance::QueryAllOrders()
+{
+	orderListDB = gcnew List<Order^>();
+	SqlConnection^ conn;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM SALES_ORDER";
+		SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+		reader = cmd->ExecuteReader();
+
+		while (reader->Read()) {
+			Order^ order = gcnew Order();
+			order->Id = Convert::ToInt32(reader["ID"]);
+			order->Date = reader["DATE"]->ToString();
+			order->TotalAmount = Convert::ToDouble(reader["TOTAL_AMOUNT"]);
+			order->Status = reader["STATUS"]->ToString();
+
+			orderListDB->Add(order);
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+
+	}
+}
+
+Order^ SalesSystemPersistance::Persistance::QueryOrderById(int orderId)
+{
+	throw gcnew System::NotImplementedException();
+	// TODO: Insertar una instrucción "return" aquí
+}
+
+
 
 /// ////////////////////////////////////////////////////////////////////////
 
