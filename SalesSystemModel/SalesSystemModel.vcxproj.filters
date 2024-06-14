@@ -102,6 +102,12 @@
     <ClInclude Include="UserSession.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="Order.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="OrderProduct.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SalesSystemModel.cpp">
@@ -189,6 +195,12 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="UserSession.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="Order.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="OrderProduct.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
