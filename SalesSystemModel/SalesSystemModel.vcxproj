@@ -119,6 +119,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Order.h" />
+    <ClInclude Include="OrderProduct.h" />
     <ClInclude Include="UserSession.h" />
     <ClInclude Include="VoltageSource.h" />
     <ClInclude Include="Breadboard.h" />
@@ -151,6 +153,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AssemblyInfo.cpp" />
+    <ClCompile Include="Order.cpp" />
+    <ClCompile Include="OrderProduct.cpp" />
     <ClCompile Include="UserSession.cpp" />
     <ClCompile Include="VoltageSource.cpp" />
     <ClCompile Include="Breadboard.cpp" />
