@@ -3,14 +3,15 @@
 #include "ProductSearchForms.h"
 #include "PurchaseForm.h"
 
-
 #include <iostream>
 #include <string>
 #include <msclr\marshal_cppstd.h>
+#include <sql.h> // Incluir para trabajar con SQL Server
 
 // iTextSharp imports
 using namespace iTextSharp::text;
 using namespace iTextSharp::text::pdf;
+using namespace System::Data::SqlClient; // Para trabajar con SQL Server
 
 namespace SalesSystemGUIApp {
 
@@ -33,8 +34,9 @@ namespace SalesSystemGUIApp {
 		GeneratOrderForm(void)
 		{
 			InitializeComponent();
+
 			// Deshabilitar el botón btnGenerate al inicio
-			//btnGenerate->Enabled = false;
+			btnGenerate->Enabled = false;
 			txtRUCOrder->ReadOnly = true;
 
 			// Suscribir el evento CellValueChanged del DataGridView
@@ -42,12 +44,44 @@ namespace SalesSystemGUIApp {
 
 			// Llamar a la función para establecer las celdas del DataGridView como ReadOnly
 			SetDataGridViewReadOnly(dgvOrder);
-		
+			
+			// Inicializar la conexión a la base de datos
+			conn = GetConnection();
+
+			// Inicializar el formulario y otros componentes necesarios
+			InitializeOrderForm();
+
 		}
 
 
 	private:
 		double totalPrice; // Declaración de la variable totalPrice como miembro privado
+		SqlConnection^ conn;
+
+	private:
+		// Método para obtener la conexión a la base de datos
+		SqlConnection^ GetConnection()
+		{
+			SqlConnection^ conn = gcnew SqlConnection();
+			String^ password = "admin2024";
+			conn->ConnectionString = "Server=projectlpoo.cdtwcrsmv6iq.us-east-1.rds.amazonaws.com;"
+				"Database=ProjectLPOO;"
+				"User ID=projectLPOO;"
+				"Password=" + password + ";";
+
+			try
+			{
+				conn->Open(); // Abrir la conexión a la base de datos
+			}
+			catch (Exception^ ex)
+			{
+				MessageBox::Show("Error al conectar a la base de datos: " + ex->Message);
+			}
+
+			return conn;
+		}
+	
+
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ IdOrder;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameOrder;
@@ -433,6 +467,8 @@ private: System::Void btnGenerateOrder_Click(System::Object^ sender, System::Eve
 	// Suscribirse al evento FormClosed de PurchaseForm
 	purchaseForm->FormClosed += gcnew FormClosedEventHandler(this, &GeneratOrderForm::PurchaseFormClosed);
 
+	this->btnGenerate->Enabled = true;
+
 	purchaseForm->ShowDialog();
 }
 	
@@ -445,9 +481,53 @@ private: System::Void btnGenerateOrder_Click(System::Object^ sender, System::Eve
 
 	private: System::Void PurchaseFormClosed(System::Object^ sender, FormClosedEventArgs^ e) {
 		// Habilitar el botón btnGenerate cuando PurchaseForm se cierra
-		btnGenerate->Enabled = true;
+		//btnGenerate->Enabled = true;
 	}
 
+		   // Variable para almacenar el próximo ID de pedido
+		   int nextOrderId;
+
+		   // Método para inicializar el formulario y generar el ID de pedido automáticamente
+		   void InitializeOrderForm()
+		   {
+			   // Aquí puedes realizar inicializaciones adicionales del formulario si es necesario
+		
+			   this->txtIdOrder->ReadOnly = true; // Asegurarse de que el campo sea solo lectura
+
+			   // Obtener el próximo ID de pedido y mostrarlo en el formulario
+			   int nextOrderId = GetNextOrderId();
+			   this->txtIdOrder->Text = nextOrderId.ToString();
+		   }
+
+		   // Método simulado para obtener el próximo ID de pedido (puede ser una lógica personalizada)
+		   int GetNextOrderId()
+		   {
+			   int nextOrderId = 0;
+
+			   try
+			   {
+				   // Crear y ejecutar la consulta SQL para obtener el máximo ID de pedido actual
+				   String^ query = "SELECT MAX(OrderID) FROM SALES_ORDER";
+				   SqlCommand^ cmd = gcnew SqlCommand(query, conn);
+				   Object^ result = cmd->ExecuteScalar();
+
+				   // Verificar si se obtuvo un resultado válido
+				   if (result != nullptr && result != DBNull::Value)
+				   {
+					   nextOrderId = Convert::ToInt32(result) + 1; // Incrementar el máximo ID de pedido encontrado
+				   }
+				   else
+				   {
+					   nextOrderId = 1; // Si no hay registros, empezar desde 1
+				   }
+			   }
+			   catch (Exception^ ex)
+			   {
+				   MessageBox::Show("Error al obtener el próximo ID de pedido: " + ex->Message);
+			   }
+
+			   return nextOrderId;
+		   }
 
 
 		   // Generacion del PDF para la venta

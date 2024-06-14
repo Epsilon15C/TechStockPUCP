@@ -209,6 +209,9 @@
     <ProjectReference Include="..\SalesSystemModel\SalesSystemModel.vcxproj">
       <Project>{bc2c81db-1530-4941-afd7-8d5b9ec76f2d}</Project>
     </ProjectReference>
+    <ProjectReference Include="..\SalesSystemPersistance\SalesSystemPersistance.vcxproj">
+      <Project>{c27dabe1-f007-44cb-b321-0f653c66846f}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\SalesSystemService\SalesSystemService.vcxproj">
       <Project>{059837f1-bc58-4de6-9029-10e88010bfe8}</Project>
     </ProjectReference>
