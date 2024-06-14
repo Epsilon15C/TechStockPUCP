@@ -82,6 +82,7 @@ namespace SalesSystemGUIApp {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(CreateAccountForm::typeid));
 			this->btnRegister = (gcnew System::Windows::Forms::Button());
 			this->pbPhoto = (gcnew System::Windows::Forms::PictureBox());
 			this->txtLastName = (gcnew System::Windows::Forms::TextBox());
@@ -129,6 +130,7 @@ namespace SalesSystemGUIApp {
 			// pbPhoto
 			// 
 			this->pbPhoto->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->pbPhoto->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pbPhoto.Image")));
 			this->pbPhoto->Location = System::Drawing::Point(793, 84);
 			this->pbPhoto->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbPhoto->Name = L"pbPhoto";
@@ -304,25 +306,28 @@ namespace SalesSystemGUIApp {
 			this->label2->ForeColor = System::Drawing::Color::White;
 			this->label2->Location = System::Drawing::Point(252, 59);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(350, 31);
+			this->label2->Size = System::Drawing::Size(325, 31);
 			this->label2->TabIndex = 45;
-			this->label2->Text = L"Bienvenido a la TechStockPUCP";
+			this->label2->Text = L"Bienvenido a TechStockPUCP";
 			// 
 			// menuStrip1
 			// 
+			this->menuStrip1->BackColor = System::Drawing::Color::RoyalBlue;
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->opcionesToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(1014, 30);
+			this->menuStrip1->Size = System::Drawing::Size(1014, 31);
 			this->menuStrip1->TabIndex = 46;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
 			// opcionesToolStripMenuItem
 			// 
 			this->opcionesToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->salirToolStripMenuItem });
+			this->opcionesToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->opcionesToolStripMenuItem->Name = L"opcionesToolStripMenuItem";
-			this->opcionesToolStripMenuItem->Size = System::Drawing::Size(85, 24);
+			this->opcionesToolStripMenuItem->Size = System::Drawing::Size(95, 27);
 			this->opcionesToolStripMenuItem->Text = L"Opciones";
 			// 
 			// salirToolStripMenuItem
@@ -401,45 +406,89 @@ namespace SalesSystemGUIApp {
 		this->Close();
 	}
 	private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e) {
-		//obtener ultimo id de la lista de customers
-		int id = (int) Service::QueryAllCustomers()->Count + 1;
+
+		List<Customer^>^ customerList = Service::QueryAllCustomers();
+		int SiIdHueco = 0;//Variable para saber si hay un hueco en la lista de clientes(Id)
+		int IdHueco = 0;//Variable para saber el hueco en la lista de clientes(Id)
+		int UserCorrect = 0;
+		int j = 0;
+		for (int i = 0; i < customerList->Count; i++) {
+
+			if (customerList[i]->Username == txtUserName->Text) {
+				MessageBox::Show("El nombre de usuario ya existe, por favor ingrese otro nombre de usuario", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				UserCorrect = 0;
+				return;
+
+			}
+			else {
+
+				if (customerList[i]->Id == (i + 1)) {
+					SiIdHueco = 0;
+				}
+				else {
+					if (j == 0) {
+						IdHueco = i + 1;
+						SiIdHueco = 1;
+					}
+					j = j + 1;
+				}
+			}
+
+		}
+		int id=0;
+		// Actualizo el valor de UserCorrect
+		UserCorrect = 1;
+
+		//Asigno el valor a Id
+		if (SiIdHueco == 0) {
+			id = customerList->Count + 1;
+		}
+		else {
+			id = IdHueco;
+		}
+
 		String^ userName = txtUserName->Text;
 		String^ password = txtPassword->Text;
 		String^ name = txtName->Text;
 		String^ lastName = txtLastName->Text;
 		String^ dni = txtDNI->Text;
-		String^ birthDate = txtBirthDate->Text;
 		String^ gender = txtGender->Text;
+		String^ birthDate = txtBirthDate->Text;
+		String^ Status1 = "A";
+
 
 
 		// Convertir la imagen del PictureBox a un array de bytes si hay una imagen cargada
 		array<Byte>^ photo = nullptr;
-
 		if (pbPhoto->Image != nullptr) {
 			photo = ImageToByteArray(pbPhoto->Image);
 		}
 
+
 		Customer^ customer = gcnew Customer();
+
 		customer->Id = id;
 		customer->Username = userName;
 		customer->Password = password;
 		customer->Name = name;
 		customer->LastName = lastName;
 		customer->DNI = dni;
-		customer->BirthDate = birthDate;
 		customer->Genero = gender;
+		customer->BirthDate = birthDate;
+		customer->Status = Status1;
 		customer->Photo = photo;
-		customer->PurchaseCount = 0;
-		customer->LoyaltyPoints = 0;
-		customer->Status = "A"; // Establecer un valor por defecto para Status, por ejemplo, "A" para activo
 
-		//messagebox que mencione que se ha registrado correctamente
-		MessageBox::Show("Click en ACEPTAR para regresar e iniciar sesión", "Registro exitoso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		if (UserCorrect == 1) {
 
-		//CleanControls();
+			//messagebox que mencione que se ha registrado correctamente
+			MessageBox::Show("Click en ACEPTAR para regresar e iniciar sesión", "Registro exitoso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
-		Service::AddCustomer(customer);
-		this->Close();
+			//CleanControls();
+
+			Service::AddCustomer(customer);
+			this->Close();
+		}
+		
 	}
 
 	private: System::Void btnUpdatePhoto_Click(System::Object^ sender, System::EventArgs^ e) {
