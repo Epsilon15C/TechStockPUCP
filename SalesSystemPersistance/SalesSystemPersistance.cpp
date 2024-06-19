@@ -520,6 +520,8 @@ List<Order^>^ SalesSystemPersistance::Persistance::QueryAllOrders()
 		if (conn != nullptr) conn->Close();
 
 	}
+
+	return orderListDB;
 }
 
 Order^ SalesSystemPersistance::Persistance::QueryOrderById(int orderId)
