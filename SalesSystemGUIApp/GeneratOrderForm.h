@@ -141,7 +141,7 @@ namespace SalesSystemGUIApp {
 	private: System::Windows::Forms::TextBox^ txtTotal;
 
 	private: System::Windows::Forms::Button^ btnGenerateOrder;
-	private: System::Windows::Forms::Button^ btnGenerate;
+	public: System::Windows::Forms::Button^ btnGenerate;
 
 
 

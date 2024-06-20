@@ -13,11 +13,8 @@ namespace SalesSystemModel {
     public ref class Sale {
     public:
        property  int Id;
-       property  double TotalPrice;
-       property int TotalItems;
-       property  DateTime DateSale;
-       property DateTime HourSale;
-       property String^ PaymentMethod;
+       property  double TotalAmountWithoutTax;
+       property  double TotalAmountWithTax;
        property String^ RUC;
     };
 }
