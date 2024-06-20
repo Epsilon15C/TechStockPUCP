@@ -277,6 +277,7 @@ private: System::Void btnUploadPhoto_Click(System::Object^ sender, System::Event
 
 	private: System::Void btnGeneratePDF_Click(System::Object^ sender, System::EventArgs^ e) {
 		MessageBox::Show("Se finalizó la compra. Por favor, al cerrar la ventana, presione generar comprobante");
+		
 		RUCValue = txtRUC->Text;
 		Close();
 	}
