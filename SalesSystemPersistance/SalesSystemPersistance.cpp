@@ -526,11 +526,135 @@ List<Order^>^ SalesSystemPersistance::Persistance::QueryAllOrders()
 	return orderListDB;
 }
 
+int SalesSystemPersistance::Persistance::DeleteOrder(int orderId)
+{
+
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "DELETE FROM SALES_ORDER WHERE ID=@ID";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", orderId);
+
+		cmd->ExecuteNonQuery();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (conn != nullptr) conn->Close();
+	}
+	return orderId;
+}
+
 Order^ SalesSystemPersistance::Persistance::QueryOrderById(int orderId)
 {
-	throw gcnew System::NotImplementedException();
-	// TODO: Insertar una instrucción "return" aquí
+
+	Order^ order = nullptr;
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM SALES_ORDER WHERE ID=@ID";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", orderId);
+		reader = cmd->ExecuteReader();
+
+		if (reader->Read()) {
+			order = gcnew Order();
+			order->Id = Convert::ToInt32(reader["ID"]);
+			order->Date = reader["DATE"]->ToString();
+			order->TotalAmount = Convert::ToDouble(reader["TOTAL_AMOUNT"]);
+			order->Status = reader["STATUS"]->ToString();
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+	}
+
+	return order;
 }
+
+//OrderProduct
+
+int SalesSystemPersistance::Persistance::AddOrderProduct(OrderProduct^ orderProduct, int orderId, int productId)
+{
+
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "INSERT INTO ORDER_PRODUCT (ORDER_ID, PRODUCT_ID, QUANTITY, SUBTOTAL) " +
+			"VALUES (@ORDER_ID, @PRODUCT_ID, @QUANTITY, @SUBTOTAL)";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ORDER_ID", orderId);
+		cmd->Parameters->AddWithValue("@PRODUCT_ID", productId);
+		cmd->Parameters->AddWithValue("@QUANTITY", orderProduct->Quantity);
+		cmd->Parameters->AddWithValue("@SUBTOTAL", orderProduct->SubTotal);
+
+		cmd->ExecuteNonQuery();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (conn != nullptr) conn->Close();
+	}
+	return 1;
+}
+
+List<OrderProduct^>^ SalesSystemPersistance::Persistance::QueryAllOrderProducts()
+{
+	orderProductListDB = gcnew List<OrderProduct^>();
+	SqlConnection^ conn;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM ORDER_PRODUCT";
+		SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+		reader = cmd->ExecuteReader();
+
+		while (reader->Read()) {
+			OrderProduct^ orderProduct = gcnew OrderProduct();
+			orderProduct->Id = Convert::ToInt32(reader["ID"]);
+			orderProduct->OrderId = Convert::ToInt32(reader["ORDER_ID"]);
+			orderProduct->ProductId = Convert::ToInt32(reader["PRODUCT_ID"]);
+			orderProduct->Quantity = Convert::ToInt32(reader["QUANTITY"]);
+			orderProduct->SubTotal = Convert::ToDouble(reader["SUBTOTAL"]);
+
+			orderProductListDB->Add(orderProduct);
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+	}
+
+	return orderProductListDB;
+}
+
+
+
+
+
+
+
 
 
 
