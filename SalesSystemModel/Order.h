@@ -16,19 +16,18 @@ namespace SalesSystemModel {
 		property int Id;
 		property String^ Date;
 		property double TotalAmount;
-
+		property int PersonId;
 		property String^ Status;
-		property Person^ Person;
-		property List<OrderProduct^>^ OrderProduct;
 
-		/*
 		Order() {};
-		Order(int id, String^ date, double totalAmount, String^ status) {
+		Order(int id, String^ date, double totalAmount, int personId, String^ status) {
 			Id = id;
 			Date = date;
 			TotalAmount = totalAmount;
+			PersonId = personId;
 			Status = status;
-		}*/
+		}
+
 
 	};
 }

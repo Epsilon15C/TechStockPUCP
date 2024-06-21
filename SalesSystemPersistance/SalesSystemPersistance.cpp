@@ -462,7 +462,7 @@ Provider^ SalesSystemPersistance::Persistance::QueryProviderById(int providerId)
 //Order	
 
 
-int SalesSystemPersistance::Persistance::AddOrder(Order^ order, int PersonId)
+int SalesSystemPersistance::Persistance::AddOrder(Order^ order)
 {
 	SqlConnection^ conn;
 	SqlCommand^ cmd;
@@ -470,14 +470,14 @@ int SalesSystemPersistance::Persistance::AddOrder(Order^ order, int PersonId)
 
 	try {
 		conn = GetConnection();
-		String^ sqlStr = "INSERT INTO SALES_ORDER (ID, DATE, TOTAL_AMOUNT,PERSON_ID,STATUS) " +
-			"VALUES (@ID, @DATE, @TOTALAMOUNT,@PERSON_ID, @STATUS)";
+		String^ sqlStr = "INSERT INTO SALES_ORDER (ID, ORDER_DATE, TOTAL_AMOUNT,PERSON_ID,STATUS) " +
+			"VALUES (@ID, @ORDER_DATE, @TOTAL_AMOUNT,@PERSON_ID, @STATUS)";
 
 		cmd = gcnew SqlCommand(sqlStr, conn);
 		cmd->Parameters->AddWithValue("@ID", order->Id);
-		cmd->Parameters->AddWithValue("@DATE", order->Date);
+		cmd->Parameters->AddWithValue("@ORDER_DATE", order->Date);
 		cmd->Parameters->AddWithValue("@TOTAL_AMOUNT", order->TotalAmount);
-		cmd->Parameters->AddWithValue("@PERSON_ID", PersonId);
+		cmd->Parameters->AddWithValue("@PERSON_ID", order-> PersonId);
 		cmd->Parameters->AddWithValue("@STATUS", order->Status);
 		cmd->ExecuteNonQuery();
 	}
@@ -507,8 +507,9 @@ List<Order^>^ SalesSystemPersistance::Persistance::QueryAllOrders()
 		while (reader->Read()) {
 			Order^ order = gcnew Order();
 			order->Id = Convert::ToInt32(reader["ID"]);
-			order->Date = reader["DATE"]->ToString();
+			order->Date = reader["ORDER_DATE"]->ToString();
 			order->TotalAmount = Convert::ToDouble(reader["TOTAL_AMOUNT"]);
+			order->PersonId = Convert::ToInt32(reader["PERSON_ID"]);
 			order->Status = reader["STATUS"]->ToString();
 
 			orderListDB->Add(order);
@@ -569,8 +570,9 @@ Order^ SalesSystemPersistance::Persistance::QueryOrderById(int orderId)
 		if (reader->Read()) {
 			order = gcnew Order();
 			order->Id = Convert::ToInt32(reader["ID"]);
-			order->Date = reader["DATE"]->ToString();
+			order->Date = reader["ORDER_DATE"]->ToString();
 			order->TotalAmount = Convert::ToDouble(reader["TOTAL_AMOUNT"]);
+			order->PersonId = Convert::ToInt32(reader["PERSON_ID"]);
 			order->Status = reader["STATUS"]->ToString();
 		}
 	}
@@ -587,7 +589,7 @@ Order^ SalesSystemPersistance::Persistance::QueryOrderById(int orderId)
 
 //OrderProduct
 
-int SalesSystemPersistance::Persistance::AddOrderProduct(OrderProduct^ orderProduct, int orderId, int productId)
+int SalesSystemPersistance::Persistance::AddOrderProduct(OrderProduct^ orderProduct)
 {
 
 	SqlConnection^ conn;
@@ -595,12 +597,13 @@ int SalesSystemPersistance::Persistance::AddOrderProduct(OrderProduct^ orderProd
 
 	try {
 		conn = GetConnection();
-		String^ sqlStr = "INSERT INTO ORDER_PRODUCT (ORDER_ID, PRODUCT_ID, QUANTITY, SUBTOTAL) " +
-			"VALUES (@ORDER_ID, @PRODUCT_ID, @QUANTITY, @SUBTOTAL)";
+		String^ sqlStr = "INSERT INTO ORDER_PRODUCT (ID,ORDER_ID, PRODUCT_ID, QUANTITY, SUBTOTAL) " +
+			"VALUES (@ID,@ORDER_ID, @PRODUCT_ID, @QUANTITY, @SUBTOTAL)";
 
 		cmd = gcnew SqlCommand(sqlStr, conn);
-		cmd->Parameters->AddWithValue("@ORDER_ID", orderId);
-		cmd->Parameters->AddWithValue("@PRODUCT_ID", productId);
+		cmd->Parameters->AddWithValue("@ID", orderProduct->Id);
+		cmd->Parameters->AddWithValue("@ORDER_ID", orderProduct->OrderId);
+		cmd->Parameters->AddWithValue("@PRODUCT_ID", orderProduct->ProductId);
 		cmd->Parameters->AddWithValue("@QUANTITY", orderProduct->Quantity);
 		cmd->Parameters->AddWithValue("@SUBTOTAL", orderProduct->SubTotal);
 
@@ -617,6 +620,7 @@ int SalesSystemPersistance::Persistance::AddOrderProduct(OrderProduct^ orderProd
 
 List<OrderProduct^>^ SalesSystemPersistance::Persistance::QueryAllOrderProducts()
 {
+
 	orderProductListDB = gcnew List<OrderProduct^>();
 	SqlConnection^ conn;
 	SqlDataReader^ reader;
@@ -644,10 +648,149 @@ List<OrderProduct^>^ SalesSystemPersistance::Persistance::QueryAllOrderProducts(
 	finally {
 		if (reader != nullptr) reader->Close();
 		if (conn != nullptr) conn->Close();
+
 	}
 
-	return orderProductListDB;
+	return orderProductListDB;	
+
 }
+
+OrderProduct^ SalesSystemPersistance::Persistance::QueryOrderProductById(int orderProductId)
+{
+	OrderProduct^ orderProduct = nullptr;
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM ORDER_PRODUCT WHERE ID=@ID";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", orderProductId);
+		reader = cmd->ExecuteReader();
+
+		if (reader->Read()) {
+			orderProduct = gcnew OrderProduct();
+			orderProduct->Id = Convert::ToInt32(reader["ID"]);
+			orderProduct->OrderId = Convert::ToInt32(reader["ORDER_ID"]);
+			orderProduct->ProductId = Convert::ToInt32(reader["PRODUCT_ID"]);
+			orderProduct->Quantity = Convert::ToInt32(reader["QUANTITY"]);
+			orderProduct->SubTotal = Convert::ToDouble(reader["SUBTOTAL"]);
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+	}
+
+	return orderProduct;	
+
+}
+
+int SalesSystemPersistance::Persistance::AddSale(Sale^ sale)
+{
+
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "INSERT INTO SALE (ID,RUC, TOTAL_AMOUNT_WITHOUT_TAX, TOTAL_AMOUNT_WITH_TAX, ORDER_ID) " +
+			"VALUES (@ID, @RUC, @TOTAL_AMOUNT_WITHOUT_TAX, @TOTAL_AMOUNT_WITH_TAX, @ORDER_ID)";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", sale->Id);
+		cmd->Parameters->AddWithValue("@TOTAL_AMOUNT_WITHOUT_TAX", sale->TotalAmountWithoutTax);
+		cmd->Parameters->AddWithValue("@TOTAL_AMOUNT_WITH_TAX", sale->TotalAmountWithTax);
+		cmd->Parameters->AddWithValue("@RUC", sale->RUC);
+		cmd->Parameters->AddWithValue("@ORDER_ID", sale->OrderId);
+
+		cmd->ExecuteNonQuery();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (conn != nullptr) conn->Close();
+	}
+	return 1;
+}
+
+List<Sale^>^ SalesSystemPersistance::Persistance::QueryAllSales()
+{
+	saleListDB = gcnew List<Sale^>();
+	SqlConnection^ conn;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM SALE";
+		SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+		reader = cmd->ExecuteReader();
+
+		while (reader->Read()) {
+			Sale^ sale = gcnew Sale();
+			sale->Id = Convert::ToInt32(reader["ID"]);
+			sale->TotalAmountWithoutTax = Convert::ToDouble(reader["TOTAL_AMOUNT_WITHOUT_TAX"]);
+			sale->TotalAmountWithTax = Convert::ToDouble(reader["TOTAL_AMOUNT_WITH_TAX"]);
+			sale->RUC = reader["RUC"]->ToString();
+			sale->OrderId = Convert::ToInt32(reader["ORDER_ID"]);
+
+			saleListDB->Add(sale);
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+
+	}
+
+	return saleListDB;
+}
+
+Sale^ SalesSystemPersistance::Persistance::QuerySaleById(int saleId)
+{
+	Sale^ sale = nullptr;
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM SALE WHERE ID=@ID";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", saleId);
+		reader = cmd->ExecuteReader();
+
+		if (reader->Read()) {
+			sale = gcnew Sale();
+			sale->Id = Convert::ToInt32(reader["ID"]);
+			sale->TotalAmountWithoutTax = Convert::ToDouble(reader["TOTAL_AMOUNT_WITHOUT_TAX"]);
+			sale->TotalAmountWithTax = Convert::ToDouble(reader["TOTAL_AMOUNT_WITH_TAX"]);
+			sale->RUC = reader["RUC"]->ToString();
+			sale->OrderId = Convert::ToInt32(reader["ORDER_ID"]);
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+	}
+
+	return sale;
+}
+
+
 
 
 
@@ -845,6 +988,49 @@ List<Product^>^ SalesSystemPersistance::Persistance::QueryAllProducts() {
 	}
 
 	return allProducts;
+}
+
+Product^ SalesSystemPersistance::Persistance::QueryProductById(int productId)
+{
+
+	Product^ product = nullptr;
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM PRODUCT WHERE ID=@ID";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", productId);
+		reader = cmd->ExecuteReader();
+
+		if (reader->Read()) {
+			product = gcnew Product();
+			product->Id = Convert::ToInt32(reader["ID"]);
+			product->Name = reader["NAME"]->ToString();
+			product->Description = reader["DESCRIPTION"]->ToString();
+			product->Price = Convert::ToDouble(reader["PRICE"]);
+			product->Stock = Convert::ToInt32(reader["STOCK"]);
+
+			if (reader["PHOTO"] != DBNull::Value) {
+				product->Photo = safe_cast<array<unsigned char>^>(reader["PHOTO"]);
+			}
+			else {
+				product->Photo = nullptr;
+			}
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+	}
+
+	return product;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
