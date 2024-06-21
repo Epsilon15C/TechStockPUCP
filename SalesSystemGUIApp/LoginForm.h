@@ -146,8 +146,8 @@ namespace SalesSystemGUIApp {
 			// btnOK
 			// 
 			this->btnOK->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
-			this->btnOK->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(84)), static_cast<System::Int32>(static_cast<System::Byte>(250)),
-				static_cast<System::Int32>(static_cast<System::Byte>(117)));
+			this->btnOK->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
+				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnOK->FlatAppearance->BorderSize = 0;
 			this->btnOK->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnOK->Font = (gcnew System::Drawing::Font(L"Segoe UI", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -164,12 +164,12 @@ namespace SalesSystemGUIApp {
 			// 
 			// btnCancel
 			// 
-			this->btnCancel->BackColor = System::Drawing::Color::MidnightBlue;
+			this->btnCancel->BackColor = System::Drawing::Color::LightSkyBlue;
 			this->btnCancel->FlatAppearance->BorderSize = 0;
 			this->btnCancel->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnCancel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCancel->ForeColor = System::Drawing::Color::White;
+			this->btnCancel->ForeColor = System::Drawing::Color::Black;
 			this->btnCancel->Location = System::Drawing::Point(876, 528);
 			this->btnCancel->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnCancel->Name = L"btnCancel";

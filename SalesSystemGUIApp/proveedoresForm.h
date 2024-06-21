@@ -365,7 +365,8 @@ namespace SalesSystemGUIApp {
 			// 
 			// btnAdd
 			// 
-			this->btnAdd->BackColor = System::Drawing::Color::Lime;
+			this->btnAdd->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
+				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnAdd->FlatAppearance->BorderSize = 0;
 			this->btnAdd->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnAdd->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -384,7 +385,8 @@ namespace SalesSystemGUIApp {
 			// 
 			// btnUpdate
 			// 
-			this->btnUpdate->BackColor = System::Drawing::Color::Lime;
+			this->btnUpdate->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
+				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnUpdate->FlatAppearance->BorderSize = 0;
 			this->btnUpdate->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnUpdate->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -403,7 +405,8 @@ namespace SalesSystemGUIApp {
 			// 
 			// btnDelete
 			// 
-			this->btnDelete->BackColor = System::Drawing::Color::Lime;
+			this->btnDelete->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
+				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnDelete->FlatAppearance->BorderSize = 0;
 			this->btnDelete->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnDelete->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -428,9 +431,9 @@ namespace SalesSystemGUIApp {
 			this->btnCleanControls->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnCleanControls->ForeColor = System::Drawing::Color::Black;
-			this->btnCleanControls->Location = System::Drawing::Point(791, 200);
+			this->btnCleanControls->Location = System::Drawing::Point(773, 200);
 			this->btnCleanControls->Name = L"btnCleanControls";
-			this->btnCleanControls->Size = System::Drawing::Size(178, 34);
+			this->btnCleanControls->Size = System::Drawing::Size(178, 42);
 			this->btnCleanControls->TabIndex = 21;
 			this->btnCleanControls->Text = L"Limpiar todo";
 			this->btnCleanControls->UseVisualStyleBackColor = false;

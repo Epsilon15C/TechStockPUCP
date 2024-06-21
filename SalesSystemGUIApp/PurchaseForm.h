@@ -158,13 +158,16 @@ namespace SalesSystemGUIApp {
 			// 
 			// btnUploadPhoto
 			// 
-			this->btnUploadPhoto->BackColor = System::Drawing::Color::LawnGreen;
+			this->btnUploadPhoto->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
+				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnUploadPhoto->FlatAppearance->BorderSize = 0;
 			this->btnUploadPhoto->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnUploadPhoto->Location = System::Drawing::Point(539, 249);
+			this->btnUploadPhoto->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->btnUploadPhoto->Location = System::Drawing::Point(520, 249);
 			this->btnUploadPhoto->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnUploadPhoto->Name = L"btnUploadPhoto";
-			this->btnUploadPhoto->Size = System::Drawing::Size(131, 31);
+			this->btnUploadPhoto->Size = System::Drawing::Size(150, 31);
 			this->btnUploadPhoto->TabIndex = 15;
 			this->btnUploadPhoto->Text = L"Subir Foto ";
 			this->btnUploadPhoto->UseVisualStyleBackColor = false;
@@ -183,9 +186,12 @@ namespace SalesSystemGUIApp {
 			// 
 			// btnGeneratePDF
 			// 
-			this->btnGeneratePDF->BackColor = System::Drawing::Color::LawnGreen;
+			this->btnGeneratePDF->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
+				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnGeneratePDF->FlatAppearance->BorderSize = 0;
 			this->btnGeneratePDF->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->btnGeneratePDF->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->btnGeneratePDF->Location = System::Drawing::Point(520, 314);
 			this->btnGeneratePDF->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnGeneratePDF->Name = L"btnGeneratePDF";
