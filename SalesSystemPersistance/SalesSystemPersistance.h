@@ -107,10 +107,6 @@ namespace SalesSystemPersistance {
 		static Sale^ QuerySaleById(int saleId);
 
 
-		
-
-
-
 		// Productos
 		static List<Product^>^ QueryAllProducts();
 		static Product^ QueryProductById(int productId);

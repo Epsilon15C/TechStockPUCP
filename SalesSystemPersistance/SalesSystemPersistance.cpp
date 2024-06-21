@@ -98,7 +98,7 @@ List<Customer^>^ SalesSystemPersistance::Persistance::QueryAllCustomers()
 	SqlDataReader^ reader;
 
 	try {
-		//Paso 1: Obtener la conexiÛn a la BD
+		//Paso 1: Obtener la conexi√≥n a la BD
 		SqlConnection^ conn = GetConnection();
 
 		//Paso 2: Preparar la sentencia SQL
@@ -127,12 +127,12 @@ List<Customer^>^ SalesSystemPersistance::Persistance::QueryAllCustomers()
 
 			// Verificar si la columna PHOTO es DBNull antes de intentar convertirla en un array de bytes
 			if (reader["PHOTO"] != DBNull::Value) {
-				// Si la columna PHOTO no es DBNull, conviÈrtela en un array de bytes
+				// Si la columna PHOTO no es DBNull, convi√©rtela en un array de bytes
 				customer->Photo = safe_cast<array<unsigned char>^>(reader["PHOTO"]);
 			}
 			else {
-				// Si la columna PHOTO es DBNull, establece el valor de Photo como nullptr o alg˙n valor predeterminado seg˙n tu lÛgica de aplicaciÛn
-				customer->Photo = nullptr; // O alg˙n otro valor predeterminado
+				// Si la columna PHOTO es DBNull, establece el valor de Photo como nullptr o alg√∫n valor predeterminado seg√∫n tu l√≥gica de aplicaci√≥n
+				customer->Photo = nullptr; // O alg√∫n otro valor predeterminado
 			}
 
 			customersListDB->Add(customer);
@@ -142,7 +142,7 @@ List<Customer^>^ SalesSystemPersistance::Persistance::QueryAllCustomers()
 		throw ex;
 	}
 	finally {
-		//Paso 5: Importante! Cerrar los objetos de conexiÛn a la BD
+		//Paso 5: Importante! Cerrar los objetos de conexi√≥n a la BD
 		if (reader != nullptr) reader->Close();
 		if (conn != nullptr) conn->Close();
 	}
@@ -239,7 +239,7 @@ Customer^ SalesSystemPersistance::Persistance::QueryCustomerById(int customerId)
         }
     }
     return nullptr;
-    // TODO: Insertar una instrucciÛn "return" aquÌ*/
+    // TODO: Insertar una instrucci√≥n "return" aqu√≠*/
 	Customer^ customer = nullptr;
 	SqlConnection^ conn;
 	SqlCommand^ cmd;
@@ -253,7 +253,7 @@ Customer^ SalesSystemPersistance::Persistance::QueryCustomerById(int customerId)
 		cmd->Parameters->AddWithValue("@ID", customerId);
 		reader = cmd->ExecuteReader();
 
-		// Verificar si se encontrÛ un cliente con el ID dado
+		// Verificar si se encontr√≥ un cliente con el ID dado
 		if (reader->Read()) {
 			customer = gcnew Customer();
 			customer->Id = Convert::ToInt32(reader["ID"]->ToString());
@@ -261,7 +261,7 @@ Customer^ SalesSystemPersistance::Persistance::QueryCustomerById(int customerId)
 			customer->Password = reader["PASSWORD"]->ToString();
 			customer->Name = reader["NAME"]->ToString();
 			customer->LastName = reader["LASTNAME"]->ToString();
-			customer->Status = reader["STATUS"]->ToString(); // Aseg˙rate de que STATUS exista en tu base de datos
+			customer->Status = reader["STATUS"]->ToString(); // Aseg√∫rate de que STATUS exista en tu base de datos
 			customer->DNI = reader["DNI"]->ToString();
 			customer->Genero = reader["GENERO"]->ToString();
 			customer->BirthDate = reader["BIRTHDATE"]->ToString();
@@ -270,12 +270,12 @@ Customer^ SalesSystemPersistance::Persistance::QueryCustomerById(int customerId)
 
 			// Verificar si la columna PHOTO es DBNull antes de intentar convertirla en un array de bytes
 			if (reader["PHOTO"] != DBNull::Value) {
-				// Si la columna PHOTO no es DBNull, conviÈrtela en un array de bytes
+				// Si la columna PHOTO no es DBNull, convi√©rtela en un array de bytes
 				customer->Photo = safe_cast<array<unsigned char>^>(reader["PHOTO"]);
 			}
 			else {
-				// Si la columna PHOTO es DBNull, establece el valor de Photo como nullptr o alg˙n valor predeterminado seg˙n tu lÛgica de aplicaciÛn
-				customer->Photo = nullptr; // O alg˙n otro valor predeterminado
+				// Si la columna PHOTO es DBNull, establece el valor de Photo como nullptr o alg√∫n valor predeterminado seg√∫n tu l√≥gica de aplicaci√≥n
+				customer->Photo = nullptr; // O alg√∫n otro valor predeterminado
 			}
 		}
 	}
@@ -331,7 +331,7 @@ List<Provider^>^ SalesSystemPersistance::Persistance::QueryAllProviders()
 	SqlDataReader^ reader;
 
 	try {
-		// Obtener la conexiÛn a la BD
+		// Obtener la conexi√≥n a la BD
 		conn = GetConnection();
 
 		// Preparar la sentencia SQL
@@ -359,7 +359,7 @@ List<Provider^>^ SalesSystemPersistance::Persistance::QueryAllProviders()
 		throw ex;
 	}
 	finally {
-		// Cerrar los objetos de conexiÛn a la BD
+		// Cerrar los objetos de conexi√≥n a la BD
 		if (reader != nullptr) reader->Close();
 		if (conn != nullptr) conn->Close();
 	}
@@ -434,7 +434,7 @@ Provider^ SalesSystemPersistance::Persistance::QueryProviderById(int providerId)
 		cmd->Parameters->AddWithValue("@ID", providerId);
 		reader = cmd->ExecuteReader();
 
-		// Verificar si se encontrÛ un proveedor con el ID dado
+		// Verificar si se encontr√≥ un proveedor con el ID dado
 		if (reader->Read()) {
 			provider = gcnew Provider();
 			provider->Id = Convert::ToInt32(reader["ID"]->ToString());
@@ -585,6 +585,7 @@ Order^ SalesSystemPersistance::Persistance::QueryOrderById(int orderId)
 	}
 
 	return order;
+
 }
 
 //OrderProduct
@@ -790,6 +791,77 @@ Sale^ SalesSystemPersistance::Persistance::QuerySaleById(int saleId)
 	return sale;
 }
 
+//OrderProduct
+
+int SalesSystemPersistance::Persistance::AddOrderProduct(OrderProduct^ orderProduct, int orderId, int productId)
+{
+
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "INSERT INTO ORDER_PRODUCT (ORDER_ID, PRODUCT_ID, QUANTITY, SUBTOTAL) " +
+			"VALUES (@ORDER_ID, @PRODUCT_ID, @QUANTITY, @SUBTOTAL)";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ORDER_ID", orderId);
+		cmd->Parameters->AddWithValue("@PRODUCT_ID", productId);
+		cmd->Parameters->AddWithValue("@QUANTITY", orderProduct->Quantity);
+		cmd->Parameters->AddWithValue("@SUBTOTAL", orderProduct->SubTotal);
+
+		cmd->ExecuteNonQuery();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (conn != nullptr) conn->Close();
+	}
+	return 1;
+}
+
+List<OrderProduct^>^ SalesSystemPersistance::Persistance::QueryAllOrderProducts()
+{
+	orderProductListDB = gcnew List<OrderProduct^>();
+	SqlConnection^ conn;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM ORDER_PRODUCT";
+		SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+		reader = cmd->ExecuteReader();
+
+		while (reader->Read()) {
+			OrderProduct^ orderProduct = gcnew OrderProduct();
+			orderProduct->Id = Convert::ToInt32(reader["ID"]);
+			orderProduct->OrderId = Convert::ToInt32(reader["ORDER_ID"]);
+			orderProduct->ProductId = Convert::ToInt32(reader["PRODUCT_ID"]);
+			orderProduct->Quantity = Convert::ToInt32(reader["QUANTITY"]);
+			orderProduct->SubTotal = Convert::ToDouble(reader["SUBTOTAL"]);
+
+			orderProductListDB->Add(orderProduct);
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+	}
+
+	return orderProductListDB;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -978,7 +1050,7 @@ List<Product^>^ SalesSystemPersistance::Persistance::QueryAllProducts() {
 
 	}
 	catch (Exception^ ex) {
-		// Manejar la excepciÛn
+		// Manejar la excepci√≥n
 		Console::WriteLine("Error: " + ex->Message);
 	}
 	finally {
