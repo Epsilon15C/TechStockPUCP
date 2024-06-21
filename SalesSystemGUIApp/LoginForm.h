@@ -158,7 +158,7 @@ namespace SalesSystemGUIApp {
 			this->btnOK->Name = L"btnOK";
 			this->btnOK->Size = System::Drawing::Size(243, 58);
 			this->btnOK->TabIndex = 4;
-			this->btnOK->Text = L"Log in";
+			this->btnOK->Text = L"Ingresar";
 			this->btnOK->UseVisualStyleBackColor = false;
 			this->btnOK->Click += gcnew System::EventHandler(this, &LoginForm::btnOK_Click);
 			// 
@@ -191,7 +191,7 @@ namespace SalesSystemGUIApp {
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(478, 50);
 			this->label3->TabIndex = 6;
-			this->label3->Text = L"Log in to TechStock PUCP ";
+			this->label3->Text = L"Accede a TechStock PUCP ";
 			// 
 			// pictureBox1
 			// 
@@ -281,22 +281,24 @@ namespace SalesSystemGUIApp {
 			// label7
 			// 
 			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->label7->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->label7->Location = System::Drawing::Point(424, 564);
+			this->label7->Location = System::Drawing::Point(386, 556);
 			this->label7->Name = L"label7";
-			this->label7->Size = System::Drawing::Size(124, 16);
+			this->label7->Size = System::Drawing::Size(139, 18);
 			this->label7->TabIndex = 10;
 			this->label7->Text = L"¿No tienes cuenta\? ";
 			// 
 			// lblCreateAccount
 			// 
 			this->lblCreateAccount->AutoSize = true;
-			this->lblCreateAccount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Underline,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
-			this->lblCreateAccount->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->lblCreateAccount->Location = System::Drawing::Point(554, 564);
+			this->lblCreateAccount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Underline, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->lblCreateAccount->ForeColor = System::Drawing::Color::DarkOrchid;
+			this->lblCreateAccount->Location = System::Drawing::Point(531, 556);
 			this->lblCreateAccount->Name = L"lblCreateAccount";
-			this->lblCreateAccount->Size = System::Drawing::Size(192, 16);
+			this->lblCreateAccount->Size = System::Drawing::Size(213, 18);
 			this->lblCreateAccount->TabIndex = 11;
 			this->lblCreateAccount->Text = L"Regístrate en TechStockPUCP";
 			this->lblCreateAccount->Click += gcnew System::EventHandler(this, &LoginForm::lblCreateAccount_Click);
