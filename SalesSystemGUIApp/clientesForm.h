@@ -508,7 +508,7 @@ namespace SalesSystemGUIApp {
 				// 
 				this->menuStrip1->AccessibleRole = System::Windows::Forms::AccessibleRole::None;
 				this->menuStrip1->AllowMerge = false;
-				this->menuStrip1->BackColor = System::Drawing::Color::MidnightBlue;
+				this->menuStrip1->BackColor = System::Drawing::Color::RoyalBlue;
 				this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
 				this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->archivoToolStripMenuItem });
 				this->menuStrip1->LayoutStyle = System::Windows::Forms::ToolStripLayoutStyle::HorizontalStackWithOverflow;

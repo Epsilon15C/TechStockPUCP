@@ -160,7 +160,7 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnSearchProduct->FlatAppearance->BorderSize = 0;
 			this->btnSearchProduct->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnSearchProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnSearchProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnSearchProduct->Location = System::Drawing::Point(115, 158);
 			this->btnSearchProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -177,7 +177,7 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnCancelProduct->FlatAppearance->BorderSize = 0;
 			this->btnCancelProduct->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnCancelProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnCancelProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnCancelProduct->Location = System::Drawing::Point(284, 158);
 			this->btnCancelProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
