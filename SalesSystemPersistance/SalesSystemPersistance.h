@@ -95,7 +95,7 @@ namespace SalesSystemPersistance {
 		static int AddOrderProduct(OrderProduct^orderProduct, int orderId, int productId);
 		static List<OrderProduct^>^ QueryAllOrderProducts();
 		//static int DeleteOrderProduct(int orderId, int productId);
-		static OrderProduct^ QueryOrderProductById(int orderId, int productId);
+		//static OrderProduct^ QueryOrderProductById(int orderId, int productId);
 		
 
 

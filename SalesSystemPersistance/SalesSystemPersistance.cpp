@@ -630,8 +630,8 @@ List<OrderProduct^>^ SalesSystemPersistance::Persistance::QueryAllOrderProducts(
 		while (reader->Read()) {
 			OrderProduct^ orderProduct = gcnew OrderProduct();
 			orderProduct->Id = Convert::ToInt32(reader["ID"]);
-			orderProduct->OrderId = Convert::ToInt32(reader["ORDER_ID"]);
-			orderProduct->ProductId = Convert::ToInt32(reader["PRODUCT_ID"]);
+			//orderProduct->OrderId = Convert::ToInt32(reader["ORDER_ID"]);
+			//orderProduct->ProductId = Convert::ToInt32(reader["PRODUCT_ID"]);
 			orderProduct->Quantity = Convert::ToInt32(reader["QUANTITY"]);
 			orderProduct->SubTotal = Convert::ToDouble(reader["SUBTOTAL"]);
 
