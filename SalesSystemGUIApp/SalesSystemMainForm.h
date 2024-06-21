@@ -133,7 +133,7 @@ namespace SalesSystemGUIApp {
 			// salirToolStripMenuItem
 			// 
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(121, 26);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(224, 26);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::salirToolStripMenuItem_Click);
 			// 
@@ -213,6 +213,7 @@ namespace SalesSystemGUIApp {
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(1404, 750);
 			this->Controls->Add(this->menuStrip1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"SalesSystemMainForm";
@@ -256,9 +257,12 @@ namespace SalesSystemGUIApp {
 			  
 #pragma endregion
 
-	private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+private: System::Void salirToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	System::Windows::Forms::DialogResult result = MessageBox::Show("Esta seguro de que desea salir?", "Confirmar salida", MessageBoxButtons::YesNo, MessageBoxIcon::Question);
+	if (result == System::Windows::Forms::DialogResult::Yes) {
 		Application::Exit();
 	}
+}
 	private: System::Void clientesToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 		//Form^ clientesForm = gcnew Form();
 		clientesForm^ clienteForm = gcnew clientesForm();

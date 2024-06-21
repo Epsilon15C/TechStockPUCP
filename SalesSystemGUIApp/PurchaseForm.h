@@ -162,7 +162,7 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnUploadPhoto->FlatAppearance->BorderSize = 0;
 			this->btnUploadPhoto->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnUploadPhoto->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnUploadPhoto->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnUploadPhoto->Location = System::Drawing::Point(520, 249);
 			this->btnUploadPhoto->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -190,7 +190,7 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnGeneratePDF->FlatAppearance->BorderSize = 0;
 			this->btnGeneratePDF->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnGeneratePDF->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnGeneratePDF->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnGeneratePDF->Location = System::Drawing::Point(520, 314);
 			this->btnGeneratePDF->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -260,6 +260,7 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->txtClient);
 			this->Controls->Add(this->lblIdRes);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"PurchaseForm";
 			this->Text = L"Compra";

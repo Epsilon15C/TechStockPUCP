@@ -217,9 +217,10 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->label1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"preguntasfrecuentes";
-			this->Text = L"preguntasfrecuentes";
+			this->Text = L"Preguntas Frecuentes";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
 			this->ResumeLayout(false);
