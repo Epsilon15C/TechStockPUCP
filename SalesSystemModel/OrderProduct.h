@@ -10,15 +10,22 @@ namespace SalesSystemModel {
 	public ref class OrderProduct {
 	public:
 		property int Id;
+		property int OrderId;
+		property int ProductId;
 		property int Quantity;
 		property double SubTotal;
-		property Product^ Product;
-		/*OrderProduct() {};
-		OrderProduct(int id, int quantity, double subTotal, Product^ product) {
+
+		OrderProduct() {};
+		OrderProduct(int id, int orderId, int productId, int quantity, double subTotal) {
 			Id = id;
+			OrderId = orderId;
+			ProductId = productId;
 			Quantity = quantity;
 			SubTotal = subTotal;
-		}*/
+		}
+
+
+		
 	};
 }
 #endif //_ORDERPRODUCT_H
