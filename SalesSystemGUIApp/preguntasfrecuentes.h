@@ -228,7 +228,7 @@ namespace SalesSystemGUIApp {
 		}
 #pragma endregion
 	private: System::Void btnwhats_Click(System::Object^ sender, System::EventArgs^ e) {
-		System::Diagnostics::Process::Start("https://wa.me/921265456");
+		System::Diagnostics::Process::Start("https://wa.me/51921265456?text=Buen%20día%20TechStock,%20tengo%20una%20consulta,");
 	}
 };
 }

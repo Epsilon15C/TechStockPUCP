@@ -1510,7 +1510,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 			this->menuStrip9->Location = System::Drawing::Point(0, 0);
 			this->menuStrip9->Name = L"menuStrip9";
 			this->menuStrip9->Padding = System::Windows::Forms::Padding(5, 2, 0, 2);
-			this->menuStrip9->Size = System::Drawing::Size(900, 30);
+			this->menuStrip9->Size = System::Drawing::Size(900, 28);
 			this->menuStrip9->TabIndex = 53;
 			this->menuStrip9->Text = L"menuStrip9";
 			// 
@@ -1521,7 +1521,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 					this->modificarFuenteVoltajeToolStripMenuItem7
 			});
 			this->opcionesToolStripMenuItem4->Name = L"opcionesToolStripMenuItem4";
-			this->opcionesToolStripMenuItem4->Size = System::Drawing::Size(85, 26);
+			this->opcionesToolStripMenuItem4->Size = System::Drawing::Size(85, 24);
 			this->opcionesToolStripMenuItem4->Text = L"Opciones";
 			// 
 			// nuevoFuenteVoltajeToolStripMenuItem6
@@ -3277,13 +3277,13 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 			this->btnCleanAllBreadboard->BackColor = System::Drawing::Color::LightSkyBlue;
 			this->btnCleanAllBreadboard->FlatAppearance->BorderSize = 0;
 			this->btnCleanAllBreadboard->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnCleanAllBreadboard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold,
-				System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			this->btnCleanAllBreadboard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			this->btnCleanAllBreadboard->ForeColor = System::Drawing::Color::Black;
 			this->btnCleanAllBreadboard->Location = System::Drawing::Point(696, 196);
 			this->btnCleanAllBreadboard->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnCleanAllBreadboard->Name = L"btnCleanAllBreadboard";
-			this->btnCleanAllBreadboard->Size = System::Drawing::Size(108, 38);
+			this->btnCleanAllBreadboard->Size = System::Drawing::Size(140, 31);
 			this->btnCleanAllBreadboard->TabIndex = 25;
 			this->btnCleanAllBreadboard->Text = L"Limpiar todo";
 			this->btnCleanAllBreadboard->UseVisualStyleBackColor = false;
@@ -3295,7 +3295,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 				static_cast<System::Int32>(static_cast<System::Byte>(187)), static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnDeleteBreadboard->FlatAppearance->BorderSize = 0;
 			this->btnDeleteBreadboard->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnDeleteBreadboard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnDeleteBreadboard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnDeleteBreadboard->ForeColor = System::Drawing::Color::Black;
 			this->btnDeleteBreadboard->Location = System::Drawing::Point(432, 196);
@@ -3313,7 +3313,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 				static_cast<System::Int32>(static_cast<System::Byte>(187)), static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnUpdateBreadboard->FlatAppearance->BorderSize = 0;
 			this->btnUpdateBreadboard->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnUpdateBreadboard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnUpdateBreadboard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnUpdateBreadboard->ForeColor = System::Drawing::Color::Black;
 			this->btnUpdateBreadboard->Location = System::Drawing::Point(259, 196);
@@ -3331,7 +3331,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnAddBreadboard->FlatAppearance->BorderSize = 0;
 			this->btnAddBreadboard->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnAddBreadboard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnAddBreadboard->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAddBreadboard->ForeColor = System::Drawing::Color::Black;
 			this->btnAddBreadboard->Location = System::Drawing::Point(109, 196);
@@ -3623,12 +3623,13 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 			this->btnCleanAllResistor->BackColor = System::Drawing::Color::LightSkyBlue;
 			this->btnCleanAllResistor->FlatAppearance->BorderSize = 0;
 			this->btnCleanAllResistor->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnCleanAllResistor->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnCleanAllResistor->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCleanAllResistor->Location = System::Drawing::Point(681, 231);
+			this->btnCleanAllResistor->ImageAlign = System::Drawing::ContentAlignment::BottomCenter;
+			this->btnCleanAllResistor->Location = System::Drawing::Point(681, 238);
 			this->btnCleanAllResistor->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnCleanAllResistor->Name = L"btnCleanAllResistor";
-			this->btnCleanAllResistor->Size = System::Drawing::Size(108, 38);
+			this->btnCleanAllResistor->Size = System::Drawing::Size(147, 31);
 			this->btnCleanAllResistor->TabIndex = 3;
 			this->btnCleanAllResistor->Text = L"Limpiar todo";
 			this->btnCleanAllResistor->UseVisualStyleBackColor = false;
@@ -3640,7 +3641,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 				static_cast<System::Int32>(static_cast<System::Byte>(187)), static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnDeleteResistor->FlatAppearance->BorderSize = 0;
 			this->btnDeleteResistor->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnDeleteResistor->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnDeleteResistor->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnDeleteResistor->Location = System::Drawing::Point(427, 238);
 			this->btnDeleteResistor->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -3657,7 +3658,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 				static_cast<System::Int32>(static_cast<System::Byte>(187)), static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnUpdateResistor->FlatAppearance->BorderSize = 0;
 			this->btnUpdateResistor->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnUpdateResistor->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnUpdateResistor->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnUpdateResistor->Location = System::Drawing::Point(259, 235);
 			this->btnUpdateResistor->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -3674,7 +3675,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnAddResistor->FlatAppearance->BorderSize = 0;
 			this->btnAddResistor->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnAddResistor->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnAddResistor->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAddResistor->Location = System::Drawing::Point(91, 235);
 			this->btnAddResistor->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -3764,7 +3765,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 				static_cast<System::Byte>(0)));
 			this->btnSearch->ForeColor = System::Drawing::Color::White;
 			this->btnSearch->Location = System::Drawing::Point(421, 26);
-			this->btnSearch->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->btnSearch->Margin = System::Windows::Forms::Padding(4);
 			this->btnSearch->Name = L"btnSearch";
 			this->btnSearch->Size = System::Drawing::Size(100, 28);
 			this->btnSearch->TabIndex = 4;
@@ -3849,7 +3850,7 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 			this->Controls->Add(this->menuStrip1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"productosForm";
 			this->Text = L"Mantenimiento de productos";
 			this->Load += gcnew System::EventHandler(this, &productosForm::tabPageResistor_Load);
