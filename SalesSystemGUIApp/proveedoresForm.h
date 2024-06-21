@@ -110,9 +110,9 @@ namespace SalesSystemGUIApp {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->dgvProvider = (gcnew System::Windows::Forms::DataGridView());
 			this->ProviderId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->ProviderName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
@@ -149,35 +149,35 @@ namespace SalesSystemGUIApp {
 			// dgvProvider
 			// 
 			this->dgvProvider->AllowUserToAddRows = false;
-			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::Black;
-			this->dgvProvider->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+			dataGridViewCellStyle4->BackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::Black;
+			this->dgvProvider->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
 			this->dgvProvider->BackgroundColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle2->BackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle5->BackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvProvider->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+			dataGridViewCellStyle5->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvProvider->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
 			this->dgvProvider->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvProvider->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->ProviderId,
 					this->ProviderName, this->RUC, this->Account, this->Website, this->PhoneNumber
 			});
-			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle3->BackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle6->BackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvProvider->DefaultCellStyle = dataGridViewCellStyle3;
+			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvProvider->DefaultCellStyle = dataGridViewCellStyle6;
 			this->dgvProvider->Location = System::Drawing::Point(12, 310);
 			this->dgvProvider->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvProvider->Name = L"dgvProvider";
@@ -246,12 +246,12 @@ namespace SalesSystemGUIApp {
 			// lblId
 			// 
 			this->lblId->AutoSize = true;
-			this->lblId->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblId->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblId->ForeColor = System::Drawing::Color::White;
-			this->lblId->Location = System::Drawing::Point(47, 37);
+			this->lblId->Location = System::Drawing::Point(47, 41);
 			this->lblId->Name = L"lblId";
-			this->lblId->Size = System::Drawing::Size(33, 28);
+			this->lblId->Size = System::Drawing::Size(29, 23);
 			this->lblId->TabIndex = 13;
 			this->lblId->Text = L"Id:";
 			// 
@@ -274,24 +274,24 @@ namespace SalesSystemGUIApp {
 			// lblName
 			// 
 			this->lblName->AutoSize = true;
-			this->lblName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblName->ForeColor = System::Drawing::Color::White;
-			this->lblName->Location = System::Drawing::Point(47, 79);
+			this->lblName->Location = System::Drawing::Point(47, 83);
 			this->lblName->Name = L"lblName";
-			this->lblName->Size = System::Drawing::Size(89, 28);
+			this->lblName->Size = System::Drawing::Size(77, 23);
 			this->lblName->TabIndex = 3;
 			this->lblName->Text = L"Nombre:";
 			// 
 			// lblRUC
 			// 
 			this->lblRUC->AutoSize = true;
-			this->lblRUC->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblRUC->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblRUC->ForeColor = System::Drawing::Color::White;
-			this->lblRUC->Location = System::Drawing::Point(47, 125);
+			this->lblRUC->Location = System::Drawing::Point(47, 129);
 			this->lblRUC->Name = L"lblRUC";
-			this->lblRUC->Size = System::Drawing::Size(54, 28);
+			this->lblRUC->Size = System::Drawing::Size(47, 23);
 			this->lblRUC->TabIndex = 15;
 			this->lblRUC->Text = L"RUC:";
 			// 
@@ -306,18 +306,18 @@ namespace SalesSystemGUIApp {
 			// lblAccount
 			// 
 			this->lblAccount->AutoSize = true;
-			this->lblAccount->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblAccount->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblAccount->ForeColor = System::Drawing::Color::White;
-			this->lblAccount->Location = System::Drawing::Point(514, 43);
+			this->lblAccount->Location = System::Drawing::Point(482, 47);
 			this->lblAccount->Name = L"lblAccount";
-			this->lblAccount->Size = System::Drawing::Size(178, 28);
+			this->lblAccount->Size = System::Drawing::Size(158, 23);
 			this->lblAccount->TabIndex = 17;
 			this->lblAccount->Text = L"Número de cuenta:";
 			// 
 			// txtAccount
 			// 
-			this->txtAccount->Location = System::Drawing::Point(724, 43);
+			this->txtAccount->Location = System::Drawing::Point(692, 43);
 			this->txtAccount->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtAccount->Name = L"txtAccount";
 			this->txtAccount->Size = System::Drawing::Size(245, 22);
@@ -326,18 +326,18 @@ namespace SalesSystemGUIApp {
 			// lblWebsite
 			// 
 			this->lblWebsite->AutoSize = true;
-			this->lblWebsite->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblWebsite->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblWebsite->ForeColor = System::Drawing::Color::White;
-			this->lblWebsite->Location = System::Drawing::Point(514, 85);
+			this->lblWebsite->Location = System::Drawing::Point(482, 89);
 			this->lblWebsite->Name = L"lblWebsite";
-			this->lblWebsite->Size = System::Drawing::Size(204, 28);
+			this->lblWebsite->Size = System::Drawing::Size(178, 23);
 			this->lblWebsite->TabIndex = 19;
 			this->lblWebsite->Text = L"Web / Dirección física:";
 			// 
 			// txtWebsite
 			// 
-			this->txtWebsite->Location = System::Drawing::Point(724, 85);
+			this->txtWebsite->Location = System::Drawing::Point(692, 85);
 			this->txtWebsite->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtWebsite->Name = L"txtWebsite";
 			this->txtWebsite->Size = System::Drawing::Size(245, 22);
@@ -346,18 +346,18 @@ namespace SalesSystemGUIApp {
 			// lblPhoneNumber
 			// 
 			this->lblPhoneNumber->AutoSize = true;
-			this->lblPhoneNumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblPhoneNumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblPhoneNumber->ForeColor = System::Drawing::Color::White;
-			this->lblPhoneNumber->Location = System::Drawing::Point(514, 132);
+			this->lblPhoneNumber->Location = System::Drawing::Point(482, 136);
 			this->lblPhoneNumber->Name = L"lblPhoneNumber";
-			this->lblPhoneNumber->Size = System::Drawing::Size(177, 28);
+			this->lblPhoneNumber->Size = System::Drawing::Size(156, 23);
 			this->lblPhoneNumber->TabIndex = 19;
 			this->lblPhoneNumber->Text = L"Número de celular:";
 			// 
 			// txtPhoneNumber
 			// 
-			this->txtPhoneNumber->Location = System::Drawing::Point(724, 132);
+			this->txtPhoneNumber->Location = System::Drawing::Point(692, 132);
 			this->txtPhoneNumber->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtPhoneNumber->Name = L"txtPhoneNumber";
 			this->txtPhoneNumber->Size = System::Drawing::Size(158, 22);
@@ -369,13 +369,13 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnAdd->FlatAppearance->BorderSize = 0;
 			this->btnAdd->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnAdd->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnAdd->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAdd->ForeColor = System::Drawing::Color::Black;
-			this->btnAdd->Location = System::Drawing::Point(151, 193);
+			this->btnAdd->Location = System::Drawing::Point(151, 200);
 			this->btnAdd->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnAdd->Name = L"btnAdd";
-			this->btnAdd->Size = System::Drawing::Size(154, 49);
+			this->btnAdd->Size = System::Drawing::Size(148, 42);
 			this->btnAdd->TabIndex = 9;
 			this->btnAdd->Text = L"Agregar";
 			this->btnAdd->UseVisualStyleBackColor = false;
@@ -389,13 +389,13 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnUpdate->FlatAppearance->BorderSize = 0;
 			this->btnUpdate->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnUpdate->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnUpdate->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnUpdate->ForeColor = System::Drawing::Color::Black;
-			this->btnUpdate->Location = System::Drawing::Point(356, 193);
+			this->btnUpdate->Location = System::Drawing::Point(356, 200);
 			this->btnUpdate->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnUpdate->Name = L"btnUpdate";
-			this->btnUpdate->Size = System::Drawing::Size(143, 49);
+			this->btnUpdate->Size = System::Drawing::Size(137, 42);
 			this->btnUpdate->TabIndex = 10;
 			this->btnUpdate->Text = L"Modificar";
 			this->btnUpdate->UseVisualStyleBackColor = false;
@@ -409,13 +409,13 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnDelete->FlatAppearance->BorderSize = 0;
 			this->btnDelete->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnDelete->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnDelete->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnDelete->ForeColor = System::Drawing::Color::Black;
-			this->btnDelete->Location = System::Drawing::Point(542, 193);
+			this->btnDelete->Location = System::Drawing::Point(542, 200);
 			this->btnDelete->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnDelete->Name = L"btnDelete";
-			this->btnDelete->Size = System::Drawing::Size(150, 49);
+			this->btnDelete->Size = System::Drawing::Size(144, 42);
 			this->btnDelete->TabIndex = 11;
 			this->btnDelete->Text = L"Eliminar";
 			this->btnDelete->UseVisualStyleBackColor = false;
@@ -428,12 +428,12 @@ namespace SalesSystemGUIApp {
 			this->btnCleanControls->BackColor = System::Drawing::Color::LightSkyBlue;
 			this->btnCleanControls->FlatAppearance->BorderSize = 0;
 			this->btnCleanControls->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnCleanControls->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnCleanControls->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnCleanControls->ForeColor = System::Drawing::Color::Black;
-			this->btnCleanControls->Location = System::Drawing::Point(773, 200);
+			this->btnCleanControls->Location = System::Drawing::Point(772, 200);
 			this->btnCleanControls->Name = L"btnCleanControls";
-			this->btnCleanControls->Size = System::Drawing::Size(178, 42);
+			this->btnCleanControls->Size = System::Drawing::Size(179, 42);
 			this->btnCleanControls->TabIndex = 21;
 			this->btnCleanControls->Text = L"Limpiar todo";
 			this->btnCleanControls->UseVisualStyleBackColor = false;
@@ -449,7 +449,7 @@ namespace SalesSystemGUIApp {
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->archivoToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
-			this->menuStrip1->Size = System::Drawing::Size(983, 33);
+			this->menuStrip1->Size = System::Drawing::Size(983, 31);
 			this->menuStrip1->TabIndex = 22;
 			this->menuStrip1->Text = L"menuStrip1";
 			// 
@@ -460,10 +460,10 @@ namespace SalesSystemGUIApp {
 				this->nuevoToolStripMenuItem,
 					this->modificarToolStripMenuItem, this->salirToolStripMenuItem
 			});
-			this->archivoToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->archivoToolStripMenuItem->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->archivoToolStripMenuItem->Name = L"archivoToolStripMenuItem";
-			this->archivoToolStripMenuItem->Size = System::Drawing::Size(86, 29);
+			this->archivoToolStripMenuItem->Size = System::Drawing::Size(81, 27);
 			this->archivoToolStripMenuItem->Text = L"Archivo";
 			// 
 			// nuevoToolStripMenuItem

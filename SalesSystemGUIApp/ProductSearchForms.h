@@ -104,6 +104,7 @@ namespace SalesSystemGUIApp {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProductSearchForms::typeid));
 			this->txtNameProduct = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->txtDescriptionProduct = (gcnew System::Windows::Forms::TextBox());
@@ -240,7 +241,8 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->txtNameProduct);
 			this->Controls->Add(this->label1);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ProductSearchForms";
 			this->Text = L"ProductSearchForms";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSearch))->EndInit();

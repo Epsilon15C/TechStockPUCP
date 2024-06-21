@@ -160,6 +160,7 @@ namespace SalesSystemGUIApp {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(GeneratOrderForm::typeid));
 			this->txtClientOrder = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->dgvOrder = (gcnew System::Windows::Forms::DataGridView());
@@ -264,7 +265,7 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnAddOrder->FlatAppearance->BorderSize = 0;
 			this->btnAddOrder->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnAddOrder->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnAddOrder->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnAddOrder->Location = System::Drawing::Point(427, 74);
 			this->btnAddOrder->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -300,7 +301,7 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnGenerateOrder->FlatAppearance->BorderSize = 0;
 			this->btnGenerateOrder->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnGenerateOrder->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnGenerateOrder->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnGenerateOrder->Location = System::Drawing::Point(15, 320);
 			this->btnGenerateOrder->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
@@ -317,12 +318,12 @@ namespace SalesSystemGUIApp {
 				static_cast<System::Int32>(static_cast<System::Byte>(155)));
 			this->btnGenerate->FlatAppearance->BorderSize = 0;
 			this->btnGenerate->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->btnGenerate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->btnGenerate->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->btnGenerate->Location = System::Drawing::Point(220, 320);
 			this->btnGenerate->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnGenerate->Name = L"btnGenerate";
-			this->btnGenerate->Size = System::Drawing::Size(179, 31);
+			this->btnGenerate->Size = System::Drawing::Size(194, 31);
 			this->btnGenerate->TabIndex = 27;
 			this->btnGenerate->Text = L"Generar Comprobante";
 			this->btnGenerate->UseVisualStyleBackColor = false;
@@ -350,7 +351,7 @@ namespace SalesSystemGUIApp {
 			// 
 			this->checkBox->AutoSize = true;
 			this->checkBox->Location = System::Drawing::Point(204, 108);
-			this->checkBox->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->checkBox->Margin = System::Windows::Forms::Padding(4);
 			this->checkBox->Name = L"checkBox";
 			this->checkBox->Size = System::Drawing::Size(18, 17);
 			this->checkBox->TabIndex = 30;
@@ -374,7 +375,8 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->dgvOrder);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->txtClientOrder);
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"GeneratOrderForm";
 			this->Text = L"Generar Orden";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrder))->EndInit();
