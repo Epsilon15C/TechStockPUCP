@@ -232,14 +232,7 @@ int SalesSystemPersistance::Persistance::DeleteCustomer(int customerId)
 
 Customer^ SalesSystemPersistance::Persistance::QueryCustomerById(int customerId)
 {
-    /*customersListDB = (List<Customer^>^)LoadBinaryFile(BIN_CUSTOMER_FILE_NAME);
-    for (int i = 0; i < customersListDB->Count; i++) {
-        if (customersListDB[i]->Id == customerId) {
-            return customersListDB[i];
-        }
-    }
-    return nullptr;
-    // TODO: Insertar una instrucción "return" aquí*/
+
 	Customer^ customer = nullptr;
 	SqlConnection^ conn;
 	SqlCommand^ cmd;
