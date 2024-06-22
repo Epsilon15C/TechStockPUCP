@@ -6,6 +6,10 @@
 #include <sql.h> // Incluir para trabajar con SQL Server
 
 
+using namespace System;
+
+using namespace System::Windows::Forms::DataVisualization::Charting;
+
 using namespace System::Data::SqlClient; // Para trabajar con SQL Server
 
 namespace SalesSystemGUIApp {
@@ -26,9 +30,8 @@ namespace SalesSystemGUIApp {
 		ReporteVentasForm(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: agregar código de constructor aquí
-			//
+			//CargarReporteVentas(); // Llamar a método para cargar el reporte de ventas al iniciar el formulario
+
 		}
 
 	protected:
@@ -41,6 +44,15 @@ namespace SalesSystemGUIApp {
 			{
 				delete components;
 			}
+
+			if (conn != nullptr)
+			{
+				if (conn->State == ConnectionState::Open)
+				{
+					conn->Close();
+				}
+				delete conn;
+			}
 		}
 
 	private:
@@ -48,6 +60,8 @@ namespace SalesSystemGUIApp {
 		/// Variable del diseñador necesaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
 
 		SqlConnection^ conn;
 
@@ -62,17 +76,45 @@ namespace SalesSystemGUIApp {
 				"User ID=projectLPOO;"
 				"Password=" + password + ";";
 
-			try
-			{
-				conn->Open(); // Abrir la conexión a la base de datos
-			}
-			catch (Exception^ ex)
-			{
-				MessageBox::Show("Error al conectar a la base de datos: " + ex->Message);
-			}
-
 			return conn;
 		}
+
+		// Método para cargar los datos de ventas al gráfico
+		void CargarReporteVentas()
+		{
+			String^ query = "SELECT ORDER_DATE, SUM(TOTAL_AMOUNT) AS TOTAL_VENTAS "
+				"FROM SALES_ORDER "
+				"GROUP BY ORDER_DATE";
+
+			SqlCommand^ cmd = gcnew SqlCommand(query, conn);
+			SqlDataReader^ reader;
+
+			try {
+				conn->Open();
+				reader = cmd->ExecuteReader();
+
+				// Limpiar series anteriores del gráfico
+				chart1->Series["VENTAS"]->Points->Clear();
+
+				// Agregar los datos al gráfico
+				while (reader->Read()) {
+					String^ fecha = safe_cast<String^>(reader["ORDER_DATE"]->ToString());
+					double totalVentas = Convert::ToDouble(reader["TOTAL_VENTAS"]);
+					chart1->Series["VENTAS"]->Points->AddXY(fecha, totalVentas);
+				}
+
+				reader->Close();
+			}
+			catch (Exception^ ex) {
+				MessageBox::Show("Error al cargar los datos: " + ex->Message);
+			}
+			finally {
+				if (conn->State == ConnectionState::Open) {
+					conn->Close();
+				}
+			}
+		}
+
 
 
 #pragma region Windows Form Designer generated code
@@ -82,66 +124,63 @@ namespace SalesSystemGUIApp {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
+			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
+			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->SuspendLayout();
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Location = System::Drawing::Point(82, 34);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(389, 249);
+			this->pictureBox1->TabIndex = 0;
+			this->pictureBox1->TabStop = false;
+			// 
+			// chart1
+			// 
+			chartArea1->Name = L"ChartArea1";
+			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->Name = L"Legend1";
+			this->chart1->Legends->Add(legend1);
+			this->chart1->Location = System::Drawing::Point(82, 34);
+			this->chart1->Name = L"chart1";
+			series1->ChartArea = L"ChartArea1";
+			series1->Legend = L"Legend1";
+			series1->Name = L"VENTAS";
+			this->chart1->Series->Add(series1);
+			this->chart1->Size = System::Drawing::Size(389, 249);
+			this->chart1->TabIndex = 1;
+			this->chart1->Text = L"chart1";
 			// 
 			// ReporteVentasForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(419, 303);
+			this->ClientSize = System::Drawing::Size(578, 328);
+			this->Controls->Add(this->chart1);
+			this->Controls->Add(this->pictureBox1);
 			this->Name = L"ReporteVentasForm";
 			this->Text = L"ReporteVentasForm";
+			this->Load += gcnew System::EventHandler(this, &ReporteVentasForm::ReporteVentasForm_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
 
-		/*
-		
-// Método para generar el reporte de ventas totales por día
-void ReporteVentasForm::GenerarReportePorDia() {
-    // Obtener la fecha seleccionada del DateTimePicker
-    DateTime selectedDate = dateTimePickerFecha->Value;
-    String^ selectedDateString = selectedDate.ToString("yyyy-MM-dd");
-
-    // Consulta SQL para obtener las ventas totales por día
-    String^ query = "SELECT so.ORDER_DATE AS Fecha, SUM(s.TOTAL_AMOUNT_WITH_TAX) AS VentasTotales "
-                    "FROM SALES_ORDER so "
-                    "JOIN SALE s ON so.ID = s.ORDER_ID "
-                    "WHERE CONVERT(date, so.ORDER_DATE) = @Fecha "
-                    "GROUP BY so.ORDER_DATE";
-
-    // Establecer la conexión y ejecutar la consulta
-    SqlConnection^ connection = GetConnection();
-    SqlCommand^ command = gcnew SqlCommand(query, connection);
-    command->Parameters->AddWithValue("@Fecha", selectedDateString);
-
-    try {
-        connection->Open();
-        SqlDataAdapter^ adapter = gcnew SqlDataAdapter(command);
-        DataTable^ dt = gcnew DataTable();
-        adapter->Fill(dt);
-
-        // Mostrar los resultados en el DataGridView
-        dataGridViewReporte->DataSource = dt;
-    }
-    catch (Exception^ ex) {
-        MessageBox::Show("Error al generar el reporte: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-    }
-    finally {
-        if (connection->State == ConnectionState::Open) {
-            connection->Close();
-        }
-    }
-}
-
-// Evento para el botón de generar reporte
-System::Void ReporteVentasForm::btnGenerarReporte_Click(System::Object^ sender, System::EventArgs^ e) {
-    GenerarReportePorDia();
-}
-		*/
 
 
+	private: System::Void ReporteVentasForm_Load(System::Object^ sender, System::EventArgs^ e) {
+		// Cargar reporte de ventas al cargar el formulario
+		conn = GetConnection();
+		CargarReporteVentas();
 
-	};
+	}
+};
 }
