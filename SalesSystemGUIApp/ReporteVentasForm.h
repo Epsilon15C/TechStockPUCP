@@ -104,6 +104,14 @@ namespace SalesSystemGUIApp {
 				}
 
 				reader->Close();
+
+				// Configurar el título del gráfico
+				chart1->Titles->Clear(); // Limpiar títulos anteriores
+				chart1->Titles->Add("Reporte de Ventas"); // Título principal del gráfico
+
+				// Configurar nombres de ejes
+				chart1->ChartAreas["ChartArea1"]->AxisX->Title = "Fecha";
+				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "Monto Vendido (soles)";
 			}
 			catch (Exception^ ex) {
 				MessageBox::Show("Error al cargar los datos: " + ex->Message);
