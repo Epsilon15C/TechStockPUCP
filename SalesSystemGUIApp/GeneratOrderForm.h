@@ -508,6 +508,25 @@ private: int InsertOrderIntoDatabase(String^ clientOrder, String^ RUCOrder, doub
 
 			insertSaleCommand->ExecuteNonQuery();
 
+			// Inserta los productos en la tabla ORDER_PRODUCT
+			for each (DataGridViewRow ^ row in dgvOrder->Rows) {
+				if (row->Cells["ProductIDOrder"]->Value != nullptr) {
+					int productId = Convert::ToInt32(row->Cells["ProductIDOrder"]->Value);
+					int quantity = Convert::ToInt32(row->Cells["QuantityOrder"]->Value);
+					double subTotal = Convert::ToDouble(row->Cells["SubTotalPriceOrder"]->Value);
+
+					String^ insertOrderProductQuery = "INSERT INTO ORDER_PRODUCT (ORDER_ID, PRODUCT_ID, QUANTITY, SUBTOTAL) VALUES (@OrderID, @ProductID, @Quantity, @Subtotal)";
+					SqlCommand^ insertOrderProductCommand = gcnew SqlCommand(insertOrderProductQuery, connection, transaction);
+					insertOrderProductCommand->Parameters->AddWithValue("@OrderID", orderId);
+					insertOrderProductCommand->Parameters->AddWithValue("@ProductID", productId);
+					insertOrderProductCommand->Parameters->AddWithValue("@Quantity", quantity);
+					insertOrderProductCommand->Parameters->AddWithValue("@Subtotal", subTotal);
+
+					insertOrderProductCommand->ExecuteNonQuery();
+				}
+			}
+
+
 			// Confirma la transacción
 			transaction->Commit();
 
