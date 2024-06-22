@@ -45,6 +45,8 @@ namespace SalesSystemGUIApp {
 			// Llamar a la función para establecer las celdas del DataGridView como ReadOnly
 			SetDataGridViewReadOnly(dgvOrder);
 
+
+
 		}
 
 
@@ -464,6 +466,70 @@ private: System::Void btnGenerateOrder_Click(System::Object^ sender, System::Eve
 
 	purchaseForm->ShowDialog();
 }
+
+
+private: int InsertOrderIntoDatabase(String^ clientOrder, String^ RUCOrder, double totalPrice) {
+	SqlConnection^ connection = nullptr;
+	int orderId = -1;
+	int iDUsuarioActual = UserSession::UserId;
+
+	try {
+		// Obtén la conexión a la base de datos
+		connection = GetConnection();
+
+		// Comienza una transacción
+		SqlTransaction^ transaction = connection->BeginTransaction();
+
+		try {
+			// Obtén la fecha actual
+			String^ currentDate = DateTime::Now.ToString("yyyy-MM-dd");
+
+			// Inserta la orden en la tabla SALES_ORDER
+			String^ insertSalesOrderQuery = "INSERT INTO SALES_ORDER (ORDER_DATE, TOTAL_AMOUNT, PERSON_ID, STATUS) VALUES (@OrderDate, @TotalAmount, @PersonID, @Status); SELECT SCOPE_IDENTITY();";
+			SqlCommand^ insertSalesOrderCommand = gcnew SqlCommand(insertSalesOrderQuery, connection, transaction);
+			insertSalesOrderCommand->Parameters->AddWithValue("@OrderDate", currentDate);
+			insertSalesOrderCommand->Parameters->AddWithValue("@TotalAmount", totalPrice);
+			insertSalesOrderCommand->Parameters->AddWithValue("@PersonID", iDUsuarioActual);
+			insertSalesOrderCommand->Parameters->AddWithValue("@Status", "P"); // Ejemplo de estado, puedes cambiarlo según tus necesidades
+
+			// Obtén el ID de la orden insertada
+			orderId = Convert::ToInt32(insertSalesOrderCommand->ExecuteScalar());
+
+			// Inserta los detalles de la venta en la tabla SALE
+			double totalAmountWithoutTax = totalPrice / 1.18; // Suponiendo un IGV del 18%
+			double totalAmountWithTax = totalPrice;
+
+			String^ insertSaleQuery = "INSERT INTO SALE (RUC, TOTAL_AMOUNT_WITHOUT_TAX, TOTAL_AMOUNT_WITH_TAX, ORDER_ID) VALUES (@RUC, @TotalAmountWithoutTax, @TotalAmountWithTax, @OrderID)";
+			SqlCommand^ insertSaleCommand = gcnew SqlCommand(insertSaleQuery, connection, transaction);
+			insertSaleCommand->Parameters->AddWithValue("@RUC", RUCOrder);
+			insertSaleCommand->Parameters->AddWithValue("@TotalAmountWithoutTax", totalAmountWithoutTax);
+			insertSaleCommand->Parameters->AddWithValue("@TotalAmountWithTax", totalAmountWithTax);
+			insertSaleCommand->Parameters->AddWithValue("@OrderID", orderId); // Aquí se usa el orderId obtenido anteriormente
+
+			insertSaleCommand->ExecuteNonQuery();
+
+			// Confirma la transacción
+			transaction->Commit();
+
+			MessageBox::Show("Orden insertada exitosamente en la base de datos.", "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		}
+		catch (Exception^ ex) {
+			// En caso de error, revierte la transacción
+			transaction->Rollback();
+			MessageBox::Show("Error al insertar la orden en la base de datos: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("Error al conectar con la base de datos: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+	}
+	finally {
+		if (connection != nullptr && connection->State == ConnectionState::Open) {
+			connection->Close();
+		}
+	}
+
+	return orderId; // Retorna el ID de la orden insertada
+}
 	
 
 
@@ -483,166 +549,161 @@ private: System::Void btnGenerateOrder_Click(System::Object^ sender, System::Eve
 
 		   // Generacion del PDF para la venta
 private: System::Void btnGenerate_Click(System::Object^ sender, System::EventArgs^ e) {
-	int counter = 1; // Contador para los archivos PDF generados
+	// Obtén los valores desde los campos correspondientes
+	String^ clientOrder = txtClientOrder->Text;
+	String^ RUCOrder = txtRUCOrder->Text;
+	double totalPrice = Convert::ToDouble(txtTotal->Text);
+
+	// Inserta la orden en la base de datos y obtén el orderId
+	int orderId = InsertOrderIntoDatabase(clientOrder, RUCOrder, totalPrice);
+	if (orderId == -1) {
+		MessageBox::Show("Error al insertar la orden en la base de datos.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		return;
+	}
+
+	// Generar el número de boleta basado en el orderId
+	String^ invoiceNumber = String::Format("B001-{0:D3}", orderId); // Generar el número de boleta dinámicamente
+
+	// Generar el PDF
 	String^ basePdfPath = "..\\Compra"; // Nombre base del archivo PDF sin extensión
+	String^ pdfPath = String::Format("{0}_{1}.pdf", basePdfPath, orderId);
 
-	while (true) {
-		// Construir el nombre completo del archivo PDF
-		String^ pdfPath = String::Format("{0}_{1}.pdf", basePdfPath, counter);
+	// Crear el documento PDF
+	Document^ document = gcnew Document();
+	try {
+		PdfWriter^ writer = PdfWriter::GetInstance(document, gcnew FileStream(pdfPath, FileMode::Create, FileAccess::Write, FileShare::None));
+		document->Open();
 
-		// Verificar si el archivo existe
-		if (!File::Exists(pdfPath)) {
-			// Si el archivo no existe, crear el documento PDF
-			Document^ document = gcnew Document();
-			try {
-				PdfWriter^ writer = PdfWriter::GetInstance(document, gcnew FileStream(pdfPath, FileMode::Create, FileAccess::Write, FileShare::None));
-				document->Open();
+		// Agregar logo al inicio
+		iTextSharp::text::Image^ logo = iTextSharp::text::Image::GetInstance("..\\logo.png");
+		logo->ScaleToFit(150, 150);
+		logo->SetAbsolutePosition(30, 705); // Posición absoluta en la página
+		document->Add(logo);
 
-				// Agregar logo al inicio
-				iTextSharp::text::Image^ logo = iTextSharp::text::Image::GetInstance("..\\logo.png");
-				logo->ScaleToFit(150, 150);
-				logo->SetAbsolutePosition(30, 705); // Posición absoluta en la página
-				document->Add(logo);
+		// Crear un rectángulo para el RUC y Boleta de venta Electrónica
+		PdfContentByte^ cb = writer->DirectContent;
+		cb->SetLineWidth(1.0); // Ancho de la línea del rectángulo
+		cb->Rectangle(400.0, 690.0, 140.0, 60.0); // (x, y, width, height)
+		cb->Stroke();
 
-				// Crear un rectángulo para el RUC y Boleta de venta Electrónica
-				PdfContentByte^ cb = writer->DirectContent;
-				cb->SetLineWidth(1.0); // Ancho de la línea del rectángulo
-				cb->Rectangle(400.0, 690.0, 140.0, 60.0); // (x, y, width, height)
-				cb->Stroke();
+		// Agregar texto dentro del rectángulo
+		iTextSharp::text::Font^ rectFont = FontFactory::GetFont(FontFactory::HELVETICA, 10, iTextSharp::text::Font::BOLD);
+		ColumnText::ShowTextAligned(cb, Element::ALIGN_LEFT, gcnew Phrase(invoiceNumber, rectFont), 405, 700, 0);
 
-				// Agregar texto dentro del rectángulo
-				iTextSharp::text::Font^ rectFont = FontFactory::GetFont(FontFactory::HELVETICA, 10, iTextSharp::text::Font::BOLD);
-				String^ invoiceNumber = String::Format("B001-{0:D3}", counter); // Generar el número de boleta dinámicamente
-				ColumnText::ShowTextAligned(cb, Element::ALIGN_LEFT, gcnew Phrase(invoiceNumber, rectFont), 405, 700, 0);
+		// Texto "RUC" y "Boleta de venta Electrónica"
+		ColumnText::ShowTextAligned(cb, Element::ALIGN_LEFT, gcnew Phrase("RUC: 20512050200", rectFont), 405, 730, 0);
+		ColumnText::ShowTextAligned(cb, Element::ALIGN_LEFT, gcnew Phrase("Boleta de venta Electrónica", rectFont), 405, 715, 0);
 
-				// Texto "RUC" y "Boleta de venta Electrónica"
-				ColumnText::ShowTextAligned(cb, Element::ALIGN_LEFT, gcnew Phrase("RUC: 20512050200", rectFont), 405, 730, 0);
-				ColumnText::ShowTextAligned(cb, Element::ALIGN_LEFT, gcnew Phrase("Boleta de venta Electrónica", rectFont), 405, 715, 0);
+		// Texto "TECHSTOCK PUCP S.A.C" en negrita
+		iTextSharp::text::Font^ boldFont = FontFactory::GetFont(FontFactory::HELVETICA_BOLD, 8);
+		Paragraph^ companyText = gcnew Paragraph("TECHSTOCK PUCP S.A.C", boldFont);
+		companyText->Alignment = Element::ALIGN_LEFT;
+		companyText->IndentationLeft = 150; // Mover hacia la derecha para alinear con el logo
+		document->Add(companyText);
 
-				// Texto "TECHSTOCK PUCP S.A.C" en negrita
-				iTextSharp::text::Font^ boldFont = FontFactory::GetFont(FontFactory::HELVETICA_BOLD, 8);
-				Paragraph^ companyText = gcnew Paragraph("TECHSTOCK PUCP S.A.C", boldFont);
-				companyText->Alignment = Element::ALIGN_LEFT;
-				companyText->IndentationLeft = 150; // Mover hacia la derecha para alinear con el logo
-				document->Add(companyText);
+		// Texto "San Miguel" en negrita
+		Paragraph^ locationText = gcnew Paragraph("San Miguel", boldFont);
+		locationText->Alignment = Element::ALIGN_LEFT;
+		locationText->IndentationLeft = 150; // Mover hacia la derecha para alinear con el logo
+		document->Add(locationText);
 
-				// Texto "San Miguel" en negrita
-				Paragraph^ locationText = gcnew Paragraph("San Miguel", boldFont);
-				locationText->Alignment = Element::ALIGN_LEFT;
-				locationText->IndentationLeft = 150; // Mover hacia la derecha para alinear con el logo
-				document->Add(locationText);
+		// Texto "Lima - Lima" en negrita
+		Paragraph^ addressText = gcnew Paragraph("Lima - Lima", boldFont);
+		addressText->Alignment = Element::ALIGN_LEFT;
+		addressText->IndentationLeft = 150; // Mover hacia la derecha para alinear con el logo
+		document->Add(addressText);
 
-				// Texto "Lima - Lima" en negrita
-				Paragraph^ addressText = gcnew Paragraph("Lima - Lima", boldFont);
-				addressText->Alignment = Element::ALIGN_LEFT;
-				addressText->IndentationLeft = 150; // Mover hacia la derecha para alinear con el logo
-				document->Add(addressText);
+		// Espacio en blanco
+		document->Add(gcnew Paragraph(" ")); // Espacio en blanco
 
-				// Espacio en blanco
-				document->Add(gcnew Paragraph(" ")); // Espacio en blanco
+		// Agregar fecha en posición específica
+		DateTime currentDate = DateTime::Now;
+		String^ formattedDate = currentDate.ToString("dd/MM/yyyy");
+		iTextSharp::text::Font^ dateFont = FontFactory::GetFont(FontFactory::HELVETICA, 10, iTextSharp::text::Font::BOLD);
+		ColumnText::ShowTextAligned(cb, Element::ALIGN_LEFT, gcnew Phrase("Fecha: " + formattedDate, dateFont), 460, 780, 0);
 
-				// Agregar fecha en posición específica
-				DateTime currentDate = DateTime::Now;
-				String^ formattedDate = currentDate.ToString("dd/MM/yyyy");
-				iTextSharp::text::Font^ dateFont = FontFactory::GetFont(FontFactory::HELVETICA, 10, iTextSharp::text::Font::BOLD);
-				ColumnText::ShowTextAligned(cb, Element::ALIGN_LEFT, gcnew Phrase("Fecha: " + formattedDate, dateFont), 460, 780, 0);
+		// Datos del Cliente
+		iTextSharp::text::Font^ sectionFont = FontFactory::GetFont(FontFactory::HELVETICA_BOLD, 14);
+		Paragraph^ clientDetails = gcnew Paragraph("Datos del Cliente", sectionFont);
+		clientDetails->Alignment = Element::ALIGN_LEFT;
+		document->Add(clientDetails);
 
-				// Datos del Cliente
-				iTextSharp::text::Font^ sectionFont = FontFactory::GetFont(FontFactory::HELVETICA_BOLD, 14);
-				Paragraph^ clientDetails = gcnew Paragraph("Datos del Cliente", sectionFont);
-				clientDetails->Alignment = Element::ALIGN_LEFT;
-				document->Add(clientDetails);
+		iTextSharp::text::Font^ contentFont = FontFactory::GetFont(FontFactory::HELVETICA, 12);
+		document->Add(gcnew Paragraph("Cliente: " + clientOrder, contentFont));
 
-				iTextSharp::text::Font^ contentFont = FontFactory::GetFont(FontFactory::HELVETICA, 12);
-				document->Add(gcnew Paragraph("Cliente: " + txtClientOrder->Text, contentFont));
-
-				// Verificar si el CheckBox está marcado
-				if (checkBox->Checked) {
-					// Si está marcado, agregar el RUC al PDF
-					document->Add(gcnew Paragraph("RUC: " + txtRUCOrder->Text, contentFont));
-				}
-
-				document->Add(gcnew Paragraph(" ")); // Espacio en blanco
-
-				// Detalles de la Compra
-				Paragraph^ purchaseDetails = gcnew Paragraph("Detalles de la Compra", sectionFont);
-				purchaseDetails->Alignment = Element::ALIGN_LEFT;
-				document->Add(purchaseDetails);
-
-				document->Add(gcnew Paragraph(" ")); // Añadir espacio en blanco después de los detalles de la compra
-
-				PdfPTable^ table = gcnew PdfPTable(3); // Crear una tabla con 3 columnas
-
-				// Encabezados de la tabla
-				table->AddCell("Descripción");
-				table->AddCell("Cantidad");
-				table->AddCell("Subtotal (S/.)");
-
-				// Añadir filas a la tabla
-				for each (DataGridViewRow ^ row in dgvOrder->Rows) {
-					if (row->Cells["NameOrder"]->Value != nullptr) {
-						table->AddCell(gcnew Phrase(row->Cells["DescriptionOrder"]->Value->ToString(), contentFont));
-						table->AddCell(gcnew Phrase(row->Cells["QuantityOrder"]->Value->ToString(), contentFont));
-						table->AddCell(gcnew Phrase(row->Cells["SubTotalPriceOrder"]->Value->ToString(), contentFont));
-					}
-				}
-
-				// Ancho de las columnas
-				array<float>^ columnWidths = { 3.0f, 1.0f, 1.0f }; // El ancho de la primera columna (descripción) será 3 veces el ancho de las otras dos columnas
-				table->SetWidths(columnWidths);
-
-				// Establecer el ancho de la tabla
-				table->WidthPercentage = 100;
-
-				document->Add(table);
-
-				document->Add(gcnew Paragraph(" ")); // Espacio en blanco
-
-				// Calcular IGV y Base Imponible
-				double totalAmount = Convert::ToDouble(txtTotal->Text);
-				double igv = totalAmount * 0.18;
-				double baseImponible = totalAmount - igv;
-
-				// Mostrar Base Imponible
-				Paragraph^ baseImponibleParagraph = gcnew Paragraph("Base Imponible: S/. " + baseImponible.ToString("F2"), contentFont);
-				baseImponibleParagraph->Alignment = Element::ALIGN_RIGHT;
-				document->Add(baseImponibleParagraph);
-
-				// Mostrar IGV (18% del importe total)
-				Paragraph^ igvParagraph = gcnew Paragraph("IGV: S/. " + igv.ToString("F2"), contentFont);
-				igvParagraph->Alignment = Element::ALIGN_RIGHT;
-				document->Add(igvParagraph);
-
-				// Mostrar Importe Total
-				Paragraph^ totalPrice = gcnew Paragraph("Importe Total (S/.): " + totalAmount.ToString("F2"), sectionFont);
-				totalPrice->Alignment = Element::ALIGN_RIGHT;
-				document->Add(totalPrice);
-
-				// Pie de página
-				document->Add(gcnew Paragraph(" "));
-				Paragraph^ footer = gcnew Paragraph("Gracias por su compra", FontFactory::GetFont(FontFactory::HELVETICA_OBLIQUE, 12));
-				footer->Alignment = Element::ALIGN_CENTER;
-				document->Add(footer);
-
-				document->Close(); // Cerrar el documento PDF
-
-				MessageBox::Show(String::Format("PDF generado exitosamente: {0}", pdfPath), "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
-				counter++; // Incrementar el contador para el siguiente archivo PDF
-			}
-			catch (Exception^ ex) {
-				MessageBox::Show("Error al generar el PDF: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			}
-			finally {
-				if (document != nullptr && document->IsOpen()) {
-					document->Close(); // Cerrar el documento si está abierto
-				}
-			}
-
-			break; // Salir del bucle después de generar un PDF exitosamente
+		// Verificar si el CheckBox está marcado
+		if (checkBox->Checked) {
+			// Si está marcado, agregar el RUC al PDF
+			document->Add(gcnew Paragraph("RUC: " + RUCOrder, contentFont));
 		}
-		else {
-			counter++; // Si el archivo existe, intentar con el siguiente número
+
+		document->Add(gcnew Paragraph(" ")); // Espacio en blanco
+
+		// Detalles de la Compra
+		Paragraph^ purchaseDetails = gcnew Paragraph("Detalles de la Compra", sectionFont);
+		purchaseDetails->Alignment = Element::ALIGN_LEFT;
+		document->Add(purchaseDetails);
+
+		document->Add(gcnew Paragraph(" ")); // Añadir espacio en blanco después de los detalles de la compra
+
+		PdfPTable^ table = gcnew PdfPTable(3); // Crear una tabla con 3 columnas
+
+		// Encabezados de la tabla
+		table->AddCell("Descripción");
+		table->AddCell("Cantidad");
+		table->AddCell("Subtotal (S/.)");
+
+		// Añadir filas a la tabla
+		for each (DataGridViewRow ^ row in dgvOrder->Rows) {
+			if (row->Cells["NameOrder"]->Value != nullptr) {
+				table->AddCell(gcnew Phrase(row->Cells["DescriptionOrder"]->Value->ToString(), contentFont));
+				table->AddCell(gcnew Phrase(row->Cells["QuantityOrder"]->Value->ToString(), contentFont));
+				table->AddCell(gcnew Phrase(row->Cells["SubTotalPriceOrder"]->Value->ToString(), contentFont));
+			}
 		}
+
+		// Ancho de las columnas
+		array<float>^ columnWidths = { 3.0f, 1.0f, 1.0f }; // El ancho de la primera columna (descripción) será 3 veces el ancho de las otras dos columnas
+		table->SetWidths(columnWidths);
+
+		// Establecer el ancho de la tabla
+		table->WidthPercentage = 100;
+
+		document->Add(table);
+
+		document->Add(gcnew Paragraph(" ")); // Espacio en blanco
+
+		// Calcular IGV y Base Imponible
+		double igv = totalPrice * 0.18;
+		double baseImponible = totalPrice - igv;
+
+		// Mostrar Base Imponible
+		Paragraph^ baseImponibleParagraph = gcnew Paragraph("Base Imponible: S/. " + baseImponible.ToString("F2"), contentFont);
+		baseImponibleParagraph->Alignment = Element::ALIGN_RIGHT;
+		document->Add(baseImponibleParagraph);
+
+		// Mostrar IGV (18% del importe total)
+		Paragraph^ igvParagraph = gcnew Paragraph("IGV: S/. " + igv.ToString("F2"), contentFont);
+		igvParagraph->Alignment = Element::ALIGN_RIGHT;
+		document->Add(igvParagraph);
+
+		// Mostrar Importe Total
+		Paragraph^ totalPriceText = gcnew Paragraph("Importe Total (S/.): " + totalPrice.ToString("F2"), sectionFont);
+		totalPriceText->Alignment = Element::ALIGN_RIGHT;
+		document->Add(totalPriceText);
+
+		// Pie de página
+		document->Add(gcnew Paragraph(" "));
+		Paragraph^ footer = gcnew Paragraph("Gracias por su compra", FontFactory::GetFont(FontFactory::HELVETICA_OBLIQUE, 12));
+		footer->Alignment = Element::ALIGN_CENTER;
+		document->Add(footer);
+
+		document->Close(); // Cerrar el documento PDF
+
+		MessageBox::Show(String::Format("PDF generado exitosamente: {0}", pdfPath), "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
+	}
+	catch (Exception^ ex) {
+		MessageBox::Show("Error al generar el PDF: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 }
 
