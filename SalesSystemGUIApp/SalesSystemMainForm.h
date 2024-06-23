@@ -7,6 +7,8 @@
 #include "CreateAccountForm.h"
 #include "preguntasfrecuentes.h"
 #include "ReporteVentasForm.h"
+#include "ProductosVendidosForm.h"
+
 
 namespace SalesSystemGUIApp {
 
@@ -28,6 +30,7 @@ namespace SalesSystemGUIApp {
 	public:
 		 int iDUsuarioActual;
 	private: System::Windows::Forms::ToolStripMenuItem^ reporteDeVentasToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ gráficoDeProductosVendidosToolStripMenuItem;
 	public:
 		static Customer^ Customer;
 		SalesSystemMainForm(void)
@@ -107,9 +110,10 @@ namespace SalesSystemGUIApp {
 			this->transaccionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->generrOrdenToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->reporteDeVentasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->preguntasFrecuentesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->reporteDeVentasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->gráficoDeProductosVendidosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -190,10 +194,20 @@ namespace SalesSystemGUIApp {
 			// 
 			// reporteToolStripMenuItem
 			// 
-			this->reporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->reporteDeVentasToolStripMenuItem });
+			this->reporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->reporteDeVentasToolStripMenuItem,
+					this->gráficoDeProductosVendidosToolStripMenuItem
+			});
 			this->reporteToolStripMenuItem->Name = L"reporteToolStripMenuItem";
 			this->reporteToolStripMenuItem->Size = System::Drawing::Size(60, 20);
 			this->reporteToolStripMenuItem->Text = L"Reporte";
+			// 
+			// reporteDeVentasToolStripMenuItem
+			// 
+			this->reporteDeVentasToolStripMenuItem->Name = L"reporteDeVentasToolStripMenuItem";
+			this->reporteDeVentasToolStripMenuItem->Size = System::Drawing::Size(236, 22);
+			this->reporteDeVentasToolStripMenuItem->Text = L"Reporte de ventas";
+			this->reporteDeVentasToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::reporteDeVentasToolStripMenuItem_Click);
 			// 
 			// ayudaToolStripMenuItem
 			// 
@@ -209,12 +223,12 @@ namespace SalesSystemGUIApp {
 			this->preguntasFrecuentesToolStripMenuItem->Text = L"Preguntas Frecuentes";
 			this->preguntasFrecuentesToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::preguntasFrecuentesToolStripMenuItem_Click);
 			// 
-			// reporteDeVentasToolStripMenuItem
+			// gráficoDeProductosVendidosToolStripMenuItem
 			// 
-			this->reporteDeVentasToolStripMenuItem->Name = L"reporteDeVentasToolStripMenuItem";
-			this->reporteDeVentasToolStripMenuItem->Size = System::Drawing::Size(180, 22);
-			this->reporteDeVentasToolStripMenuItem->Text = L"Reporte de ventas";
-			this->reporteDeVentasToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::reporteDeVentasToolStripMenuItem_Click);
+			this->gráficoDeProductosVendidosToolStripMenuItem->Name = L"gráficoDeProductosVendidosToolStripMenuItem";
+			this->gráficoDeProductosVendidosToolStripMenuItem->Size = System::Drawing::Size(236, 22);
+			this->gráficoDeProductosVendidosToolStripMenuItem->Text = L"Gráfico de productos vendidos";
+			this->gráficoDeProductosVendidosToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::gráficoDeProductosVendidosToolStripMenuItem_Click);
 			// 
 			// SalesSystemMainForm
 			// 
@@ -227,7 +241,7 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->menuStrip1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
-			this->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->Margin = System::Windows::Forms::Padding(2);
 			this->Name = L"SalesSystemMainForm";
 			this->Text = L"TechStockPUCP";
 			this->TransparencyKey = System::Drawing::Color::Transparent;
@@ -319,6 +333,11 @@ private: System::Void preguntasFrecuentesToolStripMenuItem_Click(System::Object^
 private: System::Void reporteDeVentasToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
 	ReporteVentasForm^ reporteVentas = gcnew ReporteVentasForm();
 	reporteVentas->Show();
+}
+private: System::Void gráficoDeProductosVendidosToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e) {
+	ProductosVendidosForm^ productosVendidos = gcnew ProductosVendidosForm();
+	productosVendidos->Show();
+
 }
 };
 
