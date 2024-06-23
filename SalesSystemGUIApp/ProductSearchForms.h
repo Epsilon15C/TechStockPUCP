@@ -76,6 +76,7 @@ namespace SalesSystemGUIApp {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameProduct;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ DescriptionProduct;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PriceProduct;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ProductID;
 
 
 
@@ -115,42 +116,45 @@ namespace SalesSystemGUIApp {
 			this->NameProduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->DescriptionProduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->PriceProduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ProductID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSearch))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// txtNameProduct
 			// 
-			this->txtNameProduct->Location = System::Drawing::Point(129, 43);
-			this->txtNameProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->txtNameProduct->Location = System::Drawing::Point(97, 35);
+			this->txtNameProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->txtNameProduct->Name = L"txtNameProduct";
-			this->txtNameProduct->Size = System::Drawing::Size(244, 22);
+			this->txtNameProduct->Size = System::Drawing::Size(184, 20);
 			this->txtNameProduct->TabIndex = 11;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->ForeColor = System::Drawing::Color::White;
-			this->label1->Location = System::Drawing::Point(33, 47);
+			this->label1->Location = System::Drawing::Point(25, 38);
+			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(59, 16);
+			this->label1->Size = System::Drawing::Size(47, 13);
 			this->label1->TabIndex = 10;
 			this->label1->Text = L"Nombre:";
 			// 
 			// txtDescriptionProduct
 			// 
-			this->txtDescriptionProduct->Location = System::Drawing::Point(164, 95);
-			this->txtDescriptionProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->txtDescriptionProduct->Location = System::Drawing::Point(123, 77);
+			this->txtDescriptionProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->txtDescriptionProduct->Name = L"txtDescriptionProduct";
-			this->txtDescriptionProduct->Size = System::Drawing::Size(209, 22);
+			this->txtDescriptionProduct->Size = System::Drawing::Size(158, 20);
 			this->txtDescriptionProduct->TabIndex = 13;
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(33, 98);
+			this->label2->Location = System::Drawing::Point(25, 80);
+			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(82, 16);
+			this->label2->Size = System::Drawing::Size(66, 13);
 			this->label2->TabIndex = 12;
 			this->label2->Text = L"Descripción:";
 			// 
@@ -162,10 +166,10 @@ namespace SalesSystemGUIApp {
 			this->btnSearchProduct->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnSearchProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSearchProduct->Location = System::Drawing::Point(115, 158);
-			this->btnSearchProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnSearchProduct->Location = System::Drawing::Point(86, 128);
+			this->btnSearchProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnSearchProduct->Name = L"btnSearchProduct";
-			this->btnSearchProduct->Size = System::Drawing::Size(131, 31);
+			this->btnSearchProduct->Size = System::Drawing::Size(98, 25);
 			this->btnSearchProduct->TabIndex = 14;
 			this->btnSearchProduct->Text = L"Buscar";
 			this->btnSearchProduct->UseVisualStyleBackColor = false;
@@ -179,10 +183,10 @@ namespace SalesSystemGUIApp {
 			this->btnCancelProduct->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnCancelProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCancelProduct->Location = System::Drawing::Point(284, 158);
-			this->btnCancelProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->btnCancelProduct->Location = System::Drawing::Point(213, 128);
+			this->btnCancelProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->btnCancelProduct->Name = L"btnCancelProduct";
-			this->btnCancelProduct->Size = System::Drawing::Size(131, 31);
+			this->btnCancelProduct->Size = System::Drawing::Size(98, 25);
 			this->btnCancelProduct->TabIndex = 15;
 			this->btnCancelProduct->Text = L"Cancelar";
 			this->btnCancelProduct->UseVisualStyleBackColor = false;
@@ -192,17 +196,17 @@ namespace SalesSystemGUIApp {
 			// 
 			this->dgvSearch->AllowUserToAddRows = false;
 			this->dgvSearch->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dgvSearch->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+			this->dgvSearch->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
 				this->NameProduct,
-					this->DescriptionProduct, this->PriceProduct
+					this->DescriptionProduct, this->PriceProduct, this->ProductID
 			});
-			this->dgvSearch->Location = System::Drawing::Point(15, 210);
-			this->dgvSearch->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->dgvSearch->Location = System::Drawing::Point(11, 171);
+			this->dgvSearch->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
 			this->dgvSearch->Name = L"dgvSearch";
 			this->dgvSearch->RowHeadersVisible = false;
 			this->dgvSearch->RowHeadersWidth = 51;
 			this->dgvSearch->RowTemplate->Height = 24;
-			this->dgvSearch->Size = System::Drawing::Size(536, 150);
+			this->dgvSearch->Size = System::Drawing::Size(402, 122);
 			this->dgvSearch->TabIndex = 22;
 			this->dgvSearch->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductSearchForms::dgvSearch_CellClick);
 			this->dgvSearch->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductSearchForms::dgvSearch_CellContentClick);
@@ -228,12 +232,18 @@ namespace SalesSystemGUIApp {
 			this->PriceProduct->Name = L"PriceProduct";
 			this->PriceProduct->Width = 125;
 			// 
+			// ProductID
+			// 
+			this->ProductID->HeaderText = L"ID";
+			this->ProductID->Name = L"ProductID";
+			this->ProductID->Visible = false;
+			// 
 			// ProductSearchForms
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
-			this->ClientSize = System::Drawing::Size(592, 385);
+			this->ClientSize = System::Drawing::Size(444, 313);
 			this->Controls->Add(this->dgvSearch);
 			this->Controls->Add(this->btnCancelProduct);
 			this->Controls->Add(this->btnSearchProduct);
@@ -242,7 +252,6 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->txtNameProduct);
 			this->Controls->Add(this->label1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ProductSearchForms";
 			this->Text = L"ProductSearchForms";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSearch))->EndInit();
@@ -281,10 +290,12 @@ namespace SalesSystemGUIApp {
 				if (productList != nullptr) {
 					dgvSearch->Rows->Clear();
 					for (int i = 0; i < productList->Count; i++) {
+						String^ productPriceString = productList[i]->Price.ToString("F2");
 						dgvSearch->Rows->Add(gcnew array<String^> {
 							productList[i]->Name,
 								productList[i]->Description,
-								productList[i]->Price.ToString()
+								productPriceString,
+								productList[i]->Id.ToString() // Agregar el ID del producto
 						});
 					}
 				}
@@ -316,22 +327,32 @@ private: System::Void dgvSearch_CellContentClick(System::Object^ sender, System:
 
 
 private: System::Void dgvSearch_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
-	// Verificar si se hizo clic en una celda válida
 	if (e->RowIndex >= 0) {
 		DataGridViewRow^ selectedRow = dgvSearch->Rows[e->RowIndex];
 
-		// Obtener los datos de la fila seleccionada
 		String^ productName = selectedRow->Cells["NameProduct"]->Value->ToString();
 		String^ productDescription = selectedRow->Cells["DescriptionProduct"]->Value->ToString();
-		String^ productPrice = selectedRow->Cells["PriceProduct"]->Value->ToString();
+		String^ productPriceString = selectedRow->Cells["PriceProduct"]->Value->ToString();
+		String^ productIdString = selectedRow->Cells["ProductID"]->Value->ToString();
 
-		// Crear un objeto Product
-		Product^ selectedProduct = gcnew Product(0, productName, productDescription, gcnew array<Byte>(0), Convert::ToDouble(productPrice), 0);
+		double productPrice;
+		int productId;
 
-		// Llama al evento ProductSelected
-		ProductSelected(selectedProduct);
+		if (Double::TryParse(productPriceString, productPrice) && Int32::TryParse(productIdString, productId)) {
+			// Añadir un mensaje de depuración
+			Console::WriteLine("Producto seleccionado ID: " + productId);
 
-		this->Close();
+			// Crear un objeto Product con el ID
+			Product^ selectedProduct = gcnew Product(productId, productName, productDescription, gcnew array<Byte>(0), productPrice, 0);
+
+			// Llama al evento ProductSelected
+			ProductSelected(selectedProduct);
+
+			this->Close();
+		}
+		else {
+			MessageBox::Show("Error: El formato de los datos del producto no es válido.");
+		}
 	}
 }
 
