@@ -119,12 +119,24 @@
     <Reference Include="itextsharp">
       <HintPath>..\packages\iTextSharp.5.5.13.3\lib\itextsharp.dll</HintPath>
     </Reference>
+    <Reference Include="OpenCvSharp">
+      <HintPath>..\ReadQRLibrary\bin\Debug\OpenCvSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenCvSharp.WpfExtensions">
+      <HintPath>..\ReadQRLibrary\bin\Debug\OpenCvSharp.WpfExtensions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml" />
+    <Reference Include="zxing">
+      <HintPath>..\ReadQRLibrary\bin\Debug\zxing.dll</HintPath>
+    </Reference>
+    <Reference Include="zxing.presentation">
+      <HintPath>..\ReadQRLibrary\bin\Debug\zxing.presentation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="clientesForm.cpp" />
@@ -134,6 +146,7 @@
     <ClCompile Include="preguntasfrecuentes.cpp" />
     <ClCompile Include="productosForm.cpp" />
     <ClCompile Include="ProductosVendidosForm.cpp" />
+    <ClCompile Include="ProductPickUpForm.cpp" />
     <ClCompile Include="ProductSearchForms.cpp" />
     <ClCompile Include="proveedoresForm.cpp" />
     <ClCompile Include="PurchaseForm.cpp" />
@@ -160,6 +173,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ProductosVendidosForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ProductPickUpForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="ProductSearchForms.h">
@@ -202,6 +218,9 @@
     <EmbeddedResource Include="ProductosVendidosForm.resx">
       <DependentUpon>ProductosVendidosForm.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProductPickUpForm.resx">
+      <DependentUpon>ProductPickUpForm.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProductSearchForms.resx">
       <DependentUpon>ProductSearchForms.h</DependentUpon>
     </EmbeddedResource>
@@ -221,6 +240,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ReadQRLibrary\ReadQRLibrary.csproj">
+      <Project>{15c63d6e-492a-4efa-853c-0605cbf050b4}</Project>
+    </ProjectReference>
     <ProjectReference Include="..\SalesSystemModel\SalesSystemModel.vcxproj">
       <Project>{bc2c81db-1530-4941-afd7-8d5b9ec76f2d}</Project>
     </ProjectReference>

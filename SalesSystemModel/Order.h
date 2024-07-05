@@ -11,6 +11,7 @@ using namespace System;
 using namespace System::Collections::Generic;
 
 namespace SalesSystemModel {
+	[Serializable]
 	public ref class Order {
 	public:
 		property int Id;
