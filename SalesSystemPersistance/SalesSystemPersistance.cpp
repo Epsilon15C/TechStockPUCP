@@ -642,6 +642,41 @@ List<OrderProduct^>^ SalesSystemPersistance::Persistance::QueryAllOrderProducts(
 	return orderProductListDB;
 }
 
+List<OrderProduct^>^ SalesSystemPersistance::Persistance::QueryAllOrderProductsByOrderId(int orderId)
+{
+	orderProductListDB = gcnew List<OrderProduct^>();
+	SqlConnection^ conn;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM ORDER_PRODUCT WHERE ORDER_ID=@ORDER_ID";
+		SqlCommand^ cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ORDER_ID", orderId);
+		reader = cmd->ExecuteReader();
+
+		while (reader->Read()) {
+			OrderProduct^ orderProduct = gcnew OrderProduct();
+			orderProduct->Id = Convert::ToInt32(reader["ID"]);
+			orderProduct->OrderId = Convert::ToInt32(reader["ORDER_ID"]);
+			orderProduct->ProductId = Convert::ToInt32(reader["PRODUCT_ID"]);
+			orderProduct->Quantity = Convert::ToInt32(reader["QUANTITY"]);
+			orderProduct->SubTotal = Convert::ToDouble(reader["SUBTOTAL"]);
+
+			orderProductListDB->Add(orderProduct);
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+	}
+
+	return orderProductListDB;
+}
+
 OrderProduct^ SalesSystemPersistance::Persistance::QueryOrderProductById(int orderProductId)
 {
 	OrderProduct^ orderProduct = nullptr;
