@@ -90,36 +90,65 @@ namespace SalesSystemGUIApp {
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
 			System::Windows::Forms::DataVisualization::Charting::Title^ title1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Title());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProductosVendidosForm::typeid));
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
+			this->chart1->BackColor = System::Drawing::Color::Black;
+			chartArea1->AxisX->LabelStyle->ForeColor = System::Drawing::Color::White;
+			chartArea1->AxisX->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX->MajorGrid->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX->MajorTickMark->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX->MinorGrid->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX->MinorTickMark->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX->TitleForeColor = System::Drawing::Color::White;
+			chartArea1->BackColor = System::Drawing::Color::Black;
+			chartArea1->BorderColor = System::Drawing::Color::White;
 			chartArea1->Name = L"ChartArea1";
 			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->BackColor = System::Drawing::Color::Black;
+			legend1->ForeColor = System::Drawing::Color::White;
+			legend1->HeaderSeparatorColor = System::Drawing::Color::White;
+			legend1->ItemColumnSeparatorColor = System::Drawing::Color::White;
 			legend1->Name = L"Legend1";
+			legend1->TitleBackColor = System::Drawing::Color::Black;
+			legend1->TitleForeColor = System::Drawing::Color::White;
+			legend1->TitleSeparatorColor = System::Drawing::Color::White;
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(137, 12);
+			this->chart1->Location = System::Drawing::Point(183, 15);
+			this->chart1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->chart1->Name = L"chart1";
+			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Pastel;
 			series1->ChartArea = L"ChartArea1";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series1->LabelForeColor = System::Drawing::Color::White;
 			series1->Legend = L"Legend1";
 			series1->Name = L"Productos";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(371, 356);
+			this->chart1->Size = System::Drawing::Size(495, 438);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
+			title1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
+				static_cast<System::Int32>(static_cast<System::Byte>(128)));
+			title1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			title1->Name = L"Title1";
 			title1->Text = L"Productos Más Vendidos";
 			this->chart1->Titles->Add(title1);
 			// 
 			// ProductosVendidosForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(633, 395);
+			this->BackColor = System::Drawing::Color::Black;
+			this->ClientSize = System::Drawing::Size(844, 486);
 			this->Controls->Add(this->chart1);
+			this->ForeColor = System::Drawing::Color::White;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"ProductosVendidosForm";
 			this->Text = L"ProductosVendidosForm";
 			this->Load += gcnew System::EventHandler(this, &ProductosVendidosForm::ProductosVendidosForm_Load);

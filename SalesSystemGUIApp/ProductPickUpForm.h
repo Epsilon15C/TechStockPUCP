@@ -85,6 +85,7 @@ namespace SalesSystemGUIApp {
         void InitializeComponent(void)
         {
             this->components = (gcnew System::ComponentModel::Container());
+            System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ProductPickUpForm::typeid));
             this->comboBoxCameras = (gcnew System::Windows::Forms::ComboBox());
             this->pictureBoxPreview = (gcnew System::Windows::Forms::PictureBox());
             this->textBoxQRCode = (gcnew System::Windows::Forms::TextBox());
@@ -100,13 +101,13 @@ namespace SalesSystemGUIApp {
             this->txtLastName = (gcnew System::Windows::Forms::TextBox());
             this->label2 = (gcnew System::Windows::Forms::Label());
             this->dgvOrder = (gcnew System::Windows::Forms::DataGridView());
-            this->label4 = (gcnew System::Windows::Forms::Label());
-            this->label5 = (gcnew System::Windows::Forms::Label());
-            this->btnSearchOrder = (gcnew System::Windows::Forms::Button());
             this->dgvOrderId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->dgvOrderDate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->dgvOrderTotalAmount = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->dgvOrderStatus = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->label4 = (gcnew System::Windows::Forms::Label());
+            this->label5 = (gcnew System::Windows::Forms::Label());
+            this->btnSearchOrder = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxPreview))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrder))->BeginInit();
             this->SuspendLayout();
@@ -141,13 +142,17 @@ namespace SalesSystemGUIApp {
             // 
             // buttonStart
             // 
+            this->buttonStart->BackColor = System::Drawing::Color::LightSkyBlue;
+            this->buttonStart->FlatAppearance->BorderSize = 0;
+            this->buttonStart->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->buttonStart->ForeColor = System::Drawing::Color::Black;
             this->buttonStart->Location = System::Drawing::Point(863, 38);
             this->buttonStart->Margin = System::Windows::Forms::Padding(4);
             this->buttonStart->Name = L"buttonStart";
             this->buttonStart->Size = System::Drawing::Size(100, 28);
             this->buttonStart->TabIndex = 3;
             this->buttonStart->Text = L"Start";
-            this->buttonStart->UseVisualStyleBackColor = true;
+            this->buttonStart->UseVisualStyleBackColor = false;
             this->buttonStart->Click += gcnew System::EventHandler(this, &ProductPickUpForm::buttonStart_Click);
             // 
             // timer
@@ -164,6 +169,7 @@ namespace SalesSystemGUIApp {
             // lblId
             // 
             this->lblId->AutoSize = true;
+            this->lblId->ForeColor = System::Drawing::Color::White;
             this->lblId->Location = System::Drawing::Point(20, 39);
             this->lblId->Name = L"lblId";
             this->lblId->Size = System::Drawing::Size(27, 16);
@@ -173,6 +179,7 @@ namespace SalesSystemGUIApp {
             // label1
             // 
             this->label1->AutoSize = true;
+            this->label1->ForeColor = System::Drawing::Color::White;
             this->label1->Location = System::Drawing::Point(20, 79);
             this->label1->Name = L"label1";
             this->label1->Size = System::Drawing::Size(73, 16);
@@ -189,6 +196,7 @@ namespace SalesSystemGUIApp {
             // lblName
             // 
             this->lblName->AutoSize = true;
+            this->lblName->ForeColor = System::Drawing::Color::White;
             this->lblName->Location = System::Drawing::Point(263, 36);
             this->lblName->Name = L"lblName";
             this->lblName->Size = System::Drawing::Size(59, 16);
@@ -205,6 +213,7 @@ namespace SalesSystemGUIApp {
             // label3
             // 
             this->label3->AutoSize = true;
+            this->label3->ForeColor = System::Drawing::Color::White;
             this->label3->Location = System::Drawing::Point(263, 79);
             this->label3->Name = L"label3";
             this->label3->Size = System::Drawing::Size(70, 16);
@@ -221,6 +230,7 @@ namespace SalesSystemGUIApp {
             // label2
             // 
             this->label2->AutoSize = true;
+            this->label2->ForeColor = System::Drawing::Color::White;
             this->label2->Location = System::Drawing::Point(12, 9);
             this->label2->Name = L"label2";
             this->label2->Size = System::Drawing::Size(110, 16);
@@ -242,34 +252,6 @@ namespace SalesSystemGUIApp {
             this->dgvOrder->RowTemplate->Height = 24;
             this->dgvOrder->Size = System::Drawing::Size(522, 240);
             this->dgvOrder->TabIndex = 13;
-            // 
-            // label4
-            // 
-            this->label4->AutoSize = true;
-            this->label4->Location = System::Drawing::Point(568, 7);
-            this->label4->Name = L"label4";
-            this->label4->Size = System::Drawing::Size(141, 16);
-            this->label4->TabIndex = 14;
-            this->label4->Text = L"Seleccione la cámara ";
-            // 
-            // label5
-            // 
-            this->label5->AutoSize = true;
-            this->label5->Location = System::Drawing::Point(568, 372);
-            this->label5->Name = L"label5";
-            this->label5->Size = System::Drawing::Size(102, 16);
-            this->label5->TabIndex = 15;
-            this->label5->Text = L"Lectura del QR :";
-            // 
-            // btnSearchOrder
-            // 
-            this->btnSearchOrder->Location = System::Drawing::Point(571, 439);
-            this->btnSearchOrder->Name = L"btnSearchOrder";
-            this->btnSearchOrder->Size = System::Drawing::Size(138, 30);
-            this->btnSearchOrder->TabIndex = 16;
-            this->btnSearchOrder->Text = L"Buscar pedido";
-            this->btnSearchOrder->UseVisualStyleBackColor = true;
-            this->btnSearchOrder->Click += gcnew System::EventHandler(this, &ProductPickUpForm::btnSearchOrder_Click);
             // 
             // dgvOrderId
             // 
@@ -299,10 +281,46 @@ namespace SalesSystemGUIApp {
             this->dgvOrderStatus->Name = L"dgvOrderStatus";
             this->dgvOrderStatus->Width = 125;
             // 
+            // label4
+            // 
+            this->label4->AutoSize = true;
+            this->label4->ForeColor = System::Drawing::Color::White;
+            this->label4->Location = System::Drawing::Point(568, 7);
+            this->label4->Name = L"label4";
+            this->label4->Size = System::Drawing::Size(141, 16);
+            this->label4->TabIndex = 14;
+            this->label4->Text = L"Seleccione la cámara ";
+            // 
+            // label5
+            // 
+            this->label5->AutoSize = true;
+            this->label5->ForeColor = System::Drawing::Color::White;
+            this->label5->Location = System::Drawing::Point(568, 372);
+            this->label5->Name = L"label5";
+            this->label5->Size = System::Drawing::Size(102, 16);
+            this->label5->TabIndex = 15;
+            this->label5->Text = L"Lectura del QR :";
+            // 
+            // btnSearchOrder
+            // 
+            this->btnSearchOrder->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
+                static_cast<System::Int32>(static_cast<System::Byte>(155)));
+            this->btnSearchOrder->FlatAppearance->BorderSize = 0;
+            this->btnSearchOrder->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->btnSearchOrder->ForeColor = System::Drawing::Color::Black;
+            this->btnSearchOrder->Location = System::Drawing::Point(571, 439);
+            this->btnSearchOrder->Name = L"btnSearchOrder";
+            this->btnSearchOrder->Size = System::Drawing::Size(138, 30);
+            this->btnSearchOrder->TabIndex = 16;
+            this->btnSearchOrder->Text = L"Buscar pedido";
+            this->btnSearchOrder->UseVisualStyleBackColor = false;
+            this->btnSearchOrder->Click += gcnew System::EventHandler(this, &ProductPickUpForm::btnSearchOrder_Click);
+            // 
             // ProductPickUpForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+            this->BackColor = System::Drawing::Color::Black;
             this->ClientSize = System::Drawing::Size(994, 481);
             this->Controls->Add(this->btnSearchOrder);
             this->Controls->Add(this->label5);
@@ -321,6 +339,7 @@ namespace SalesSystemGUIApp {
             this->Controls->Add(this->textBoxQRCode);
             this->Controls->Add(this->pictureBoxPreview);
             this->Controls->Add(this->comboBoxCameras);
+            this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
             this->Margin = System::Windows::Forms::Padding(4);
             this->Name = L"ProductPickUpForm";
             this->Text = L"Recojo de productos";
