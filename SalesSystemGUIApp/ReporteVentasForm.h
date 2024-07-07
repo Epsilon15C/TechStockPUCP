@@ -30,13 +30,13 @@ namespace SalesSystemGUIApp {
 		ReporteVentasForm(void)
 		{
 			InitializeComponent();
-			//CargarReporteVentas(); // Llamar a método para cargar el reporte de ventas al iniciar el formulario
+			//CargarReporteVentas(); // Llamar a mÃ©todo para cargar el reporte de ventas al iniciar el formulario
 
 		}
 
 	protected:
 		/// <summary>
-		/// Limpiar los recursos que se estén usando.
+		/// Limpiar los recursos que se estÃ©n usando.
 		/// </summary>
 		~ReporteVentasForm()
 		{
@@ -57,7 +57,7 @@ namespace SalesSystemGUIApp {
 
 	private:
 		/// <summary>
-		/// Variable del diseñador necesaria.
+		/// Variable del diseÃ±ador necesaria.
 		/// </summary>
 		System::ComponentModel::Container ^components;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
@@ -66,7 +66,7 @@ namespace SalesSystemGUIApp {
 		SqlConnection^ conn;
 
 	private:
-		// Método para obtener la conexión a la base de datos
+		// MÃ©todo para obtener la conexiÃ³n a la base de datos
 		SqlConnection^ GetConnection()
 		{
 			SqlConnection^ conn = gcnew SqlConnection();
@@ -79,7 +79,7 @@ namespace SalesSystemGUIApp {
 			return conn;
 		}
 
-		// Método para cargar los datos de ventas al gráfico
+		// MÃ©todo para cargar los datos de ventas al grÃ¡fico
 		void CargarReporteVentas()
 		{
 			String^ query = "SELECT ORDER_DATE, SUM(TOTAL_AMOUNT) AS TOTAL_VENTAS "
@@ -93,10 +93,10 @@ namespace SalesSystemGUIApp {
 				conn->Open();
 				reader = cmd->ExecuteReader();
 
-				// Limpiar series anteriores del gráfico
+				// Limpiar series anteriores del grÃ¡fico
 				chart1->Series["VENTAS"]->Points->Clear();
 
-				// Agregar los datos al gráfico
+				// Agregar los datos al grÃ¡fico
 				while (reader->Read()) {
 					String^ fecha = safe_cast<String^>(reader["ORDER_DATE"]->ToString());
 					double totalVentas = Convert::ToDouble(reader["TOTAL_VENTAS"]);
@@ -105,12 +105,12 @@ namespace SalesSystemGUIApp {
 
 				reader->Close();
 
-				// Configurar el título del gráfico
-				chart1->Titles->Clear(); // Limpiar títulos anteriores
-				Title^ titulo = gcnew Title("Reporte de Ventas"); // Crear el título
-				titulo->ForeColor = System::Drawing::Color::White; // Cambiar el color del título a blanco
+				// Configurar el tÃ­tulo del grÃ¡fico
+				chart1->Titles->Clear(); // Limpiar tÃ­tulos anteriores
+				Title^ titulo = gcnew Title("Reporte de Ventas"); // Crear el tÃ­tulo
+				titulo->ForeColor = System::Drawing::Color::White; // Cambiar el color del tÃ­tulo a blanco
 				titulo->Font = gcnew System::Drawing::Font("Arial", 12);
-				chart1->Titles->Add(titulo); // Agregar el título al gráfico
+				chart1->Titles->Add(titulo); // Agregar el tÃ­tulo al grÃ¡fico
 
 				// Configurar nombres de ejes
 				chart1->ChartAreas["ChartArea1"]->AxisX->Title = "Fecha";
@@ -130,8 +130,8 @@ namespace SalesSystemGUIApp {
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
-		/// Método necesario para admitir el Diseñador. No se puede modificar
-		/// el contenido de este método con el editor de código.
+		/// MÃ©todo necesario para admitir el DiseÃ±ador. No se puede modificar
+		/// el contenido de este mÃ©todo con el editor de cÃ³digo.
 		/// </summary>
 		void InitializeComponent(void)
 		{
@@ -163,6 +163,7 @@ namespace SalesSystemGUIApp {
 			chartArea1->AxisX->MajorTickMark->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisX->MinorGrid->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisX->MinorTickMark->LineColor = System::Drawing::Color::White;
+
 			chartArea1->AxisX->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			chartArea1->AxisX->TitleForeColor = System::Drawing::Color::White;
@@ -172,6 +173,7 @@ namespace SalesSystemGUIApp {
 			chartArea1->AxisX2->MinorGrid->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisX2->MinorTickMark->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisX2->TitleForeColor = System::Drawing::Color::White;
+
 			chartArea1->AxisY->LabelStyle->ForeColor = System::Drawing::Color::White;
 			chartArea1->AxisY->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisY->MajorGrid->LineColor = System::Drawing::Color::White;
@@ -180,6 +182,7 @@ namespace SalesSystemGUIApp {
 			chartArea1->AxisY->MinorTickMark->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisY->TitleForeColor = System::Drawing::Color::White;
 			chartArea1->AxisY2->TitleForeColor = System::Drawing::Color::White;
+
 			chartArea1->BackColor = System::Drawing::Color::Black;
 			chartArea1->BorderColor = System::Drawing::Color::White;
 			chartArea1->Name = L"ChartArea1";
@@ -215,7 +218,9 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->pictureBox1);
 			this->ForeColor = System::Drawing::Color::White;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+
 			this->Margin = System::Windows::Forms::Padding(4);
+
 			this->Name = L"ReporteVentasForm";
 			this->Text = L"ReporteVentasForm";
 			this->Load += gcnew System::EventHandler(this, &ReporteVentasForm::ReporteVentasForm_Load);

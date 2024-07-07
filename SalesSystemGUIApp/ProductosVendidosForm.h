@@ -124,6 +124,7 @@ namespace SalesSystemGUIApp {
 			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Pastel;
 			series1->ChartArea = L"ChartArea1";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
+			series1->LabelForeColor = System::Drawing::Color::White;
 			series1->Legend = L"Legend1";
 			series1->Name = L"Productos";
 			this->chart1->Series->Add(series1);
