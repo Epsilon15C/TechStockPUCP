@@ -107,7 +107,10 @@ namespace SalesSystemGUIApp {
 
 				// Configurar el título del gráfico
 				chart1->Titles->Clear(); // Limpiar títulos anteriores
-				chart1->Titles->Add("Reporte de Ventas"); // Título principal del gráfico
+				Title^ titulo = gcnew Title("Reporte de Ventas"); // Crear el título
+				titulo->ForeColor = System::Drawing::Color::White; // Cambiar el color del título a blanco
+				titulo->Font = gcnew System::Drawing::Font("Arial", 12);
+				chart1->Titles->Add(titulo); // Agregar el título al gráfico
 
 				// Configurar nombres de ejes
 				chart1->ChartAreas["ChartArea1"]->AxisX->Title = "Fecha";
@@ -145,7 +148,7 @@ namespace SalesSystemGUIApp {
 			// pictureBox1
 			// 
 			this->pictureBox1->Location = System::Drawing::Point(109, 42);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(519, 306);
 			this->pictureBox1->TabIndex = 0;
@@ -160,7 +163,15 @@ namespace SalesSystemGUIApp {
 			chartArea1->AxisX->MajorTickMark->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisX->MinorGrid->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisX->MinorTickMark->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX->TitleFont = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
 			chartArea1->AxisX->TitleForeColor = System::Drawing::Color::White;
+			chartArea1->AxisX2->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX2->MajorGrid->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX2->MajorTickMark->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX2->MinorGrid->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX2->MinorTickMark->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX2->TitleForeColor = System::Drawing::Color::White;
 			chartArea1->AxisY->LabelStyle->ForeColor = System::Drawing::Color::White;
 			chartArea1->AxisY->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisY->MajorGrid->LineColor = System::Drawing::Color::White;
@@ -168,6 +179,7 @@ namespace SalesSystemGUIApp {
 			chartArea1->AxisY->MinorGrid->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisY->MinorTickMark->LineColor = System::Drawing::Color::White;
 			chartArea1->AxisY->TitleForeColor = System::Drawing::Color::White;
+			chartArea1->AxisY2->TitleForeColor = System::Drawing::Color::White;
 			chartArea1->BackColor = System::Drawing::Color::Black;
 			chartArea1->BorderColor = System::Drawing::Color::White;
 			chartArea1->Name = L"ChartArea1";
@@ -175,15 +187,19 @@ namespace SalesSystemGUIApp {
 			legend1->BackColor = System::Drawing::Color::Black;
 			legend1->ForeColor = System::Drawing::Color::White;
 			legend1->Name = L"Legend1";
+			legend1->TitleForeColor = System::Drawing::Color::White;
+			legend1->TitleSeparatorColor = System::Drawing::Color::White;
 			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(109, 42);
-			this->chart1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->chart1->Margin = System::Windows::Forms::Padding(4);
 			this->chart1->Name = L"chart1";
 			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
 			series1->ChartArea = L"ChartArea1";
 			series1->LabelForeColor = System::Drawing::Color::White;
 			series1->Legend = L"Legend1";
 			series1->Name = L"VENTAS";
+			series1->SmartLabelStyle->CalloutBackColor = System::Drawing::Color::White;
+			series1->SmartLabelStyle->CalloutLineColor = System::Drawing::Color::White;
 			this->chart1->Series->Add(series1);
 			this->chart1->Size = System::Drawing::Size(519, 306);
 			this->chart1->TabIndex = 1;
@@ -199,7 +215,7 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->pictureBox1);
 			this->ForeColor = System::Drawing::Color::White;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ReporteVentasForm";
 			this->Text = L"ReporteVentasForm";
 			this->Load += gcnew System::EventHandler(this, &ReporteVentasForm::ReporteVentasForm_Load);
