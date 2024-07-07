@@ -405,7 +405,8 @@ namespace SalesSystemGUIApp {
 			    if (order == nullptr) {
 				    MessageBox::Show("El pedido no existe");
 				    return;
-			    }
+
+			    } 
                 else {
                     dgvOrder->Rows->Clear();
                     dgvOrder->Rows->Add("" + order->Id, order->Date, "" + order->TotalAmount, order->Status);
