@@ -143,9 +143,10 @@ namespace SalesSystemGUIApp {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(82, 34);
+			this->pictureBox1->Location = System::Drawing::Point(109, 42);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(389, 249);
+			this->pictureBox1->Size = System::Drawing::Size(519, 306);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -155,23 +156,26 @@ namespace SalesSystemGUIApp {
 			this->chart1->ChartAreas->Add(chartArea1);
 			legend1->Name = L"Legend1";
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(82, 34);
+			this->chart1->Location = System::Drawing::Point(109, 42);
+			this->chart1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->chart1->Name = L"chart1";
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"VENTAS";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(389, 249);
+			this->chart1->Size = System::Drawing::Size(519, 306);
 			this->chart1->TabIndex = 1;
 			this->chart1->Text = L"chart1";
 			// 
 			// ReporteVentasForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(578, 328);
+			this->BackColor = System::Drawing::Color::RosyBrown;
+			this->ClientSize = System::Drawing::Size(771, 404);
 			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->pictureBox1);
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"ReporteVentasForm";
 			this->Text = L"ReporteVentasForm";
 			this->Load += gcnew System::EventHandler(this, &ReporteVentasForm::ReporteVentasForm_Load);
