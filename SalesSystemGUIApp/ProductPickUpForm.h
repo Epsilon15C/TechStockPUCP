@@ -552,6 +552,7 @@ namespace SalesSystemGUIApp {
         //  el nombre del cliente y el apellido del cliente,los cuales estan separados por un guion
 
         array<String^>^ data = qrCodeText->Split('-');
+		//Quitar los saltos de linea
 		if (data->Length ==3)
 		{
 			Customer^customer = gcnew Customer();
@@ -565,31 +566,34 @@ namespace SalesSystemGUIApp {
                     txtLastName->Text = customer->LastName;
 
 			    Order^ order = Persistance::QueryOrderById(Convert::ToInt32(data[1]));
-			    if (order == nullptr) {
-				    MessageBox::Show("El pedido no existe");
-				    return;
+			    if ((order !=nullptr)&&(order->PersonId== customer->Id)) {
 
-			    } 
-                else {
                     dgvOrder->Rows->Clear();
                     dgvOrder->Rows->Add("" + order->Id, order->Date, "" + order->TotalAmount, order->Status);
 
-                    System::Collections::Generic::List<OrderProduct^>^ orderProducts= Persistance::QueryAllOrderProductsByOrderId(order->Id);
-					for each (OrderProduct ^ orderProduct in orderProducts)
-                        
-					{   
-						dgvProducts->Rows->Clear();
+                    System::Collections::Generic::List<OrderProduct^>^ orderProducts = Persistance::QueryAllOrderProductsByOrderId(order->Id);
+                    for each (OrderProduct ^ orderProduct in orderProducts)
+
+                    {
+                        dgvProducts->Rows->Clear();
                         for (int i = 0; i < orderProducts->Count; i++) {
 
-							//Product^ product = gcnew Product();
-							//OrderProduct^ orderProduct = gcnew OrderProduct();
+                            //Product^ product = gcnew Product();
+                            //OrderProduct^ orderProduct = gcnew OrderProduct();
                             Product^ product = Persistance::QueryProductById(orderProduct->ProductId);
 
-							dgvProducts->Rows->Add("" + orderProducts[i]->Id, product->Name, product->Description,"" + orderProducts[i]->Quantity, "" + orderProducts[i]->SubTotal);
-							
+                            dgvProducts->Rows->Add("" + orderProducts[i]->Id, product->Name, product->Description, "" + orderProducts[i]->Quantity, "" + orderProducts[i]->SubTotal);
+
                         }
 
-					}
+                    }
+
+
+
+			    } 
+                else {
+                    MessageBox::Show("El pedido no existe");
+                    return;
                 }
             
 
