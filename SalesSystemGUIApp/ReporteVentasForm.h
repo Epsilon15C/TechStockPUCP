@@ -107,7 +107,10 @@ namespace SalesSystemGUIApp {
 
 				// Configurar el título del gráfico
 				chart1->Titles->Clear(); // Limpiar títulos anteriores
-				chart1->Titles->Add("Reporte de Ventas"); // Título principal del gráfico
+				Title^ titulo = gcnew Title("Reporte de Ventas"); // Crear el título
+				titulo->ForeColor = System::Drawing::Color::White; // Cambiar el color del título a blanco
+				titulo->Font = gcnew System::Drawing::Font("Arial", 12); // Cambiar el tamaño del título a 12 puntos
+				chart1->Titles->Add(titulo); // Agregar el título al gráfico
 
 				// Configurar nombres de ejes
 				chart1->ChartAreas["ChartArea1"]->AxisX->Title = "Fecha";

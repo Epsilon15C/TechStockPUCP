@@ -119,12 +119,11 @@ namespace SalesSystemGUIApp {
 			legend1->TitleSeparatorColor = System::Drawing::Color::White;
 			this->chart1->Legends->Add(legend1);
 			this->chart1->Location = System::Drawing::Point(183, 15);
-			this->chart1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->chart1->Margin = System::Windows::Forms::Padding(4);
 			this->chart1->Name = L"chart1";
 			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Pastel;
 			series1->ChartArea = L"ChartArea1";
 			series1->ChartType = System::Windows::Forms::DataVisualization::Charting::SeriesChartType::Pie;
-			series1->LabelForeColor = System::Drawing::Color::White;
 			series1->Legend = L"Legend1";
 			series1->Name = L"Productos";
 			this->chart1->Series->Add(series1);
@@ -148,7 +147,7 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->chart1);
 			this->ForeColor = System::Drawing::Color::White;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ProductosVendidosForm";
 			this->Text = L"ProductosVendidosForm";
 			this->Load += gcnew System::EventHandler(this, &ProductosVendidosForm::ProductosVendidosForm_Load);
