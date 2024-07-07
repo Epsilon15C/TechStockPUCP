@@ -135,7 +135,7 @@ namespace SalesSystemGUIApp {
 			title1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			title1->Name = L"Title1";
-			title1->Text = L"Productos Más Vendidos";
+			title1->Text = L"Distribución porcentual de productos más vendidos";
 			this->chart1->Titles->Add(title1);
 			// 
 			// ProductosVendidosForm

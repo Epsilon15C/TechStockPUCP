@@ -92,6 +92,7 @@ namespace SalesSystemPersistance {
 		//static int UpdateOrder(Order^ order);
 		static int DeleteOrder(int orderId);
 		static Order^ QueryOrderById(int orderId);
+		static int UpdateOrderStatus(int orderId, String^ status);
 
 		//OrderProduct
 		static int AddOrderProduct(OrderProduct^orderProduct);
@@ -110,6 +111,7 @@ namespace SalesSystemPersistance {
 
 		// Productos
 		static List<Product^>^ QueryAllProducts();
+		static Product^ QueryProductById(int productId);
 
 		//Resistor
 

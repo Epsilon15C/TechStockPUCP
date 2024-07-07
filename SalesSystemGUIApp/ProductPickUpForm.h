@@ -66,10 +66,33 @@ namespace SalesSystemGUIApp {
     private: System::Windows::Forms::Label^ label4;
     private: System::Windows::Forms::Label^ label5;
     private: System::Windows::Forms::Button^ btnSearchOrder;
+
+
+
+
+    private: System::Windows::Forms::DataGridView^ dgvProducts;
+
+
+
+
+
+    private: System::Windows::Forms::Label^ label6;
+    private: System::Windows::Forms::Label^ label7;
+    private: System::Windows::Forms::Button^ btnUpdateStatusOrder;
+    private: System::Windows::Forms::Label^ label8;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvOrderId;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvOrderDate;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvOrderTotalAmount;
     private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvOrderStatus;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvProductsId;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvProductsName;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvProductsDescription;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvProductsQuantity;
+    private: System::Windows::Forms::DataGridViewTextBoxColumn^ dgvProductsSubTotal;
+
+
+
+
 
 
 
@@ -101,15 +124,26 @@ namespace SalesSystemGUIApp {
             this->txtLastName = (gcnew System::Windows::Forms::TextBox());
             this->label2 = (gcnew System::Windows::Forms::Label());
             this->dgvOrder = (gcnew System::Windows::Forms::DataGridView());
+            this->label4 = (gcnew System::Windows::Forms::Label());
+            this->label5 = (gcnew System::Windows::Forms::Label());
+            this->btnSearchOrder = (gcnew System::Windows::Forms::Button());
+            this->dgvProducts = (gcnew System::Windows::Forms::DataGridView());
+            this->label6 = (gcnew System::Windows::Forms::Label());
+            this->label7 = (gcnew System::Windows::Forms::Label());
+            this->btnUpdateStatusOrder = (gcnew System::Windows::Forms::Button());
+            this->label8 = (gcnew System::Windows::Forms::Label());
             this->dgvOrderId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->dgvOrderDate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->dgvOrderTotalAmount = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             this->dgvOrderStatus = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-            this->label4 = (gcnew System::Windows::Forms::Label());
-            this->label5 = (gcnew System::Windows::Forms::Label());
-            this->btnSearchOrder = (gcnew System::Windows::Forms::Button());
+            this->dgvProductsId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->dgvProductsName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->dgvProductsDescription = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->dgvProductsQuantity = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+            this->dgvProductsSubTotal = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxPreview))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrder))->BeginInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProducts))->BeginInit();
             this->SuspendLayout();
             // 
             // comboBoxCameras
@@ -161,7 +195,7 @@ namespace SalesSystemGUIApp {
             // 
             // txtIdClient
             // 
-            this->txtIdClient->Location = System::Drawing::Point(95, 36);
+            this->txtIdClient->Location = System::Drawing::Point(104, 36);
             this->txtIdClient->Name = L"txtIdClient";
             this->txtIdClient->Size = System::Drawing::Size(126, 22);
             this->txtIdClient->TabIndex = 4;
@@ -188,7 +222,7 @@ namespace SalesSystemGUIApp {
             // 
             // txtIdOrder
             // 
-            this->txtIdOrder->Location = System::Drawing::Point(95, 76);
+            this->txtIdOrder->Location = System::Drawing::Point(104, 76);
             this->txtIdOrder->Name = L"txtIdOrder";
             this->txtIdOrder->Size = System::Drawing::Size(126, 22);
             this->txtIdOrder->TabIndex = 6;
@@ -245,41 +279,13 @@ namespace SalesSystemGUIApp {
                 this->dgvOrderId,
                     this->dgvOrderDate, this->dgvOrderTotalAmount, this->dgvOrderStatus
             });
-            this->dgvOrder->Location = System::Drawing::Point(10, 116);
+            this->dgvOrder->Location = System::Drawing::Point(10, 129);
             this->dgvOrder->Name = L"dgvOrder";
             this->dgvOrder->RowHeadersVisible = false;
             this->dgvOrder->RowHeadersWidth = 51;
             this->dgvOrder->RowTemplate->Height = 24;
-            this->dgvOrder->Size = System::Drawing::Size(522, 240);
+            this->dgvOrder->Size = System::Drawing::Size(522, 193);
             this->dgvOrder->TabIndex = 13;
-            // 
-            // dgvOrderId
-            // 
-            this->dgvOrderId->HeaderText = L"Id";
-            this->dgvOrderId->MinimumWidth = 6;
-            this->dgvOrderId->Name = L"dgvOrderId";
-            this->dgvOrderId->Width = 125;
-            // 
-            // dgvOrderDate
-            // 
-            this->dgvOrderDate->HeaderText = L"Fecha";
-            this->dgvOrderDate->MinimumWidth = 6;
-            this->dgvOrderDate->Name = L"dgvOrderDate";
-            this->dgvOrderDate->Width = 125;
-            // 
-            // dgvOrderTotalAmount
-            // 
-            this->dgvOrderTotalAmount->HeaderText = L"Monto total";
-            this->dgvOrderTotalAmount->MinimumWidth = 6;
-            this->dgvOrderTotalAmount->Name = L"dgvOrderTotalAmount";
-            this->dgvOrderTotalAmount->Width = 125;
-            // 
-            // dgvOrderStatus
-            // 
-            this->dgvOrderStatus->HeaderText = L"Estado";
-            this->dgvOrderStatus->MinimumWidth = 6;
-            this->dgvOrderStatus->Name = L"dgvOrderStatus";
-            this->dgvOrderStatus->Width = 125;
             // 
             // label4
             // 
@@ -316,12 +322,149 @@ namespace SalesSystemGUIApp {
             this->btnSearchOrder->UseVisualStyleBackColor = false;
             this->btnSearchOrder->Click += gcnew System::EventHandler(this, &ProductPickUpForm::btnSearchOrder_Click);
             // 
+            // dgvProducts
+            // 
+            this->dgvProducts->AllowUserToAddRows = false;
+            this->dgvProducts->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+            this->dgvProducts->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(5) {
+                this->dgvProductsId,
+                    this->dgvProductsName, this->dgvProductsDescription, this->dgvProductsQuantity, this->dgvProductsSubTotal
+            });
+            this->dgvProducts->Location = System::Drawing::Point(10, 372);
+            this->dgvProducts->Name = L"dgvProducts";
+            this->dgvProducts->RowHeadersVisible = false;
+            this->dgvProducts->RowHeadersWidth = 51;
+            this->dgvProducts->RowTemplate->Height = 24;
+            this->dgvProducts->Size = System::Drawing::Size(522, 269);
+            this->dgvProducts->TabIndex = 17;
+            // 
+            // label6
+            // 
+            this->label6->AutoSize = true;
+            this->label6->ForeColor = System::Drawing::Color::White;
+            this->label6->Location = System::Drawing::Point(12, 340);
+            this->label6->Name = L"label6";
+            this->label6->Size = System::Drawing::Size(123, 16);
+            this->label6->TabIndex = 18;
+            this->label6->Text = L"Lista de productos :";
+            // 
+            // label7
+            // 
+            this->label7->AutoSize = true;
+            this->label7->ForeColor = System::Drawing::Color::White;
+            this->label7->Location = System::Drawing::Point(12, 110);
+            this->label7->Name = L"label7";
+            this->label7->Size = System::Drawing::Size(120, 16);
+            this->label7->TabIndex = 19;
+            this->label7->Text = L"Datos de la orden :";
+            // 
+            // btnUpdateStatusOrder
+            // 
+            this->btnUpdateStatusOrder->BackColor = System::Drawing::Color::LightSkyBlue;
+            this->btnUpdateStatusOrder->FlatAppearance->BorderSize = 0;
+            this->btnUpdateStatusOrder->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+            this->btnUpdateStatusOrder->ForeColor = System::Drawing::Color::Black;
+            this->btnUpdateStatusOrder->Location = System::Drawing::Point(700, 518);
+            this->btnUpdateStatusOrder->Name = L"btnUpdateStatusOrder";
+            this->btnUpdateStatusOrder->Size = System::Drawing::Size(138, 30);
+            this->btnUpdateStatusOrder->TabIndex = 20;
+            this->btnUpdateStatusOrder->Text = L"Actualizar estado";
+            this->btnUpdateStatusOrder->UseVisualStyleBackColor = false;
+            this->btnUpdateStatusOrder->Click += gcnew System::EventHandler(this, &ProductPickUpForm::btnUpdateStatusOrder_Click);
+            // 
+            // label8
+            // 
+            this->label8->AutoSize = true;
+            this->label8->ForeColor = System::Drawing::Color::White;
+            this->label8->Location = System::Drawing::Point(568, 489);
+            this->label8->Name = L"label8";
+            this->label8->Size = System::Drawing::Size(187, 16);
+            this->label8->TabIndex = 21;
+            this->label8->Text = L"Actualizar estado de la orden :";
+            // 
+            // dgvOrderId
+            // 
+            this->dgvOrderId->HeaderText = L"Id";
+            this->dgvOrderId->MinimumWidth = 6;
+            this->dgvOrderId->Name = L"dgvOrderId";
+            this->dgvOrderId->ReadOnly = true;
+            this->dgvOrderId->Width = 125;
+            // 
+            // dgvOrderDate
+            // 
+            this->dgvOrderDate->HeaderText = L"Fecha";
+            this->dgvOrderDate->MinimumWidth = 6;
+            this->dgvOrderDate->Name = L"dgvOrderDate";
+            this->dgvOrderDate->ReadOnly = true;
+            this->dgvOrderDate->Width = 125;
+            // 
+            // dgvOrderTotalAmount
+            // 
+            this->dgvOrderTotalAmount->HeaderText = L"Monto total";
+            this->dgvOrderTotalAmount->MinimumWidth = 6;
+            this->dgvOrderTotalAmount->Name = L"dgvOrderTotalAmount";
+            this->dgvOrderTotalAmount->ReadOnly = true;
+            this->dgvOrderTotalAmount->Width = 125;
+            // 
+            // dgvOrderStatus
+            // 
+            this->dgvOrderStatus->HeaderText = L"Estado";
+            this->dgvOrderStatus->MinimumWidth = 6;
+            this->dgvOrderStatus->Name = L"dgvOrderStatus";
+            this->dgvOrderStatus->ReadOnly = true;
+            this->dgvOrderStatus->Width = 125;
+            // 
+            // dgvProductsId
+            // 
+            this->dgvProductsId->HeaderText = L"Id";
+            this->dgvProductsId->MinimumWidth = 6;
+            this->dgvProductsId->Name = L"dgvProductsId";
+            this->dgvProductsId->ReadOnly = true;
+            this->dgvProductsId->Width = 125;
+            // 
+            // dgvProductsName
+            // 
+            this->dgvProductsName->HeaderText = L"Nombre";
+            this->dgvProductsName->MinimumWidth = 6;
+            this->dgvProductsName->Name = L"dgvProductsName";
+            this->dgvProductsName->ReadOnly = true;
+            this->dgvProductsName->Width = 125;
+            // 
+            // dgvProductsDescription
+            // 
+            this->dgvProductsDescription->HeaderText = L"Descripción";
+            this->dgvProductsDescription->MinimumWidth = 6;
+            this->dgvProductsDescription->Name = L"dgvProductsDescription";
+            this->dgvProductsDescription->ReadOnly = true;
+            this->dgvProductsDescription->Width = 125;
+            // 
+            // dgvProductsQuantity
+            // 
+            this->dgvProductsQuantity->HeaderText = L"Cantidad";
+            this->dgvProductsQuantity->MinimumWidth = 6;
+            this->dgvProductsQuantity->Name = L"dgvProductsQuantity";
+            this->dgvProductsQuantity->ReadOnly = true;
+            this->dgvProductsQuantity->Width = 125;
+            // 
+            // dgvProductsSubTotal
+            // 
+            this->dgvProductsSubTotal->HeaderText = L"Subtotal";
+            this->dgvProductsSubTotal->MinimumWidth = 6;
+            this->dgvProductsSubTotal->Name = L"dgvProductsSubTotal";
+            this->dgvProductsSubTotal->ReadOnly = true;
+            this->dgvProductsSubTotal->Width = 125;
+            // 
             // ProductPickUpForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
             this->BackColor = System::Drawing::Color::Black;
-            this->ClientSize = System::Drawing::Size(994, 481);
+            this->ClientSize = System::Drawing::Size(979, 656);
+            this->Controls->Add(this->label8);
+            this->Controls->Add(this->btnUpdateStatusOrder);
+            this->Controls->Add(this->label7);
+            this->Controls->Add(this->label6);
+            this->Controls->Add(this->dgvProducts);
             this->Controls->Add(this->btnSearchOrder);
             this->Controls->Add(this->label5);
             this->Controls->Add(this->label4);
@@ -345,6 +488,7 @@ namespace SalesSystemGUIApp {
             this->Text = L"Recojo de productos";
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxPreview))->EndInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvOrder))->EndInit();
+            (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProducts))->EndInit();
             this->ResumeLayout(false);
             this->PerformLayout();
 
@@ -432,9 +576,19 @@ namespace SalesSystemGUIApp {
 
                     System::Collections::Generic::List<OrderProduct^>^ orderProducts= Persistance::QueryAllOrderProductsByOrderId(order->Id);
 					for each (OrderProduct ^ orderProduct in orderProducts)
+                        
+					{   
+						dgvProducts->Rows->Clear();
+                        for (int i = 0; i < orderProducts->Count; i++) {
 
-					{
-						dgvOrder->Rows->Add("" + orderProduct->Id,/* orderProduct->Product->Name, */"" + orderProduct->Quantity/*, "" + orderProduct->TotalAmount*/);
+							//Product^ product = gcnew Product();
+							//OrderProduct^ orderProduct = gcnew OrderProduct();
+                            Product^ product = Persistance::QueryProductById(orderProduct->ProductId);
+
+							dgvProducts->Rows->Add("" + orderProducts[i]->Id, product->Name, product->Description,"" + orderProducts[i]->Quantity, "" + orderProducts[i]->SubTotal);
+							
+                        }
+
 					}
                 }
             
@@ -453,5 +607,27 @@ namespace SalesSystemGUIApp {
 		}
 
     }
+private: System::Void btnUpdateStatusOrder_Click(System::Object^ sender, System::EventArgs^ e) {
+
+	//MessageBox para confirmar si se desea cambiar el estado del pedido
+
+	if (MessageBox::Show("¿Desea cambiar el estado del pedido?", "Actualizar estado", MessageBoxButtons::YesNo, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::Yes)
+	{
+		//Actualizar el estado del pedido
+        int actualizado = 0;
+		Order^ order = Persistance::QueryOrderById(Convert::ToInt32(txtIdOrder->Text));
+        actualizado= Persistance::UpdateOrderStatus(order->Id,"E");
+		if (order->Id == actualizado)
+		{
+			MessageBox::Show("Estado actualizado correctamente");
+		}
+		else
+		{
+			MessageBox::Show("Error en la actualización del estado");
+		}
+	}
+
+}
+
 };
 }

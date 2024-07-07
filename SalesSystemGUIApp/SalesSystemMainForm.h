@@ -111,12 +111,12 @@ namespace SalesSystemGUIApp {
 			this->clientesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->transaccionesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->generrOrdenToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->recojoDelProductoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reporteToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->reporteDeVentasToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->gráficoDeProductosVendidosToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ayudaToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->preguntasFrecuentesToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->recojoDelProductoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -198,6 +198,13 @@ namespace SalesSystemGUIApp {
 			this->generrOrdenToolStripMenuItem->Text = L"Generar orden";
 			this->generrOrdenToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::generrOrdenToolStripMenuItem_Click);
 			// 
+			// recojoDelProductoToolStripMenuItem
+			// 
+			this->recojoDelProductoToolStripMenuItem->Name = L"recojoDelProductoToolStripMenuItem";
+			this->recojoDelProductoToolStripMenuItem->Size = System::Drawing::Size(228, 26);
+			this->recojoDelProductoToolStripMenuItem->Text = L"Recojo del producto";
+			this->recojoDelProductoToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::recojoDelProductoToolStripMenuItem_Click);
+			// 
 			// reporteToolStripMenuItem
 			// 
 			this->reporteToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
@@ -211,15 +218,15 @@ namespace SalesSystemGUIApp {
 			// reporteDeVentasToolStripMenuItem
 			// 
 			this->reporteDeVentasToolStripMenuItem->Name = L"reporteDeVentasToolStripMenuItem";
-			this->reporteDeVentasToolStripMenuItem->Size = System::Drawing::Size(296, 26);
+			this->reporteDeVentasToolStripMenuItem->Size = System::Drawing::Size(301, 26);
 			this->reporteDeVentasToolStripMenuItem->Text = L"Reporte de ventas";
 			this->reporteDeVentasToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::reporteDeVentasToolStripMenuItem_Click);
 			// 
 			// gráficoDeProductosVendidosToolStripMenuItem
 			// 
 			this->gráficoDeProductosVendidosToolStripMenuItem->Name = L"gráficoDeProductosVendidosToolStripMenuItem";
-			this->gráficoDeProductosVendidosToolStripMenuItem->Size = System::Drawing::Size(296, 26);
-			this->gráficoDeProductosVendidosToolStripMenuItem->Text = L"Gráfico de productos vendidos";
+			this->gráficoDeProductosVendidosToolStripMenuItem->Size = System::Drawing::Size(301, 26);
+			this->gráficoDeProductosVendidosToolStripMenuItem->Text = L"Reporte de productos vendidos";
 			this->gráficoDeProductosVendidosToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::gráficoDeProductosVendidosToolStripMenuItem_Click);
 			// 
 			// ayudaToolStripMenuItem
@@ -235,13 +242,6 @@ namespace SalesSystemGUIApp {
 			this->preguntasFrecuentesToolStripMenuItem->Size = System::Drawing::Size(231, 26);
 			this->preguntasFrecuentesToolStripMenuItem->Text = L"Preguntas Frecuentes";
 			this->preguntasFrecuentesToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::preguntasFrecuentesToolStripMenuItem_Click);
-			// 
-			// recojoDelProductoToolStripMenuItem
-			// 
-			this->recojoDelProductoToolStripMenuItem->Name = L"recojoDelProductoToolStripMenuItem";
-			this->recojoDelProductoToolStripMenuItem->Size = System::Drawing::Size(228, 26);
-			this->recojoDelProductoToolStripMenuItem->Text = L"Recojo del producto";
-			this->recojoDelProductoToolStripMenuItem->Click += gcnew System::EventHandler(this, &SalesSystemMainForm::recojoDelProductoToolStripMenuItem_Click);
 			// 
 			// SalesSystemMainForm
 			// 

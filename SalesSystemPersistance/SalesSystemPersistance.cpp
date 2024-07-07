@@ -578,6 +578,31 @@ Order^ SalesSystemPersistance::Persistance::QueryOrderById(int orderId)
 	return order;
 }
 
+int SalesSystemPersistance::Persistance::UpdateOrderStatus(int orderId, String^ status)
+{
+
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "UPDATE SALES_ORDER SET STATUS=@STATUS WHERE ID=@ID";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", orderId);
+		cmd->Parameters->AddWithValue("@STATUS", status);
+
+		cmd->ExecuteNonQuery();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (conn != nullptr) conn->Close();
+	}
+	return orderId;
+}
+
 //OrderProduct
 
 int SalesSystemPersistance::Persistance::AddOrderProduct(OrderProduct^ orderProduct)
@@ -1010,6 +1035,51 @@ List<Product^>^ SalesSystemPersistance::Persistance::QueryAllProducts() {
 
 	return allProducts;
 }
+
+Product^ SalesSystemPersistance::Persistance::QueryProductById(int productId)
+{
+
+	Product^ product = nullptr;
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM PRODUCT WHERE ID=@ID";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", productId);
+		reader = cmd->ExecuteReader();
+
+		// Verificar si se encontró un producto con el ID dado
+		if (reader->Read()) {
+			product = gcnew Product();
+			product->Id = Convert::ToInt32(reader["ID"]->ToString());
+			product->Name = reader["NAME"]->ToString();
+			product->Description = reader["DESCRIPTION"]->ToString();
+			product->Price = Convert::ToDouble(reader["PRICE"]);
+			product->Stock = Convert::ToInt32(reader["STOCK"]);
+
+			if (reader["PHOTO"] != DBNull::Value) {
+				product->Photo = safe_cast<array<unsigned char>^>(reader["PHOTO"]);
+			}
+			else {
+				product->Photo = nullptr;
+			}
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+	}
+
+	return product;
+}
+
 
 ///////////////////////////////////////////////////////////////////////////////
 
