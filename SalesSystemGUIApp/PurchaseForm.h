@@ -169,16 +169,15 @@ namespace SalesSystemGUIApp {
 			// 
 			// txtTotalPrice
 			// 
-			this->txtTotalPrice->Location = System::Drawing::Point(199, 92);
+			this->txtTotalPrice->Location = System::Drawing::Point(155, 92);
 			this->txtTotalPrice->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtTotalPrice->Name = L"txtTotalPrice";
-			this->txtTotalPrice->Size = System::Drawing::Size(141, 22);
+			this->txtTotalPrice->Size = System::Drawing::Size(185, 22);
 			this->txtTotalPrice->TabIndex = 14;
 			// 
 			// btnUploadPhoto
 			// 
-			this->btnUploadPhoto->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
-				static_cast<System::Int32>(static_cast<System::Byte>(155)));
+			this->btnUploadPhoto->BackColor = System::Drawing::Color::LightSkyBlue;
 			this->btnUploadPhoto->FlatAppearance->BorderSize = 0;
 			this->btnUploadPhoto->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnUploadPhoto->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
@@ -222,10 +221,10 @@ namespace SalesSystemGUIApp {
 			// 
 			// txtRUC
 			// 
-			this->txtRUC->Location = System::Drawing::Point(137, 145);
+			this->txtRUC->Location = System::Drawing::Point(153, 145);
 			this->txtRUC->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtRUC->Name = L"txtRUC";
-			this->txtRUC->Size = System::Drawing::Size(203, 22);
+			this->txtRUC->Size = System::Drawing::Size(187, 22);
 			this->txtRUC->TabIndex = 21;
 			// 
 			// label2
@@ -256,13 +255,13 @@ namespace SalesSystemGUIApp {
 			this->label3->ForeColor = System::Drawing::Color::White;
 			this->label3->Location = System::Drawing::Point(31, 199);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(410, 16);
+			this->label3->Size = System::Drawing::Size(413, 16);
 			this->label3->TabIndex = 24;
-			this->label3->Text = L"Acontinuación complete los datos de quien esta realizando el pago:";
+			this->label3->Text = L"A continuación complete los datos de quien esta realizando el pago:";
 			// 
 			// txtLastNameYape
 			// 
-			this->txtLastNameYape->Location = System::Drawing::Point(137, 314);
+			this->txtLastNameYape->Location = System::Drawing::Point(153, 314);
 			this->txtLastNameYape->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtLastNameYape->Name = L"txtLastNameYape";
 			this->txtLastNameYape->Size = System::Drawing::Size(187, 22);
@@ -280,10 +279,10 @@ namespace SalesSystemGUIApp {
 			// 
 			// txtNameYape
 			// 
-			this->txtNameYape->Location = System::Drawing::Point(137, 268);
+			this->txtNameYape->Location = System::Drawing::Point(155, 269);
 			this->txtNameYape->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtNameYape->Name = L"txtNameYape";
-			this->txtNameYape->Size = System::Drawing::Size(187, 22);
+			this->txtNameYape->Size = System::Drawing::Size(185, 22);
 			this->txtNameYape->TabIndex = 27;
 			// 
 			// label6

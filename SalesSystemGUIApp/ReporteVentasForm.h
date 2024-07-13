@@ -164,9 +164,10 @@ namespace SalesSystemGUIApp {
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(82, 34);
+			this->pictureBox1->Location = System::Drawing::Point(109, 42);
+			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(389, 249);
+			this->pictureBox1->Size = System::Drawing::Size(519, 306);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -195,7 +196,8 @@ namespace SalesSystemGUIApp {
 			legend1->ForeColor = System::Drawing::Color::White;
 			legend1->Name = L"Legend1";
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(82, 34);
+			this->chart1->Location = System::Drawing::Point(109, 42);
+			this->chart1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->chart1->Name = L"chart1";
 			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
 			series1->ChartArea = L"ChartArea1";
@@ -203,33 +205,35 @@ namespace SalesSystemGUIApp {
 			series1->Legend = L"Legend1";
 			series1->Name = L"VENTAS";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(589, 347);
+			this->chart1->Size = System::Drawing::Size(785, 427);
 			this->chart1->TabIndex = 1;
 			this->chart1->Text = L"chart1";
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(102, 384);
+			this->label1->Location = System::Drawing::Point(136, 473);
+			this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(450, 13);
+			this->label1->Size = System::Drawing::Size(563, 16);
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"NOTA: El gráfico muestra el reporte de ventas mensual desde Junio 2024 hasta el m"
 				L"es actual.";
 			// 
 			// ReporteVentasForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
-			this->ClientSize = System::Drawing::Size(741, 406);
+			this->ClientSize = System::Drawing::Size(988, 500);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->pictureBox1);
 			this->ForeColor = System::Drawing::Color::White;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"ReporteVentasForm";
-			this->Text = L"ReporteVentasForm";
+			this->Text = L"Reporte de ventas";
 			this->Load += gcnew System::EventHandler(this, &ReporteVentasForm::ReporteVentasForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();

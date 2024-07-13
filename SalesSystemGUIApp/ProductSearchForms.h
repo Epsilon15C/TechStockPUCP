@@ -77,6 +77,7 @@ namespace SalesSystemGUIApp {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ DescriptionProduct;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PriceProduct;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ProductID;
+	private: System::Windows::Forms::Label^ label3;
 
 
 
@@ -117,44 +118,43 @@ namespace SalesSystemGUIApp {
 			this->DescriptionProduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->PriceProduct = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->ProductID = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label3 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSearch))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// txtNameProduct
 			// 
-			this->txtNameProduct->Location = System::Drawing::Point(97, 35);
-			this->txtNameProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtNameProduct->Location = System::Drawing::Point(129, 90);
+			this->txtNameProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtNameProduct->Name = L"txtNameProduct";
-			this->txtNameProduct->Size = System::Drawing::Size(184, 20);
+			this->txtNameProduct->Size = System::Drawing::Size(244, 22);
 			this->txtNameProduct->TabIndex = 11;
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
 			this->label1->ForeColor = System::Drawing::Color::White;
-			this->label1->Location = System::Drawing::Point(25, 38);
-			this->label1->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label1->Location = System::Drawing::Point(33, 94);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(47, 13);
+			this->label1->Size = System::Drawing::Size(59, 16);
 			this->label1->TabIndex = 10;
 			this->label1->Text = L"Nombre:";
 			// 
 			// txtDescriptionProduct
 			// 
-			this->txtDescriptionProduct->Location = System::Drawing::Point(123, 77);
-			this->txtDescriptionProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->txtDescriptionProduct->Location = System::Drawing::Point(129, 142);
+			this->txtDescriptionProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtDescriptionProduct->Name = L"txtDescriptionProduct";
-			this->txtDescriptionProduct->Size = System::Drawing::Size(158, 20);
+			this->txtDescriptionProduct->Size = System::Drawing::Size(244, 22);
 			this->txtDescriptionProduct->TabIndex = 13;
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->ForeColor = System::Drawing::Color::White;
-			this->label2->Location = System::Drawing::Point(25, 80);
-			this->label2->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label2->Location = System::Drawing::Point(33, 145);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(66, 13);
+			this->label2->Size = System::Drawing::Size(82, 16);
 			this->label2->TabIndex = 12;
 			this->label2->Text = L"Descripción:";
 			// 
@@ -166,10 +166,10 @@ namespace SalesSystemGUIApp {
 			this->btnSearchProduct->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnSearchProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnSearchProduct->Location = System::Drawing::Point(86, 128);
-			this->btnSearchProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnSearchProduct->Location = System::Drawing::Point(116, 198);
+			this->btnSearchProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnSearchProduct->Name = L"btnSearchProduct";
-			this->btnSearchProduct->Size = System::Drawing::Size(98, 25);
+			this->btnSearchProduct->Size = System::Drawing::Size(131, 31);
 			this->btnSearchProduct->TabIndex = 14;
 			this->btnSearchProduct->Text = L"Buscar";
 			this->btnSearchProduct->UseVisualStyleBackColor = false;
@@ -177,16 +177,15 @@ namespace SalesSystemGUIApp {
 			// 
 			// btnCancelProduct
 			// 
-			this->btnCancelProduct->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
-				static_cast<System::Int32>(static_cast<System::Byte>(155)));
+			this->btnCancelProduct->BackColor = System::Drawing::Color::LightSkyBlue;
 			this->btnCancelProduct->FlatAppearance->BorderSize = 0;
 			this->btnCancelProduct->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnCancelProduct->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnCancelProduct->Location = System::Drawing::Point(213, 128);
-			this->btnCancelProduct->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->btnCancelProduct->Location = System::Drawing::Point(336, 198);
+			this->btnCancelProduct->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnCancelProduct->Name = L"btnCancelProduct";
-			this->btnCancelProduct->Size = System::Drawing::Size(98, 25);
+			this->btnCancelProduct->Size = System::Drawing::Size(131, 31);
 			this->btnCancelProduct->TabIndex = 15;
 			this->btnCancelProduct->Text = L"Cancelar";
 			this->btnCancelProduct->UseVisualStyleBackColor = false;
@@ -200,13 +199,13 @@ namespace SalesSystemGUIApp {
 				this->NameProduct,
 					this->DescriptionProduct, this->PriceProduct, this->ProductID
 			});
-			this->dgvSearch->Location = System::Drawing::Point(11, 171);
-			this->dgvSearch->Margin = System::Windows::Forms::Padding(2, 2, 2, 2);
+			this->dgvSearch->Location = System::Drawing::Point(27, 249);
+			this->dgvSearch->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvSearch->Name = L"dgvSearch";
 			this->dgvSearch->RowHeadersVisible = false;
 			this->dgvSearch->RowHeadersWidth = 51;
 			this->dgvSearch->RowTemplate->Height = 24;
-			this->dgvSearch->Size = System::Drawing::Size(402, 122);
+			this->dgvSearch->Size = System::Drawing::Size(595, 176);
 			this->dgvSearch->TabIndex = 22;
 			this->dgvSearch->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductSearchForms::dgvSearch_CellClick);
 			this->dgvSearch->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &ProductSearchForms::dgvSearch_CellContentClick);
@@ -235,15 +234,31 @@ namespace SalesSystemGUIApp {
 			// ProductID
 			// 
 			this->ProductID->HeaderText = L"ID";
+			this->ProductID->MinimumWidth = 6;
 			this->ProductID->Name = L"ProductID";
 			this->ProductID->Visible = false;
+			this->ProductID->Width = 125;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->ForeColor = System::Drawing::Color::White;
+			this->label3->Location = System::Drawing::Point(33, 40);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(498, 16);
+			this->label3->TabIndex = 23;
+			this->label3->Text = L"A continuación puede buscar los productos y agregarlos a la orden dando un click:"
+				L"";
 			// 
 			// ProductSearchForms
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
-			this->ClientSize = System::Drawing::Size(444, 313);
+			this->ClientSize = System::Drawing::Size(634, 449);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->dgvSearch);
 			this->Controls->Add(this->btnCancelProduct);
 			this->Controls->Add(this->btnSearchProduct);
@@ -252,8 +267,9 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->txtNameProduct);
 			this->Controls->Add(this->label1);
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"ProductSearchForms";
-			this->Text = L"ProductSearchForms";
+			this->Text = L"Busqueda de productos";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvSearch))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();

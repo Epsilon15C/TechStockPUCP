@@ -64,18 +64,24 @@ namespace SalesSystemGUIApp {
 
 
 
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ProviderId;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ProviderName;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ RUC;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Account;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Website;
-	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PhoneNumber;
+
+
+
+
+
+
 	private: System::Windows::Forms::Button^ btnCleanControls;
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ archivoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ nuevoToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ modificarToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ salirToolStripMenuItem;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ProviderId;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ProviderName;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ RUC;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Account;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Website;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ PhoneNumber;
 
 
 
@@ -110,16 +116,11 @@ namespace SalesSystemGUIApp {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
-			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(proveedoresForm::typeid));
 			this->dgvProvider = (gcnew System::Windows::Forms::DataGridView());
-			this->ProviderId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->ProviderName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->RUC = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Account = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Website = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->PhoneNumber = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->lblTitle = (gcnew System::Windows::Forms::Label());
 			this->lblId = (gcnew System::Windows::Forms::Label());
 			this->txtId = (gcnew System::Windows::Forms::TextBox());
@@ -142,6 +143,12 @@ namespace SalesSystemGUIApp {
 			this->nuevoToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->modificarToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->salirToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->ProviderId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->ProviderName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->RUC = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Account = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Website = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->PhoneNumber = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvProvider))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -149,35 +156,35 @@ namespace SalesSystemGUIApp {
 			// dgvProvider
 			// 
 			this->dgvProvider->AllowUserToAddRows = false;
-			dataGridViewCellStyle4->BackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle4->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle4->SelectionBackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle4->SelectionForeColor = System::Drawing::Color::Black;
-			this->dgvProvider->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle1->BackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle1->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::Color::Black;
+			this->dgvProvider->AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
 			this->dgvProvider->BackgroundColor = System::Drawing::SystemColors::ControlDark;
-			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle5->BackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle5->ForeColor = System::Drawing::Color::Black;
-			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
-			this->dgvProvider->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::Black;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->dgvProvider->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
 			this->dgvProvider->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
 			this->dgvProvider->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
 				this->ProviderId,
 					this->ProviderName, this->RUC, this->Account, this->Website, this->PhoneNumber
 			});
-			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
-			dataGridViewCellStyle6->BackColor = System::Drawing::Color::White;
-			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			dataGridViewCellStyle6->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
-			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
-			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
-			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
-			this->dgvProvider->DefaultCellStyle = dataGridViewCellStyle6;
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->dgvProvider->DefaultCellStyle = dataGridViewCellStyle3;
 			this->dgvProvider->Location = System::Drawing::Point(12, 310);
 			this->dgvProvider->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->dgvProvider->Name = L"dgvProvider";
@@ -188,84 +195,42 @@ namespace SalesSystemGUIApp {
 			this->dgvProvider->TabIndex = 12;
 			this->dgvProvider->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &proveedoresForm::dgvProvider_CellClick);
 			// 
-			// ProviderId
-			// 
-			this->ProviderId->HeaderText = L"Id";
-			this->ProviderId->MinimumWidth = 10;
-			this->ProviderId->Name = L"ProviderId";
-			this->ProviderId->Width = 50;
-			// 
-			// ProviderName
-			// 
-			this->ProviderName->HeaderText = L"Nombre";
-			this->ProviderName->MinimumWidth = 10;
-			this->ProviderName->Name = L"ProviderName";
-			this->ProviderName->Width = 125;
-			// 
-			// RUC
-			// 
-			this->RUC->HeaderText = L"RUC";
-			this->RUC->MinimumWidth = 6;
-			this->RUC->Name = L"RUC";
-			this->RUC->Width = 125;
-			// 
-			// Account
-			// 
-			this->Account->HeaderText = L"Account";
-			this->Account->MinimumWidth = 6;
-			this->Account->Name = L"Account";
-			this->Account->Width = 125;
-			// 
-			// Website
-			// 
-			this->Website->HeaderText = L"Website";
-			this->Website->MinimumWidth = 6;
-			this->Website->Name = L"Website";
-			this->Website->Width = 200;
-			// 
-			// PhoneNumber
-			// 
-			this->PhoneNumber->HeaderText = L"PhoneNumber";
-			this->PhoneNumber->MinimumWidth = 6;
-			this->PhoneNumber->Name = L"PhoneNumber";
-			this->PhoneNumber->Width = 125;
-			// 
 			// lblTitle
 			// 
 			this->lblTitle->AutoSize = true;
-			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblTitle->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblTitle->ForeColor = System::Drawing::Color::White;
-			this->lblTitle->Location = System::Drawing::Point(13, 266);
+			this->lblTitle->Location = System::Drawing::Point(13, 278);
 			this->lblTitle->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->lblTitle->Name = L"lblTitle";
-			this->lblTitle->Size = System::Drawing::Size(178, 22);
+			this->lblTitle->Size = System::Drawing::Size(135, 16);
 			this->lblTitle->TabIndex = 0;
 			this->lblTitle->Text = L"Lista de proveedores";
 			// 
 			// lblId
 			// 
 			this->lblId->AutoSize = true;
-			this->lblId->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblId->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblId->ForeColor = System::Drawing::Color::White;
-			this->lblId->Location = System::Drawing::Point(47, 41);
+			this->lblId->Location = System::Drawing::Point(47, 55);
 			this->lblId->Name = L"lblId";
-			this->lblId->Size = System::Drawing::Size(29, 23);
+			this->lblId->Size = System::Drawing::Size(22, 17);
 			this->lblId->TabIndex = 13;
 			this->lblId->Text = L"Id:";
 			// 
 			// txtId
 			// 
-			this->txtId->Location = System::Drawing::Point(142, 43);
+			this->txtId->Location = System::Drawing::Point(113, 53);
 			this->txtId->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtId->Name = L"txtId";
-			this->txtId->Size = System::Drawing::Size(105, 22);
+			this->txtId->Size = System::Drawing::Size(230, 22);
 			this->txtId->TabIndex = 14;
 			// 
 			// txtName
 			// 
-			this->txtName->Location = System::Drawing::Point(142, 85);
+			this->txtName->Location = System::Drawing::Point(113, 95);
 			this->txtName->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtName->Name = L"txtName";
 			this->txtName->Size = System::Drawing::Size(230, 22);
@@ -274,30 +239,30 @@ namespace SalesSystemGUIApp {
 			// lblName
 			// 
 			this->lblName->AutoSize = true;
-			this->lblName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblName->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblName->ForeColor = System::Drawing::Color::White;
-			this->lblName->Location = System::Drawing::Point(47, 83);
+			this->lblName->Location = System::Drawing::Point(47, 97);
 			this->lblName->Name = L"lblName";
-			this->lblName->Size = System::Drawing::Size(77, 23);
+			this->lblName->Size = System::Drawing::Size(60, 17);
 			this->lblName->TabIndex = 3;
 			this->lblName->Text = L"Nombre:";
 			// 
 			// lblRUC
 			// 
 			this->lblRUC->AutoSize = true;
-			this->lblRUC->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblRUC->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblRUC->ForeColor = System::Drawing::Color::White;
-			this->lblRUC->Location = System::Drawing::Point(47, 129);
+			this->lblRUC->Location = System::Drawing::Point(47, 143);
 			this->lblRUC->Name = L"lblRUC";
-			this->lblRUC->Size = System::Drawing::Size(47, 23);
+			this->lblRUC->Size = System::Drawing::Size(36, 17);
 			this->lblRUC->TabIndex = 15;
 			this->lblRUC->Text = L"RUC:";
 			// 
 			// txtRUC
 			// 
-			this->txtRUC->Location = System::Drawing::Point(142, 132);
+			this->txtRUC->Location = System::Drawing::Point(113, 143);
 			this->txtRUC->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtRUC->Name = L"txtRUC";
 			this->txtRUC->Size = System::Drawing::Size(230, 22);
@@ -306,18 +271,18 @@ namespace SalesSystemGUIApp {
 			// lblAccount
 			// 
 			this->lblAccount->AutoSize = true;
-			this->lblAccount->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblAccount->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblAccount->ForeColor = System::Drawing::Color::White;
-			this->lblAccount->Location = System::Drawing::Point(482, 47);
+			this->lblAccount->Location = System::Drawing::Point(482, 61);
 			this->lblAccount->Name = L"lblAccount";
-			this->lblAccount->Size = System::Drawing::Size(158, 23);
+			this->lblAccount->Size = System::Drawing::Size(120, 17);
 			this->lblAccount->TabIndex = 17;
 			this->lblAccount->Text = L"Número de cuenta:";
 			// 
 			// txtAccount
 			// 
-			this->txtAccount->Location = System::Drawing::Point(692, 43);
+			this->txtAccount->Location = System::Drawing::Point(660, 59);
 			this->txtAccount->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtAccount->Name = L"txtAccount";
 			this->txtAccount->Size = System::Drawing::Size(245, 22);
@@ -326,18 +291,18 @@ namespace SalesSystemGUIApp {
 			// lblWebsite
 			// 
 			this->lblWebsite->AutoSize = true;
-			this->lblWebsite->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblWebsite->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblWebsite->ForeColor = System::Drawing::Color::White;
-			this->lblWebsite->Location = System::Drawing::Point(482, 89);
+			this->lblWebsite->Location = System::Drawing::Point(482, 103);
 			this->lblWebsite->Name = L"lblWebsite";
-			this->lblWebsite->Size = System::Drawing::Size(178, 23);
+			this->lblWebsite->Size = System::Drawing::Size(137, 17);
 			this->lblWebsite->TabIndex = 19;
 			this->lblWebsite->Text = L"Web / Dirección física:";
 			// 
 			// txtWebsite
 			// 
-			this->txtWebsite->Location = System::Drawing::Point(692, 85);
+			this->txtWebsite->Location = System::Drawing::Point(660, 101);
 			this->txtWebsite->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtWebsite->Name = L"txtWebsite";
 			this->txtWebsite->Size = System::Drawing::Size(245, 22);
@@ -346,21 +311,21 @@ namespace SalesSystemGUIApp {
 			// lblPhoneNumber
 			// 
 			this->lblPhoneNumber->AutoSize = true;
-			this->lblPhoneNumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lblPhoneNumber->Font = (gcnew System::Drawing::Font(L"Segoe UI", 7.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->lblPhoneNumber->ForeColor = System::Drawing::Color::White;
-			this->lblPhoneNumber->Location = System::Drawing::Point(482, 136);
+			this->lblPhoneNumber->Location = System::Drawing::Point(482, 150);
 			this->lblPhoneNumber->Name = L"lblPhoneNumber";
-			this->lblPhoneNumber->Size = System::Drawing::Size(156, 23);
+			this->lblPhoneNumber->Size = System::Drawing::Size(120, 17);
 			this->lblPhoneNumber->TabIndex = 19;
 			this->lblPhoneNumber->Text = L"Número de celular:";
 			// 
 			// txtPhoneNumber
 			// 
-			this->txtPhoneNumber->Location = System::Drawing::Point(692, 132);
+			this->txtPhoneNumber->Location = System::Drawing::Point(660, 148);
 			this->txtPhoneNumber->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->txtPhoneNumber->Name = L"txtPhoneNumber";
-			this->txtPhoneNumber->Size = System::Drawing::Size(158, 22);
+			this->txtPhoneNumber->Size = System::Drawing::Size(245, 22);
 			this->txtPhoneNumber->TabIndex = 20;
 			// 
 			// btnAdd
@@ -471,7 +436,7 @@ namespace SalesSystemGUIApp {
 			this->nuevoToolStripMenuItem->BackColor = System::Drawing::Color::DarkBlue;
 			this->nuevoToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->nuevoToolStripMenuItem->Name = L"nuevoToolStripMenuItem";
-			this->nuevoToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->nuevoToolStripMenuItem->Size = System::Drawing::Size(165, 28);
 			this->nuevoToolStripMenuItem->Text = L"Nuevo";
 			this->nuevoToolStripMenuItem->Click += gcnew System::EventHandler(this, &proveedoresForm::nuevoToolStripMenuItem_Click);
 			// 
@@ -480,7 +445,7 @@ namespace SalesSystemGUIApp {
 			this->modificarToolStripMenuItem->BackColor = System::Drawing::Color::DarkBlue;
 			this->modificarToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->modificarToolStripMenuItem->Name = L"modificarToolStripMenuItem";
-			this->modificarToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->modificarToolStripMenuItem->Size = System::Drawing::Size(165, 28);
 			this->modificarToolStripMenuItem->Text = L"Modificar";
 			this->modificarToolStripMenuItem->Click += gcnew System::EventHandler(this, &proveedoresForm::modificarToolStripMenuItem_Click);
 			// 
@@ -489,9 +454,51 @@ namespace SalesSystemGUIApp {
 			this->salirToolStripMenuItem->BackColor = System::Drawing::Color::DarkBlue;
 			this->salirToolStripMenuItem->ForeColor = System::Drawing::Color::White;
 			this->salirToolStripMenuItem->Name = L"salirToolStripMenuItem";
-			this->salirToolStripMenuItem->Size = System::Drawing::Size(173, 30);
+			this->salirToolStripMenuItem->Size = System::Drawing::Size(165, 28);
 			this->salirToolStripMenuItem->Text = L"Salir";
 			this->salirToolStripMenuItem->Click += gcnew System::EventHandler(this, &proveedoresForm::salirToolStripMenuItem_Click);
+			// 
+			// ProviderId
+			// 
+			this->ProviderId->HeaderText = L"Id";
+			this->ProviderId->MinimumWidth = 10;
+			this->ProviderId->Name = L"ProviderId";
+			this->ProviderId->Width = 50;
+			// 
+			// ProviderName
+			// 
+			this->ProviderName->HeaderText = L"Nombre";
+			this->ProviderName->MinimumWidth = 10;
+			this->ProviderName->Name = L"ProviderName";
+			this->ProviderName->Width = 125;
+			// 
+			// RUC
+			// 
+			this->RUC->HeaderText = L"RUC";
+			this->RUC->MinimumWidth = 6;
+			this->RUC->Name = L"RUC";
+			this->RUC->Width = 125;
+			// 
+			// Account
+			// 
+			this->Account->HeaderText = L"Nro. de Cuenta";
+			this->Account->MinimumWidth = 6;
+			this->Account->Name = L"Account";
+			this->Account->Width = 125;
+			// 
+			// Website
+			// 
+			this->Website->HeaderText = L"Sitio web";
+			this->Website->MinimumWidth = 6;
+			this->Website->Name = L"Website";
+			this->Website->Width = 200;
+			// 
+			// PhoneNumber
+			// 
+			this->PhoneNumber->HeaderText = L"Numero de celular";
+			this->PhoneNumber->MinimumWidth = 6;
+			this->PhoneNumber->Name = L"PhoneNumber";
+			this->PhoneNumber->Width = 125;
 			// 
 			// proveedoresForm
 			// 
@@ -520,6 +527,7 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->menuStrip1);
 			this->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->Margin = System::Windows::Forms::Padding(6);
 			this->Name = L"proveedoresForm";

@@ -124,7 +124,7 @@ namespace SalesSystemGUIApp {
 				// Configurar el título del gráfico
 				chart1->Titles->Clear(); // Limpiar títulos anteriores
 				Title^ titulo = gcnew Title("Reporte de Ventas por Clientes (TOP 3)");
-				titulo->ForeColor = System::Drawing::Color::Black; // Ajuste de color para verificar visibilidad
+				titulo->ForeColor = System::Drawing::Color::White; // Ajuste de color para verificar visibilidad
 				titulo->Font = gcnew System::Drawing::Font("Arial", 12);
 				chart1->Titles->Add(titulo);
 
@@ -154,34 +154,56 @@ namespace SalesSystemGUIApp {
 			System::Windows::Forms::DataVisualization::Charting::ChartArea^ chartArea1 = (gcnew System::Windows::Forms::DataVisualization::Charting::ChartArea());
 			System::Windows::Forms::DataVisualization::Charting::Legend^ legend1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Legend());
 			System::Windows::Forms::DataVisualization::Charting::Series^ series1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Series());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ReportClientsSales::typeid));
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// chart1
 			// 
+			this->chart1->BackColor = System::Drawing::Color::Black;
+			chartArea1->AxisX->LabelStyle->ForeColor = System::Drawing::Color::White;
+			chartArea1->AxisX->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX->MajorGrid->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX->MajorTickMark->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisX->TitleForeColor = System::Drawing::Color::White;
+			chartArea1->AxisY->LabelStyle->ForeColor = System::Drawing::Color::White;
+			chartArea1->AxisY->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisY->MajorGrid->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisY->MajorTickMark->LineColor = System::Drawing::Color::White;
+			chartArea1->AxisY->TitleForeColor = System::Drawing::Color::White;
+			chartArea1->BackColor = System::Drawing::Color::Black;
 			chartArea1->Name = L"ChartArea1";
 			this->chart1->ChartAreas->Add(chartArea1);
+			legend1->BackColor = System::Drawing::Color::Black;
+			legend1->ForeColor = System::Drawing::Color::White;
 			legend1->Name = L"Legend1";
+			legend1->TitleBackColor = System::Drawing::Color::Black;
+			legend1->TitleForeColor = System::Drawing::Color::White;
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(72, 30);
+			this->chart1->Location = System::Drawing::Point(96, 37);
+			this->chart1->Margin = System::Windows::Forms::Padding(4);
 			this->chart1->Name = L"chart1";
+			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Fire;
 			series1->ChartArea = L"ChartArea1";
 			series1->Legend = L"Legend1";
 			series1->Name = L"Series1";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(465, 324);
+			this->chart1->Size = System::Drawing::Size(620, 399);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			// 
 			// ReportClientsSales
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(599, 372);
+			this->BackColor = System::Drawing::Color::Black;
+			this->ClientSize = System::Drawing::Size(799, 458);
 			this->Controls->Add(this->chart1);
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
+			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ReportClientsSales";
-			this->Text = L"ReportClientsSales";
+			this->Text = L"Reporte de clientes";
 			this->Load += gcnew System::EventHandler(this, &ReportClientsSales::ReportClientsSales_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->ResumeLayout(false);

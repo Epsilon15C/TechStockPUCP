@@ -143,6 +143,15 @@ namespace SalesSystemGUIApp {
 
 
 
+
+
+
+
+
+
+
+
+
 		private:
 			/// <summary>
 			/// Variable del diseñador necesaria.
@@ -156,6 +165,7 @@ namespace SalesSystemGUIApp {
 			/// </summary>
 			void InitializeComponent(void)
 			{
+				System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(clientesForm::typeid));
 				this->lblId = (gcnew System::Windows::Forms::Label());
 				this->lblName = (gcnew System::Windows::Forms::Label());
 				this->lblDNI = (gcnew System::Windows::Forms::Label());
@@ -172,15 +182,6 @@ namespace SalesSystemGUIApp {
 				this->txtLastName = (gcnew System::Windows::Forms::TextBox());
 				this->pbPhoto = (gcnew System::Windows::Forms::PictureBox());
 				this->dgvClients = (gcnew System::Windows::Forms::DataGridView());
-				this->ClientId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-				this->ClientUserName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-				this->ClientPassword = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-				this->ClientName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-				this->ClientLastName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-				this->StatusClient = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-				this->ClientDNI = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-				this->ClientGender = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-				this->ClientBirthDate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				this->btnAdd = (gcnew System::Windows::Forms::Button());
 				this->btnDelete = (gcnew System::Windows::Forms::Button());
 				this->btnUpdate = (gcnew System::Windows::Forms::Button());
@@ -192,6 +193,15 @@ namespace SalesSystemGUIApp {
 				this->btnCleanControls = (gcnew System::Windows::Forms::Button());
 				this->lblPassword = (gcnew System::Windows::Forms::Label());
 				this->txtPassword = (gcnew System::Windows::Forms::TextBox());
+				this->ClientId = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->ClientUserName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->ClientPassword = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->ClientName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->ClientLastName = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->StatusClient = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->ClientDNI = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->ClientGender = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+				this->ClientBirthDate = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhoto))->BeginInit();
 				(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dgvClients))->BeginInit();
 				this->menuStrip1->SuspendLayout();
@@ -372,78 +382,6 @@ namespace SalesSystemGUIApp {
 				this->dgvClients->TabIndex = 18;
 				this->dgvClients->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &clientesForm::dgvClients_CellClick_1);
 				// 
-				// ClientId
-				// 
-				this->ClientId->HeaderText = L"Id";
-				this->ClientId->MinimumWidth = 6;
-				this->ClientId->Name = L"ClientId";
-				this->ClientId->ReadOnly = true;
-				this->ClientId->Width = 125;
-				// 
-				// ClientUserName
-				// 
-				this->ClientUserName->HeaderText = L"Nombre de usuario";
-				this->ClientUserName->MinimumWidth = 6;
-				this->ClientUserName->Name = L"ClientUserName";
-				this->ClientUserName->ReadOnly = true;
-				this->ClientUserName->Width = 125;
-				// 
-				// ClientPassword
-				// 
-				this->ClientPassword->HeaderText = L"Contraseña";
-				this->ClientPassword->MinimumWidth = 6;
-				this->ClientPassword->Name = L"ClientPassword";
-				this->ClientPassword->ReadOnly = true;
-				this->ClientPassword->Width = 125;
-				// 
-				// ClientName
-				// 
-				this->ClientName->HeaderText = L"Nombre";
-				this->ClientName->MinimumWidth = 6;
-				this->ClientName->Name = L"ClientName";
-				this->ClientName->ReadOnly = true;
-				this->ClientName->Width = 125;
-				// 
-				// ClientLastName
-				// 
-				this->ClientLastName->HeaderText = L"Apellidos";
-				this->ClientLastName->MinimumWidth = 6;
-				this->ClientLastName->Name = L"ClientLastName";
-				this->ClientLastName->ReadOnly = true;
-				this->ClientLastName->Width = 125;
-				// 
-				// StatusClient
-				// 
-				this->StatusClient->HeaderText = L"Status";
-				this->StatusClient->MinimumWidth = 6;
-				this->StatusClient->Name = L"StatusClient";
-				this->StatusClient->ReadOnly = true;
-				this->StatusClient->Width = 125;
-				// 
-				// ClientDNI
-				// 
-				this->ClientDNI->HeaderText = L"DNI";
-				this->ClientDNI->MinimumWidth = 6;
-				this->ClientDNI->Name = L"ClientDNI";
-				this->ClientDNI->ReadOnly = true;
-				this->ClientDNI->Width = 125;
-				// 
-				// ClientGender
-				// 
-				this->ClientGender->HeaderText = L"Género";
-				this->ClientGender->MinimumWidth = 6;
-				this->ClientGender->Name = L"ClientGender";
-				this->ClientGender->ReadOnly = true;
-				this->ClientGender->Width = 125;
-				// 
-				// ClientBirthDate
-				// 
-				this->ClientBirthDate->HeaderText = L"Fecha de nacimiento";
-				this->ClientBirthDate->MinimumWidth = 6;
-				this->ClientBirthDate->Name = L"ClientBirthDate";
-				this->ClientBirthDate->ReadOnly = true;
-				this->ClientBirthDate->Width = 125;
-				// 
 				// btnAdd
 				// 
 				this->btnAdd->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
@@ -596,6 +534,78 @@ namespace SalesSystemGUIApp {
 				this->txtPassword->Size = System::Drawing::Size(199, 22);
 				this->txtPassword->TabIndex = 42;
 				// 
+				// ClientId
+				// 
+				this->ClientId->HeaderText = L"Id";
+				this->ClientId->MinimumWidth = 6;
+				this->ClientId->Name = L"ClientId";
+				this->ClientId->ReadOnly = true;
+				this->ClientId->Width = 125;
+				// 
+				// ClientUserName
+				// 
+				this->ClientUserName->HeaderText = L"Nombre de usuario";
+				this->ClientUserName->MinimumWidth = 6;
+				this->ClientUserName->Name = L"ClientUserName";
+				this->ClientUserName->ReadOnly = true;
+				this->ClientUserName->Width = 125;
+				// 
+				// ClientPassword
+				// 
+				this->ClientPassword->HeaderText = L"Contraseña";
+				this->ClientPassword->MinimumWidth = 6;
+				this->ClientPassword->Name = L"ClientPassword";
+				this->ClientPassword->ReadOnly = true;
+				this->ClientPassword->Width = 125;
+				// 
+				// ClientName
+				// 
+				this->ClientName->HeaderText = L"Nombre";
+				this->ClientName->MinimumWidth = 6;
+				this->ClientName->Name = L"ClientName";
+				this->ClientName->ReadOnly = true;
+				this->ClientName->Width = 125;
+				// 
+				// ClientLastName
+				// 
+				this->ClientLastName->HeaderText = L"Apellidos";
+				this->ClientLastName->MinimumWidth = 6;
+				this->ClientLastName->Name = L"ClientLastName";
+				this->ClientLastName->ReadOnly = true;
+				this->ClientLastName->Width = 125;
+				// 
+				// StatusClient
+				// 
+				this->StatusClient->HeaderText = L"Estado";
+				this->StatusClient->MinimumWidth = 6;
+				this->StatusClient->Name = L"StatusClient";
+				this->StatusClient->ReadOnly = true;
+				this->StatusClient->Width = 125;
+				// 
+				// ClientDNI
+				// 
+				this->ClientDNI->HeaderText = L"DNI";
+				this->ClientDNI->MinimumWidth = 6;
+				this->ClientDNI->Name = L"ClientDNI";
+				this->ClientDNI->ReadOnly = true;
+				this->ClientDNI->Width = 125;
+				// 
+				// ClientGender
+				// 
+				this->ClientGender->HeaderText = L"Género";
+				this->ClientGender->MinimumWidth = 6;
+				this->ClientGender->Name = L"ClientGender";
+				this->ClientGender->ReadOnly = true;
+				this->ClientGender->Width = 125;
+				// 
+				// ClientBirthDate
+				// 
+				this->ClientBirthDate->HeaderText = L"Fecha de nacimiento";
+				this->ClientBirthDate->MinimumWidth = 6;
+				this->ClientBirthDate->Name = L"ClientBirthDate";
+				this->ClientBirthDate->ReadOnly = true;
+				this->ClientBirthDate->Width = 125;
+				// 
 				// clientesForm
 				// 
 				this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
@@ -627,6 +637,7 @@ namespace SalesSystemGUIApp {
 				this->Controls->Add(this->menuStrip1);
 				this->ForeColor = System::Drawing::SystemColors::ActiveCaptionText;
 				this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+				this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 				this->MainMenuStrip = this->menuStrip1;
 				this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 				this->Name = L"clientesForm";
