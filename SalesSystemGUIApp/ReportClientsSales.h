@@ -84,19 +84,21 @@ namespace SalesSystemGUIApp {
 		// Método para cargar los datos de ventas por clientes al gráfico de barras
 		void CargarReporteVentasClientes()
 		{
-			String^ query = "SELECT P.USERNAME AS CUSTOMER_NAME, SUM(SO.TOTAL_AMOUNT) AS TOTAL_VENTAS "
+			// Nueva consulta para obtener los 5 clientes que más han comprado
+			String^ query = "SELECT TOP 5 P.USERNAME AS CUSTOMER_NAME, SUM(SO.TOTAL_AMOUNT) AS TOTAL_VENTAS "
 				"FROM SALES_ORDER SO "
 				"INNER JOIN PERSON P ON SO.PERSON_ID = P.ID "
-				"GROUP BY P.USERNAME";
+				"GROUP BY P.USERNAME "
+				"ORDER BY SUM(SO.TOTAL_AMOUNT) DESC";
 
 			SqlCommand^ cmd = gcnew SqlCommand(query, conn);
 			SqlDataReader^ reader;
 
 			try {
 				conn->Open();
-	
+
 				reader = cmd->ExecuteReader();
-		
+
 				// Limpiar series anteriores del gráfico
 				chart1->Series->Clear();
 
@@ -167,7 +169,7 @@ namespace SalesSystemGUIApp {
 			series1->Legend = L"Legend1";
 			series1->Name = L"Series1";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(465, 324);
+			this->chart1->Size = System::Drawing::Size(492, 338);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			// 
@@ -175,7 +177,7 @@ namespace SalesSystemGUIApp {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(599, 372);
+			this->ClientSize = System::Drawing::Size(615, 380);
 			this->Controls->Add(this->chart1);
 			this->Name = L"ReportClientsSales";
 			this->Text = L"ReportClientsSales";

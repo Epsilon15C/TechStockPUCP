@@ -118,8 +118,7 @@ namespace SalesSystemGUIApp {
 			legend1->TitleForeColor = System::Drawing::Color::White;
 			legend1->TitleSeparatorColor = System::Drawing::Color::White;
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(183, 15);
-			this->chart1->Margin = System::Windows::Forms::Padding(4);
+			this->chart1->Location = System::Drawing::Point(137, 12);
 			this->chart1->Name = L"chart1";
 			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::Pastel;
 			series1->ChartArea = L"ChartArea1";
@@ -127,7 +126,7 @@ namespace SalesSystemGUIApp {
 			series1->Legend = L"Legend1";
 			series1->Name = L"Productos";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(495, 438);
+			this->chart1->Size = System::Drawing::Size(520, 430);
 			this->chart1->TabIndex = 0;
 			this->chart1->Text = L"chart1";
 			title1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)),
@@ -140,14 +139,13 @@ namespace SalesSystemGUIApp {
 			// 
 			// ProductosVendidosForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
-			this->ClientSize = System::Drawing::Size(844, 486);
+			this->ClientSize = System::Drawing::Size(789, 442);
 			this->Controls->Add(this->chart1);
 			this->ForeColor = System::Drawing::Color::White;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ProductosVendidosForm";
 			this->Text = L"ProductosVendidosForm";
 			this->Load += gcnew System::EventHandler(this, &ProductosVendidosForm::ProductosVendidosForm_Load);
