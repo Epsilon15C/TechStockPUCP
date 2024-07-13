@@ -62,6 +62,8 @@ namespace SalesSystemGUIApp {
 		System::ComponentModel::Container ^components;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
 	private: System::Windows::Forms::DataVisualization::Charting::Chart^ chart1;
+	private: System::Windows::Forms::Label^ label1;
+
 
 		SqlConnection^ conn;
 
@@ -82,12 +84,20 @@ namespace SalesSystemGUIApp {
 		// Método para cargar los datos de ventas al gráfico
 		void CargarReporteVentas()
 		{
-			String^ query = "SELECT ORDER_DATE, SUM(TOTAL_AMOUNT) AS TOTAL_VENTAS "
+			// Nueva consulta para agrupar por meses
+			String^ query = "SELECT MONTH(ORDER_DATE) AS Mes, "
+				"SUM(TOTAL_AMOUNT) AS TOTAL_VENTAS "
 				"FROM SALES_ORDER "
-				"GROUP BY ORDER_DATE";
+				"GROUP BY YEAR(ORDER_DATE), MONTH(ORDER_DATE) "
+				"ORDER BY YEAR(ORDER_DATE), MONTH(ORDER_DATE)";
 
 			SqlCommand^ cmd = gcnew SqlCommand(query, conn);
 			SqlDataReader^ reader;
+
+			array<String^>^ meses = gcnew array<String^>{
+				"Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+					"Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"
+			};
 
 			try {
 				conn->Open();
@@ -98,23 +108,29 @@ namespace SalesSystemGUIApp {
 
 				// Agregar los datos al gráfico
 				while (reader->Read()) {
-					String^ fecha = safe_cast<String^>(reader["ORDER_DATE"]->ToString());
+					int mesNumero = Convert::ToInt32(reader["Mes"]);
+					String^ mesNombre = meses[mesNumero - 1];
 					double totalVentas = Convert::ToDouble(reader["TOTAL_VENTAS"]);
-					chart1->Series["VENTAS"]->Points->AddXY(fecha, totalVentas);
+					chart1->Series["VENTAS"]->Points->AddXY(mesNombre, totalVentas);
 				}
 
 				reader->Close();
 
 				// Configurar el título del gráfico
 				chart1->Titles->Clear(); // Limpiar títulos anteriores
-				Title^ titulo = gcnew Title("Reporte de Ventas"); // Crear el título
+				Title^ titulo = gcnew Title("Reporte de Ventas Mensual"); // Crear el título
 				titulo->ForeColor = System::Drawing::Color::White; // Cambiar el color del título a blanco
 				titulo->Font = gcnew System::Drawing::Font("Arial", 12); // Cambiar el tamaño del título a 12 puntos
 				chart1->Titles->Add(titulo); // Agregar el título al gráfico
 
 				// Configurar nombres de ejes
-				chart1->ChartAreas["ChartArea1"]->AxisX->Title = "Fecha";
+				chart1->ChartAreas["ChartArea1"]->AxisX->Title = "Mes - 2024";
 				chart1->ChartAreas["ChartArea1"]->AxisY->Title = "Monto Vendido (soles)";
+
+				// Configurar la serie para mostrar los valores en las barras
+				chart1->Series["VENTAS"]->IsValueShownAsLabel = true;
+				chart1->Series["VENTAS"]->LabelForeColor = System::Drawing::Color::White; // Cambiar el color de las etiquetas a blanco
+
 			}
 			catch (Exception^ ex) {
 				MessageBox::Show("Error al cargar los datos: " + ex->Message);
@@ -141,16 +157,16 @@ namespace SalesSystemGUIApp {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(ReporteVentasForm::typeid));
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->chart1 = (gcnew System::Windows::Forms::DataVisualization::Charting::Chart());
+			this->label1 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// pictureBox1
 			// 
-			this->pictureBox1->Location = System::Drawing::Point(109, 42);
-			this->pictureBox1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->pictureBox1->Location = System::Drawing::Point(82, 34);
 			this->pictureBox1->Name = L"pictureBox1";
-			this->pictureBox1->Size = System::Drawing::Size(519, 306);
+			this->pictureBox1->Size = System::Drawing::Size(389, 249);
 			this->pictureBox1->TabIndex = 0;
 			this->pictureBox1->TabStop = false;
 			// 
@@ -179,8 +195,7 @@ namespace SalesSystemGUIApp {
 			legend1->ForeColor = System::Drawing::Color::White;
 			legend1->Name = L"Legend1";
 			this->chart1->Legends->Add(legend1);
-			this->chart1->Location = System::Drawing::Point(109, 42);
-			this->chart1->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
+			this->chart1->Location = System::Drawing::Point(82, 34);
 			this->chart1->Name = L"chart1";
 			this->chart1->Palette = System::Windows::Forms::DataVisualization::Charting::ChartColorPalette::EarthTones;
 			series1->ChartArea = L"ChartArea1";
@@ -188,27 +203,38 @@ namespace SalesSystemGUIApp {
 			series1->Legend = L"Legend1";
 			series1->Name = L"VENTAS";
 			this->chart1->Series->Add(series1);
-			this->chart1->Size = System::Drawing::Size(519, 306);
+			this->chart1->Size = System::Drawing::Size(589, 347);
 			this->chart1->TabIndex = 1;
 			this->chart1->Text = L"chart1";
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(102, 384);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(450, 13);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"NOTA: El gráfico muestra el reporte de ventas mensual desde Junio 2024 hasta el m"
+				L"es actual.";
+			// 
 			// ReporteVentasForm
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
+			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
-			this->ClientSize = System::Drawing::Size(771, 404);
+			this->ClientSize = System::Drawing::Size(741, 406);
+			this->Controls->Add(this->label1);
 			this->Controls->Add(this->chart1);
 			this->Controls->Add(this->pictureBox1);
 			this->ForeColor = System::Drawing::Color::White;
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
-			this->Margin = System::Windows::Forms::Padding(4, 4, 4, 4);
 			this->Name = L"ReporteVentasForm";
 			this->Text = L"ReporteVentasForm";
 			this->Load += gcnew System::EventHandler(this, &ReporteVentasForm::ReporteVentasForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->ResumeLayout(false);
+			this->PerformLayout();
 
 		}
 #pragma endregion
