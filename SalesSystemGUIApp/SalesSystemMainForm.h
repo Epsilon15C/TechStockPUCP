@@ -301,6 +301,12 @@ namespace SalesSystemGUIApp {
 				   clientesToolStripMenuItem->Visible = false;
 				   reporteToolStripMenuItem->Visible = true;
 				   proveedoresToolStripMenuItem->Visible = true;
+				   generrOrdenToolStripMenuItem->Visible = false;
+				   ayudaToolStripMenuItem->Visible = false;
+				   reporteDeVentasToolStripMenuItem->Visible = false;
+				   gráficoDeProductosVendidosToolStripMenuItem->Visible = false;
+
+
 			   }
 
 			  
