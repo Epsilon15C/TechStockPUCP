@@ -840,6 +840,43 @@ Sale^ SalesSystemPersistance::Persistance::QuerySaleById(int saleId)
 	return sale;
 }
 
+PaymentYape^ SalesSystemPersistance::Persistance::QueryPaymentYapeContainingNameLastNameandAmount(String^ name, String^ lastName, double amount)
+{
+	// Implementar la lógica para buscar un PaymentYape en una tabla de mi base de datos llamada PAYMENT_YAPE que contenga en su campo llamado TEXT a "name", a "lastName" y a "amount", cabe mencionar que TEXT es un campo de tipo varchar y contiene una frase completa que incluye el nombre y apellido del cliente, además de la cantidad a pagar
+
+	PaymentYape^ paymentYape = nullptr;
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+	SqlDataReader^ reader;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "SELECT * FROM PAYMENT_YAPE WHERE TEXT LIKE @TEXT";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@TEXT", "%" + name + "%" + lastName + "%" + amount + "%");
+		//cmd->Parameters->AddWithValue("@TEXT", "Yape! " + name + " " + lastName + " te envió un pago por S/ " + amount);
+		reader = cmd->ExecuteReader();
+
+		// Verificar si se encontró un PaymentYape con el nombre, apellido y monto dados
+		if (reader->Read()) {
+			paymentYape = gcnew PaymentYape();
+			paymentYape->Id = Convert::ToInt32(reader["ID"]->ToString());
+			paymentYape->Text = reader["TEXT"]->ToString();
+		}
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (reader != nullptr) reader->Close();
+		if (conn != nullptr) conn->Close();
+	}
+
+	return paymentYape;
+}
+
+
 
 
 

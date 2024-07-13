@@ -108,6 +108,9 @@
     <ClInclude Include="OrderProduct.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="PaymentYape.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SalesSystemModel.cpp">
@@ -201,6 +204,9 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="OrderProduct.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="PaymentYape.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>

@@ -19,6 +19,9 @@ namespace SalesSystemGUIApp {
 	using namespace System::Drawing;
 	using namespace System::IO;
 	using namespace System::Text;
+	using namespace SalesSystemModel;
+	using namespace SalesSystemPersistance;
+	using namespace SalesSystemService;
 
 	/// <summary>
 	/// Resumen de PurchaseForm
@@ -86,7 +89,17 @@ namespace SalesSystemGUIApp {
 
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::PictureBox^ pictureBoxYape;
-	private: System::Windows::Forms::PictureBox^ pictureBoxPlin;
+
+	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::TextBox^ txtLastNameYape;
+
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::TextBox^ txtNameYape;
+
+	private: System::Windows::Forms::Label^ label6;
+	private: System::Windows::Forms::Label^ label7;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label8;
 
 
 
@@ -114,10 +127,16 @@ namespace SalesSystemGUIApp {
 			this->txtRUC = (gcnew System::Windows::Forms::TextBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->pictureBoxYape = (gcnew System::Windows::Forms::PictureBox());
-			this->pictureBoxPlin = (gcnew System::Windows::Forms::PictureBox());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->txtLastNameYape = (gcnew System::Windows::Forms::TextBox());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->txtNameYape = (gcnew System::Windows::Forms::TextBox());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label8 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhotoUploaded))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxYape))->BeginInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxPlin))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// txtClient
@@ -164,7 +183,7 @@ namespace SalesSystemGUIApp {
 			this->btnUploadPhoto->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnUploadPhoto->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnUploadPhoto->Location = System::Drawing::Point(520, 249);
+			this->btnUploadPhoto->Location = System::Drawing::Point(659, 391);
 			this->btnUploadPhoto->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnUploadPhoto->Name = L"btnUploadPhoto";
 			this->btnUploadPhoto->Size = System::Drawing::Size(150, 31);
@@ -176,10 +195,10 @@ namespace SalesSystemGUIApp {
 			// pbPhotoUploaded
 			// 
 			this->pbPhotoUploaded->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pbPhotoUploaded->Location = System::Drawing::Point(504, 26);
+			this->pbPhotoUploaded->Location = System::Drawing::Point(574, 66);
 			this->pbPhotoUploaded->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pbPhotoUploaded->Name = L"pbPhotoUploaded";
-			this->pbPhotoUploaded->Size = System::Drawing::Size(183, 179);
+			this->pbPhotoUploaded->Size = System::Drawing::Size(319, 311);
 			this->pbPhotoUploaded->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pbPhotoUploaded->TabIndex = 17;
 			this->pbPhotoUploaded->TabStop = false;
@@ -192,7 +211,7 @@ namespace SalesSystemGUIApp {
 			this->btnGeneratePDF->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->btnGeneratePDF->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 9, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->btnGeneratePDF->Location = System::Drawing::Point(520, 314);
+			this->btnGeneratePDF->Location = System::Drawing::Point(574, 493);
 			this->btnGeneratePDF->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->btnGeneratePDF->Name = L"btnGeneratePDF";
 			this->btnGeneratePDF->Size = System::Drawing::Size(149, 31);
@@ -223,33 +242,104 @@ namespace SalesSystemGUIApp {
 			// 
 			this->pictureBoxYape->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 			this->pictureBoxYape->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxYape.Image")));
-			this->pictureBoxYape->Location = System::Drawing::Point(247, 204);
+			this->pictureBoxYape->Location = System::Drawing::Point(57, 352);
 			this->pictureBoxYape->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->pictureBoxYape->Name = L"pictureBoxYape";
-			this->pictureBoxYape->Size = System::Drawing::Size(177, 173);
+			this->pictureBoxYape->Size = System::Drawing::Size(283, 239);
 			this->pictureBoxYape->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
 			this->pictureBoxYape->TabIndex = 22;
 			this->pictureBoxYape->TabStop = false;
 			// 
-			// pictureBoxPlin
+			// label3
 			// 
-			this->pictureBoxPlin->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-			this->pictureBoxPlin->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBoxPlin.Image")));
-			this->pictureBoxPlin->Location = System::Drawing::Point(48, 204);
-			this->pictureBoxPlin->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->pictureBoxPlin->Name = L"pictureBoxPlin";
-			this->pictureBoxPlin->Size = System::Drawing::Size(177, 173);
-			this->pictureBoxPlin->SizeMode = System::Windows::Forms::PictureBoxSizeMode::StretchImage;
-			this->pictureBoxPlin->TabIndex = 23;
-			this->pictureBoxPlin->TabStop = false;
+			this->label3->AutoSize = true;
+			this->label3->ForeColor = System::Drawing::Color::White;
+			this->label3->Location = System::Drawing::Point(31, 199);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(410, 16);
+			this->label3->TabIndex = 24;
+			this->label3->Text = L"Acontinuación complete los datos de quien esta realizando el pago:";
+			// 
+			// txtLastNameYape
+			// 
+			this->txtLastNameYape->Location = System::Drawing::Point(137, 314);
+			this->txtLastNameYape->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->txtLastNameYape->Name = L"txtLastNameYape";
+			this->txtLastNameYape->Size = System::Drawing::Size(187, 22);
+			this->txtLastNameYape->TabIndex = 29;
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->ForeColor = System::Drawing::Color::White;
+			this->label5->Location = System::Drawing::Point(28, 314);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(73, 16);
+			this->label5->TabIndex = 28;
+			this->label5->Text = L"Apellidos : ";
+			// 
+			// txtNameYape
+			// 
+			this->txtNameYape->Location = System::Drawing::Point(137, 268);
+			this->txtNameYape->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->txtNameYape->Name = L"txtNameYape";
+			this->txtNameYape->Size = System::Drawing::Size(187, 22);
+			this->txtNameYape->TabIndex = 27;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->ForeColor = System::Drawing::Color::White;
+			this->label6->Location = System::Drawing::Point(28, 272);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(77, 16);
+			this->label6->TabIndex = 26;
+			this->label6->Text = L"Nombre(s) :";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->ForeColor = System::Drawing::Color::White;
+			this->label7->Location = System::Drawing::Point(31, 229);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(209, 16);
+			this->label7->TabIndex = 32;
+			this->label7->Text = L"Rellenar los datos en mayúsculas";
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->ForeColor = System::Drawing::Color::White;
+			this->label4->Location = System::Drawing::Point(571, 37);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(202, 16);
+			this->label4->TabIndex = 33;
+			this->label4->Text = L"Subir captura del pago realizado";
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->ForeColor = System::Drawing::Color::White;
+			this->label8->Location = System::Drawing::Point(568, 456);
+			this->label8->Name = L"label8";
+			this->label8->Size = System::Drawing::Size(240, 16);
+			this->label8->TabIndex = 34;
+			this->label8->Text = L"Confirmar el pago y finalizar la compra :";
 			// 
 			// PurchaseForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::Black;
-			this->ClientSize = System::Drawing::Size(759, 404);
-			this->Controls->Add(this->pictureBoxPlin);
+			this->ClientSize = System::Drawing::Size(903, 608);
+			this->Controls->Add(this->label8);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->txtLastNameYape);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->txtNameYape);
+			this->Controls->Add(this->label6);
+			this->Controls->Add(this->label3);
 			this->Controls->Add(this->pictureBoxYape);
 			this->Controls->Add(this->txtRUC);
 			this->Controls->Add(this->label2);
@@ -263,11 +353,10 @@ namespace SalesSystemGUIApp {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"PurchaseForm";
-			this->Text = L"Compra";
+			this->Text = L"Procesar pago";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &PurchaseForm::PurchaseForm_FormClosed);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pbPhotoUploaded))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxYape))->EndInit();
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBoxPlin))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -283,16 +372,27 @@ private: System::Void btnUploadPhoto_Click(System::Object^ sender, System::Event
 }
 
 	private: System::Void btnGeneratePDF_Click(System::Object^ sender, System::EventArgs^ e) {
-		MessageBox::Show("Se finalizó la compra. Por favor, al cerrar la ventana, presione generar comprobante");
+
+		//Usar la funcion QueryPaymentYapeContainingNameLastNameandAmount de SalesSystemPersistance para comprobar el pago
 		
+		PaymentYape^ paymentYape = Persistance::QueryPaymentYapeContainingNameLastNameandAmount(txtNameYape->Text, txtLastNameYape->Text, Convert::ToDouble(txtTotalPrice->Text));
+		if (paymentYape == nullptr) {
+			MessageBox::Show("No se encontró el pago. Por favor, vuelva a intentarlo");
+			return;
+		}
+		else {
+
+			MessageBox::Show("Se finalizó la compra. Por favor, al cerrar la ventana, presione generar comprobante");
+		}
+
+		//Product^ product = Persistance::QueryProductById(orderProducts[i]->ProductId);	
 		RUCValue = txtRUC->Text;
 		Close();
 	}
 
 	 private: System::Void PurchaseForm_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
-		 
-	 }
 
+	 }
 
 };
 

@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="Order.h" />
     <ClInclude Include="OrderProduct.h" />
+    <ClInclude Include="PaymentYape.h" />
     <ClInclude Include="UserSession.h" />
     <ClInclude Include="VoltageSource.h" />
     <ClInclude Include="Breadboard.h" />
@@ -155,6 +156,7 @@
     <ClCompile Include="AssemblyInfo.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="OrderProduct.cpp" />
+    <ClCompile Include="PaymentYape.cpp" />
     <ClCompile Include="UserSession.cpp" />
     <ClCompile Include="VoltageSource.cpp" />
     <ClCompile Include="Breadboard.cpp" />
