@@ -84,13 +84,16 @@ namespace SalesSystemGUIApp {
 		// Método para cargar los datos de ventas por clientes al gráfico de barras
 		void CargarReporteVentasClientes()
 		{
-			String^ query = "SELECT P.USERNAME AS CUSTOMER_NAME, SUM(SO.TOTAL_AMOUNT) AS TOTAL_VENTAS "
+			// Nueva consulta para obtener los 3 clientes que más han comprado
+			String^ query = "SELECT TOP 3 P.USERNAME AS CUSTOMER_NAME, SUM(SO.TOTAL_AMOUNT) AS TOTAL_VENTAS "
 				"FROM SALES_ORDER SO "
 				"INNER JOIN PERSON P ON SO.PERSON_ID = P.ID "
-				"GROUP BY P.USERNAME";
+				"GROUP BY P.USERNAME "
+				"ORDER BY TOTAL_VENTAS DESC";
 
 			SqlCommand^ cmd = gcnew SqlCommand(query, conn);
 			SqlDataReader^ reader;
+
 
 			try {
 				conn->Open();
@@ -120,7 +123,7 @@ namespace SalesSystemGUIApp {
 
 				// Configurar el título del gráfico
 				chart1->Titles->Clear(); // Limpiar títulos anteriores
-				Title^ titulo = gcnew Title("Reporte de Ventas por Clientes");
+				Title^ titulo = gcnew Title("Reporte de Ventas por Clientes (TOP 3)");
 				titulo->ForeColor = System::Drawing::Color::Black; // Ajuste de color para verificar visibilidad
 				titulo->Font = gcnew System::Drawing::Font("Arial", 12);
 				chart1->Titles->Add(titulo);
