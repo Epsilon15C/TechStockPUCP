@@ -282,9 +282,10 @@ namespace SalesSystemGUIApp {
 			   void EnableCustomerOptions() {
 				   mantenimientoToolStripMenuItem->Visible = false;
 				   productosToolStripMenuItem->Visible = true;
-				   clientesToolStripMenuItem->Visible = true;
+				   clientesToolStripMenuItem->Visible = false;
 				   reporteToolStripMenuItem->Visible = false;
 				   proveedoresToolStripMenuItem->Visible = true;
+				   recojoDelProductoToolStripMenuItem->Visible = false;
 
 			   }
 			   void EnableAdminOptions() {
