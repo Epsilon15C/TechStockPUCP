@@ -240,7 +240,7 @@ namespace SalesSystemGUIApp {
 			this->label10->ForeColor = System::Drawing::Color::White;
 			this->label10->Location = System::Drawing::Point(128, 510);
 			this->label10->Name = L"label10";
-			this->label10->Size = System::Drawing::Size(1137, 56);
+			this->label10->Size = System::Drawing::Size(988, 84);
 			this->label10->TabIndex = 12;
 			this->label10->Text = resources->GetString(L"label10.Text");
 			// 
