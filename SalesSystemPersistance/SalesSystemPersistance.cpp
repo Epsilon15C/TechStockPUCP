@@ -876,6 +876,29 @@ PaymentYape^ SalesSystemPersistance::Persistance::QueryPaymentYapeContainingName
 	return paymentYape;
 }
 
+int SalesSystemPersistance::Persistance::DeletePaymentYapeWithId(int paymentYapeId)
+{
+	SqlConnection^ conn;
+	SqlCommand^ cmd;
+
+	try {
+		conn = GetConnection();
+		String^ sqlStr = "DELETE FROM PAYMENT_YAPE WHERE ID=@ID";
+
+		cmd = gcnew SqlCommand(sqlStr, conn);
+		cmd->Parameters->AddWithValue("@ID", paymentYapeId);
+
+		cmd->ExecuteNonQuery();
+	}
+	catch (Exception^ ex) {
+		throw ex;
+	}
+	finally {
+		if (conn != nullptr) conn->Close();
+	}
+	return paymentYapeId;
+}
+
 
 
 
