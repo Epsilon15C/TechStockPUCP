@@ -109,9 +109,9 @@ namespace SalesSystemGUIApp {
 			this->label1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label1->Location = System::Drawing::Point(384, 395);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(79, 25);
+			this->label1->Size = System::Drawing::Size(95, 25);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Usuario";
+			this->label1->Text = L"Usuario : ";
 			// 
 			// label2
 			// 
@@ -121,9 +121,9 @@ namespace SalesSystemGUIApp {
 			this->label2->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->label2->Location = System::Drawing::Point(384, 431);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(114, 25);
+			this->label2->Size = System::Drawing::Size(125, 25);
 			this->label2->TabIndex = 1;
-			this->label2->Text = L"Contraseña";
+			this->label2->Text = L"Contraseña :";
 			// 
 			// txtUsername
 			// 

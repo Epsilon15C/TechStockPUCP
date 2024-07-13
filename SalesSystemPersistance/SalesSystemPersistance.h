@@ -108,7 +108,7 @@ namespace SalesSystemPersistance {
 
 		//PaymentYape
 		static PaymentYape^ QueryPaymentYapeContainingNameLastNameandAmount(String^ name, String^ lastName, double amount);
-
+		static int DeletePaymentYapeWithId(int paymentYapeId);
 
 		// Productos
 		static List<Product^>^ QueryAllProducts();

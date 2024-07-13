@@ -382,6 +382,7 @@ private: System::Void btnUploadPhoto_Click(System::Object^ sender, System::Event
 		}
 		else {
 
+			int PaymeteRealiced = Persistance::DeletePaymentYapeWithId(paymentYape->Id);
 			MessageBox::Show("Se finalizó la compra. Por favor, al cerrar la ventana, presione generar comprobante");
 		}
 
