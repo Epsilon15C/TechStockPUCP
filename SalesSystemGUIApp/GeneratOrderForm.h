@@ -23,6 +23,9 @@ namespace SalesSystemGUIApp {
 	using namespace System::Drawing;
 	using namespace System::IO;
 	using namespace System::Text;
+	using namespace SalesSystemPersistance;
+	using namespace SalesSystemService;
+	using namespace ReadQRLibrary;
 
 	/// <summary>
 	/// Resumen de GeneratOrderForm
@@ -51,6 +54,7 @@ namespace SalesSystemGUIApp {
 
 
 	private:
+		int iDUsuarioActual;
 		double totalPrice; // Declaración de la variable totalPrice como miembro privado
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ ItemOrder;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ NameOrder;
@@ -742,6 +746,42 @@ private: System::Void btnGenerate_Click(System::Object^ sender, System::EventArg
 		footer->Alignment = Element::ALIGN_CENTER;
 		document->Add(footer);
 
+		// Nueva página para el mensaje de agradecimiento y código QR
+		document->NewPage();
+
+		// Mensaje de agradecimiento
+		Paragraph^ thankYouMessage = gcnew Paragraph("Gracias por su compra", sectionFont);
+		thankYouMessage->Alignment = Element::ALIGN_CENTER;
+		document->Add(thankYouMessage);
+
+		document->Add(gcnew Paragraph(" ")); // Espacio en blanco
+
+		// Mensaje sobre recoger el pedido y código QR
+		Paragraph^ pickupMessage = gcnew Paragraph("Recuerda que tienes hasta 5 días hábiles para recoger tu pedido. No olvides presentar el siguiente código QR a la hora de recoger tu pedido:", contentFont);
+		pickupMessage->Alignment = Element::ALIGN_CENTER;
+		document->Add(pickupMessage);
+
+		document->Add(gcnew Paragraph(" ")); // Espacio en blanco
+
+		// Generar el código QR
+
+		iDUsuarioActual = UserSession::UserId;
+		Customer^ customer = Service::QueryCustomerById(iDUsuarioActual);
+		//Concatenar customer->Id con el orderId y con el customer->Username en qrCodeText
+		String^ qrCodeText = "" + customer->Id + "-" + orderId + "-" + customer->Username; // Puedes personalizar el contenido del código QR
+		//String^ qrCodeText = "OrderID: " + orderId; // Puedes personalizar el contenido del código QR
+		Bitmap^ qrCodeBitmap = QRCodeHelper::GenerateQRCode(qrCodeText, 250, 250);
+		
+		// Guardar el Bitmap como archivo temporal
+		String^ qrCodePath = "QRCode.png";
+		qrCodeBitmap->Save(qrCodePath);
+
+		// Agregar la imagen del código QR al PDF
+		iTextSharp::text::Image^ qrCodeImage = iTextSharp::text::Image::GetInstance(qrCodePath);
+		qrCodeImage->ScaleToFit(250, 250);
+		qrCodeImage->Alignment = iTextSharp::text::Image::ALIGN_CENTER;
+		document->Add(qrCodeImage);
+
 		document->Close(); // Cerrar el documento PDF
 
 		MessageBox::Show(String::Format("PDF generado exitosamente: {0}", pdfPath), "Éxito", MessageBoxButtons::OK, MessageBoxIcon::Information);
@@ -750,8 +790,6 @@ private: System::Void btnGenerate_Click(System::Object^ sender, System::EventArg
 		MessageBox::Show("Error al generar el PDF: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 }
-
-
 
 
 
