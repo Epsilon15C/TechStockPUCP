@@ -262,8 +262,7 @@ namespace SalesSystemGUIApp {
 			// 
 			// btnUpdatePhoto
 			// 
-			this->btnUpdatePhoto->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(45)), static_cast<System::Int32>(static_cast<System::Byte>(187)),
-				static_cast<System::Int32>(static_cast<System::Byte>(155)));
+			this->btnUpdatePhoto->BackColor = System::Drawing::Color::LightSkyBlue;
 			this->btnUpdatePhoto->FlatAppearance->BorderSize = 0;
 			this->btnUpdatePhoto->FlatAppearance->MouseOverBackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(128)),
 				static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(128)));
@@ -314,7 +313,7 @@ namespace SalesSystemGUIApp {
 			// 
 			// menuStrip1
 			// 
-			this->menuStrip1->BackColor = System::Drawing::Color::MidnightBlue;
+			this->menuStrip1->BackColor = System::Drawing::Color::RoyalBlue;
 			this->menuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(1) { this->opcionesToolStripMenuItem });
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
@@ -365,6 +364,7 @@ namespace SalesSystemGUIApp {
 			this->Controls->Add(this->lblName);
 			this->Controls->Add(this->menuStrip1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"CreateAccountForm";
 			this->Text = L"Crear cuenta";

@@ -2962,6 +2962,11 @@
         QmCC
 </value>
   </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>Al efectuar su compra, recibirá una boleta junto con un elegante código QR. Este último deberá presentarlo al operador de tienda
+ al momento de recoger su pedido. Le recordamos que tiene hasta 5 días para realizar el recojo.
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAAOYAAAEAIADotAMAFgAAACgAAAAAAQAAzAEAAAEAIAAAAAAAAJgDAAAAAAAAAAAAAAAAAAAA

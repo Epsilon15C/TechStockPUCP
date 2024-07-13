@@ -149,7 +149,7 @@ namespace SalesSystemGUIApp {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(4);
 			this->Name = L"ProductosVendidosForm";
-			this->Text = L"ProductosVendidosForm";
+			this->Text = L"Productos mas vendidos";
 			this->Load += gcnew System::EventHandler(this, &ProductosVendidosForm::ProductosVendidosForm_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->chart1))->EndInit();
 			this->ResumeLayout(false);

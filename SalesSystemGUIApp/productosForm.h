@@ -3752,9 +3752,9 @@ private: System::Windows::Forms::TextBox^ txtIdResistor;
 			this->tabPageAll->Location = System::Drawing::Point(4, 25);
 			this->tabPageAll->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->tabPageAll->Name = L"tabPageAll";
-			this->tabPageAll->Size = System::Drawing::Size(900, 493);
+			this->tabPageAll->Size = System::Drawing::Size(850, 493);
 			this->tabPageAll->TabIndex = 8;
-			this->tabPageAll->Text = L"Todos";
+			this->tabPageAll->Text = L"Productos";
 			// 
 			// btnSearch
 			// 
