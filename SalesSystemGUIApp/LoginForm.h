@@ -274,9 +274,9 @@ namespace SalesSystemGUIApp {
 			this->label6->Location = System::Drawing::Point(15, 10);
 			this->label6->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
 			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(449, 27);
+			this->label6->Size = System::Drawing::Size(444, 27);
 			this->label6->TabIndex = 0;
-			this->label6->Text = L"® 2024 TechStock PUCP  All rights deserved";
+			this->label6->Text = L"® 2024 TechStock PUCP  All rights reserved";
 			// 
 			// label7
 			// 
